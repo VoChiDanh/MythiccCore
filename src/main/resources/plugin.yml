@@ -1,0 +1,12 @@
+name: MythiccCore
+version: '${project.version}'
+main: net.danh.mythicccore.MythiccCore
+api-version: 1.13
+authors: [ VoChiDanh ]
+depend: [MythicLib, MMOItems]
+description: MythiccCore For RPGMythicc Project
+commands:
+  openregeneratorgui:
+    description: openregeneratorgui
+  MythiccCore:
+    description: MythiccCore
