@@ -75,7 +75,7 @@ public class Inventory implements Listener {
                     ItemStack item8 = e.getInventory().getItem(7);
                     if (item1 != null) {
                         NBTItem nbt = NBTItem.get(item1);
-                        if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE"))) {
+                        if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".MATERIAL_TYPE"))) {
                             int number = getRandomInt(1, getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX"));
                             MMOItem mmoitem = MMOItems.plugin.getMMOItem(MMOItems.plugin.getTypes().get(getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE")), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.ID" + number));
                             if (mmoitem == null) {
@@ -90,7 +90,7 @@ public class Inventory implements Listener {
                     }
                     if (item2 != null) {
                         NBTItem nbt = NBTItem.get(item2);
-                        if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE"))) {
+                        if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".MATERIAL_TYPE"))) {
                             int number = getRandomInt(1, getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX"));
                             MMOItem mmoitem = MMOItems.plugin.getMMOItem(MMOItems.plugin.getTypes().get(getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE")), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.ID" + number));
                             if (mmoitem == null) {
@@ -105,7 +105,7 @@ public class Inventory implements Listener {
                     }
                     if (item3 != null) {
                         NBTItem nbt = NBTItem.get(item3);
-                        if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE"))) {
+                        if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".MATERIAL_TYPE"))) {
                             int number = getRandomInt(1, getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX"));
                             MMOItem mmoitem = MMOItems.plugin.getMMOItem(MMOItems.plugin.getTypes().get(getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE")), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.ID" + number));
                             if (mmoitem == null) {
@@ -120,7 +120,7 @@ public class Inventory implements Listener {
                     }
                     if (item4 != null) {
                         NBTItem nbt = NBTItem.get(item4);
-                        if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE"))) {
+                        if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".MATERIAL_TYPE"))) {
                             int number = getRandomInt(1, getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX"));
                             MMOItem mmoitem = MMOItems.plugin.getMMOItem(MMOItems.plugin.getTypes().get(getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE")), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.ID" + number));
                             if (mmoitem == null) {
@@ -135,7 +135,7 @@ public class Inventory implements Listener {
                     }
                     if (item5 != null) {
                         NBTItem nbt = NBTItem.get(item5);
-                        if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE"))) {
+                        if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".MATERIAL_TYPE"))) {
                             int number = getRandomInt(1, getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX"));
                             MMOItem mmoitem = MMOItems.plugin.getMMOItem(MMOItems.plugin.getTypes().get(getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE")), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.ID" + number));
                             if (mmoitem == null) {
@@ -150,7 +150,7 @@ public class Inventory implements Listener {
                     }
                     if (item6 != null) {
                         NBTItem nbt = NBTItem.get(item6);
-                        if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE"))) {
+                        if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".MATERIAL_TYPE"))) {
                             int number = getRandomInt(1, getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX"));
                             MMOItem mmoitem = MMOItems.plugin.getMMOItem(MMOItems.plugin.getTypes().get(getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE")), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.ID" + number));
                             if (mmoitem == null) {
@@ -165,7 +165,7 @@ public class Inventory implements Listener {
                     }
                     if (item7 != null) {
                         NBTItem nbt = NBTItem.get(item7);
-                        if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE"))) {
+                        if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".MATERIAL_TYPE"))) {
                             int number = getRandomInt(1, getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX"));
                             MMOItem mmoitem = MMOItems.plugin.getMMOItem(MMOItems.plugin.getTypes().get(getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE")), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.ID" + number));
                             if (mmoitem == null) {

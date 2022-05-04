@@ -10,7 +10,7 @@ public class NMSVersion {
     /**
      * The major version of Minecraft.
      * <p>
-     *     Usually, and probably always going to be... '1'.
+     * Usually, and probably always going to be... '1'.
      * </p>
      */
     private final int major;
@@ -18,7 +18,7 @@ public class NMSVersion {
     /**
      * The minor version of Minecraft.
      * <p>
-     *     The minor version, for example '8' or '7' or most-recently '18'.
+     * The minor version, for example '8' or '7' or most-recently '18'.
      * </p>
      */
     private final int minor;
@@ -31,8 +31,8 @@ public class NMSVersion {
     /**
      * Constructor to initialise the NMSVersion data-type.
      * <p>
-     *     Initialises the {@link #major}, {@link #minor} and {@link #revision} variables,
-     *     for usage with the {@link NMSAssistant} or by Ponder Developers.
+     * Initialises the {@link #major}, {@link #minor} and {@link #revision} variables,
+     * for usage with the {@link NMSAssistant} or by Ponder Developers.
      * </p>
      */
     public NMSVersion() {
