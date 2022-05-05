@@ -3,6 +3,7 @@ package net.danh.mythicccore.Events;
 import io.lumine.mythic.lib.api.item.NBTItem;
 import net.Indyuce.mmoitems.MMOItems;
 import net.Indyuce.mmoitems.api.item.mmoitem.MMOItem;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -76,6 +77,10 @@ public class Inventory implements Listener {
                     if (item1 != null) {
                         NBTItem nbt = NBTItem.get(item1);
                         if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".MATERIAL_TYPE"))) {
+                            if (Objects.requireNonNull(e.getInventory().getItem(0)).getAmount() != 1) {
+                                sendPlayerMessage(p, getlangString("MAX"));
+                                return;
+                            }
                             int number = getRandomInt(1, getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX"));
                             MMOItem mmoitem = MMOItems.plugin.getMMOItem(MMOItems.plugin.getTypes().get(getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE")), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.ID" + number));
                             if (mmoitem == null) {
@@ -84,6 +89,12 @@ public class Inventory implements Listener {
                             }
                             ItemStack item = Objects.requireNonNull(mmoitem).newBuilder().build();
                             e.getInventory().setItem(0, item);
+                            if (number == getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX")) {
+                                sendPlayerMessage(p, getlangString("OPEN_MAX").replace("%id%", Objects.requireNonNull(Objects.requireNonNull(item).getItemMeta()).getDisplayName()));
+                                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_YES, 2, 1);
+                            }
+                            /* mmoitem.setData(ItemStats.ATTACK_DAMAGE, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.ATTACK_DAMAGE).toString()) + 0.5));
+                             */
                         } else {
                             sendPlayerMessage(p, getlanguagefile().getString("CAN_NOT_REGENERATE"));
                         }
@@ -91,6 +102,10 @@ public class Inventory implements Listener {
                     if (item2 != null) {
                         NBTItem nbt = NBTItem.get(item2);
                         if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".MATERIAL_TYPE"))) {
+                            if (Objects.requireNonNull(e.getInventory().getItem(0)).getAmount() != 1) {
+                                sendPlayerMessage(p, getlangString("MAX"));
+                                return;
+                            }
                             int number = getRandomInt(1, getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX"));
                             MMOItem mmoitem = MMOItems.plugin.getMMOItem(MMOItems.plugin.getTypes().get(getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE")), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.ID" + number));
                             if (mmoitem == null) {
@@ -99,6 +114,10 @@ public class Inventory implements Listener {
                             }
                             ItemStack item = Objects.requireNonNull(mmoitem).newBuilder().build();
                             e.getInventory().setItem(1, item);
+                            if (number == getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX")) {
+                                sendPlayerMessage(p, getlangString("OPEN_MAX").replace("%id%", Objects.requireNonNull(Objects.requireNonNull(item).getItemMeta()).getDisplayName()));
+                                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_YES, 2, 1);
+                            }
                         } else {
                             sendPlayerMessage(p, getlanguagefile().getString("CAN_NOT_REGENERATE"));
                         }
@@ -106,6 +125,10 @@ public class Inventory implements Listener {
                     if (item3 != null) {
                         NBTItem nbt = NBTItem.get(item3);
                         if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".MATERIAL_TYPE"))) {
+                            if (Objects.requireNonNull(e.getInventory().getItem(0)).getAmount() != 1) {
+                                sendPlayerMessage(p, getlangString("MAX"));
+                                return;
+                            }
                             int number = getRandomInt(1, getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX"));
                             MMOItem mmoitem = MMOItems.plugin.getMMOItem(MMOItems.plugin.getTypes().get(getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE")), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.ID" + number));
                             if (mmoitem == null) {
@@ -114,6 +137,10 @@ public class Inventory implements Listener {
                             }
                             ItemStack item = Objects.requireNonNull(mmoitem).newBuilder().build();
                             e.getInventory().setItem(2, item);
+                            if (number == getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX")) {
+                                sendPlayerMessage(p, getlangString("OPEN_MAX").replace("%id%", Objects.requireNonNull(Objects.requireNonNull(item).getItemMeta()).getDisplayName()));
+                                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_YES, 2, 1);
+                            }
                         } else {
                             sendPlayerMessage(p, getlanguagefile().getString("CAN_NOT_REGENERATE"));
                         }
@@ -121,6 +148,10 @@ public class Inventory implements Listener {
                     if (item4 != null) {
                         NBTItem nbt = NBTItem.get(item4);
                         if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".MATERIAL_TYPE"))) {
+                            if (Objects.requireNonNull(e.getInventory().getItem(0)).getAmount() != 1) {
+                                sendPlayerMessage(p, getlangString("MAX"));
+                                return;
+                            }
                             int number = getRandomInt(1, getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX"));
                             MMOItem mmoitem = MMOItems.plugin.getMMOItem(MMOItems.plugin.getTypes().get(getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE")), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.ID" + number));
                             if (mmoitem == null) {
@@ -129,6 +160,10 @@ public class Inventory implements Listener {
                             }
                             ItemStack item = Objects.requireNonNull(mmoitem).newBuilder().build();
                             e.getInventory().setItem(3, item);
+                            if (number == getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX")) {
+                                sendPlayerMessage(p, getlangString("OPEN_MAX").replace("%id%", Objects.requireNonNull(Objects.requireNonNull(item).getItemMeta()).getDisplayName()));
+                                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_YES, 2, 1);
+                            }
                         } else {
                             sendPlayerMessage(p, getlanguagefile().getString("CAN_NOT_REGENERATE"));
                         }
@@ -136,6 +171,10 @@ public class Inventory implements Listener {
                     if (item5 != null) {
                         NBTItem nbt = NBTItem.get(item5);
                         if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".MATERIAL_TYPE"))) {
+                            if (Objects.requireNonNull(e.getInventory().getItem(0)).getAmount() != 1) {
+                                sendPlayerMessage(p, getlangString("MAX"));
+                                return;
+                            }
                             int number = getRandomInt(1, getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX"));
                             MMOItem mmoitem = MMOItems.plugin.getMMOItem(MMOItems.plugin.getTypes().get(getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE")), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.ID" + number));
                             if (mmoitem == null) {
@@ -144,6 +183,10 @@ public class Inventory implements Listener {
                             }
                             ItemStack item = Objects.requireNonNull(mmoitem).newBuilder().build();
                             e.getInventory().setItem(4, item);
+                            if (number == getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX")) {
+                                sendPlayerMessage(p, getlangString("OPEN_MAX").replace("%id%", Objects.requireNonNull(Objects.requireNonNull(item).getItemMeta()).getDisplayName()));
+                                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_YES, 2, 1);
+                            }
                         } else {
                             sendPlayerMessage(p, getlanguagefile().getString("CAN_NOT_REGENERATE"));
                         }
@@ -151,6 +194,10 @@ public class Inventory implements Listener {
                     if (item6 != null) {
                         NBTItem nbt = NBTItem.get(item6);
                         if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".MATERIAL_TYPE"))) {
+                            if (Objects.requireNonNull(e.getInventory().getItem(0)).getAmount() != 1) {
+                                sendPlayerMessage(p, getlangString("MAX"));
+                                return;
+                            }
                             int number = getRandomInt(1, getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX"));
                             MMOItem mmoitem = MMOItems.plugin.getMMOItem(MMOItems.plugin.getTypes().get(getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE")), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.ID" + number));
                             if (mmoitem == null) {
@@ -159,6 +206,10 @@ public class Inventory implements Listener {
                             }
                             ItemStack item = Objects.requireNonNull(mmoitem).newBuilder().build();
                             e.getInventory().setItem(5, item);
+                            if (number == getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX")) {
+                                sendPlayerMessage(p, getlangString("OPEN_MAX").replace("%id%", Objects.requireNonNull(Objects.requireNonNull(item).getItemMeta()).getDisplayName()));
+                                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_YES, 2, 1);
+                            }
                         } else {
                             sendPlayerMessage(p, getlanguagefile().getString("CAN_NOT_REGENERATE"));
                         }
@@ -166,6 +217,10 @@ public class Inventory implements Listener {
                     if (item7 != null) {
                         NBTItem nbt = NBTItem.get(item7);
                         if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".MATERIAL_TYPE"))) {
+                            if (Objects.requireNonNull(e.getInventory().getItem(0)).getAmount() != 1) {
+                                sendPlayerMessage(p, getlangString("MAX"));
+                                return;
+                            }
                             int number = getRandomInt(1, getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX"));
                             MMOItem mmoitem = MMOItems.plugin.getMMOItem(MMOItems.plugin.getTypes().get(getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE")), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.ID" + number));
                             if (mmoitem == null) {
@@ -174,13 +229,21 @@ public class Inventory implements Listener {
                             }
                             ItemStack item = Objects.requireNonNull(mmoitem).newBuilder().build();
                             e.getInventory().setItem(6, item);
+                            if (number == getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX")) {
+                                sendPlayerMessage(p, getlangString("OPEN_MAX").replace("%id%", Objects.requireNonNull(Objects.requireNonNull(item).getItemMeta()).getDisplayName()));
+                                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_YES, 2, 1);
+                            }
                         } else {
                             sendPlayerMessage(p, getlanguagefile().getString("CAN_NOT_REGENERATE"));
                         }
                     }
                     if (item8 != null) {
                         NBTItem nbt = NBTItem.get(item8);
-                        if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE"))) {
+                        if (nbt.hasType() && Objects.equals(nbt.getType(), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".MATERIAL_TYPE"))) {
+                            if (Objects.requireNonNull(e.getInventory().getItem(0)).getAmount() != 1) {
+                                sendPlayerMessage(p, getlangString("MAX"));
+                                return;
+                            }
                             int number = getRandomInt(1, getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX"));
                             MMOItem mmoitem = MMOItems.plugin.getMMOItem(MMOItems.plugin.getTypes().get(getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".TYPE")), getconfigfile().getString(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.ID" + number));
                             if (mmoitem == null) {
@@ -189,6 +252,10 @@ public class Inventory implements Listener {
                             }
                             ItemStack item = Objects.requireNonNull(mmoitem).newBuilder().build();
                             e.getInventory().setItem(7, item);
+                            if (number == getconfigInt(nbt.getString("MMOITEMS_ITEM_ID") + ".LIST.MAX")) {
+                                sendPlayerMessage(p, getlangString("OPEN_MAX").replace("%id%", Objects.requireNonNull(Objects.requireNonNull(item).getItemMeta()).getDisplayName()));
+                                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_YES, 2, 1);
+                            }
                         } else {
                             sendPlayerMessage(p, getlanguagefile().getString("CAN_NOT_REGENERATE"));
                         }

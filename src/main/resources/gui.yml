@@ -1,11 +1,13 @@
 GUI:
   REGENERATE:
-    TITLE: '&6Mở Khóa Vũ Khí'
+    TITLE: '&0Mở Khóa Vũ Khí'
     BUTTON:
-      MATERIAL: EMERALD
+      MATERIAL: EMERALD_BLOCK
       AMOUNT: 1
       DISPLAY: '&aNhấn để mở khóa vũ khí'
       LORE:
-        - '&7&oBạn có vũ khí đang bị khóa?'
+        - '&7&o'
+        - '&7&oBạn có rương đang bị khóa?'
         - '&7&oHãy mở khóa nó bằng cách nhấn'
-        - '&7&ovào đây để mở khóa vật phẩm đó!'
+        - '&7&ovào đây để mở khóa rương đó để'
+        - '&7&ocó thể nhận vật phẩm ngẫu nhiên'

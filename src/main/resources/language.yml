@@ -1,2 +1,4 @@
 CAN_NOT_REGENERATE: "&cKhông thể mở khóa vật phẩm này!"
 UNKNOWN_ITEM: "&cVật phẩm không tồn tại (%id%?)"
+MAX: "&cBạn chỉ được đặt 1 vật phẩm bị khóa trên 1 ô để mở khóa, không đặt 1 ô chứa nhiều vật phẩm bị khóa"
+OPEN_MAX: "&aChúc mừng bạn đã mở được vật phẩm %id%"
