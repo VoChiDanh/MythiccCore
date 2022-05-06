@@ -17,7 +17,9 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.List;
 import java.util.Objects;
 
 import static net.danh.mythicccore.Utils.Chat.sendPlayerMessage;
@@ -103,10 +105,24 @@ public class Inventory implements Listener {
             if (e.getCurrentItem() != null && Objects.equals(Objects.requireNonNull(e.getCurrentItem()).getType().toString(), getguiString("GUI.UPGRADE.DECORATE.MATERIAL"))) {
                 e.setCancelled(true);
             }
-            if (e.getSlot() == getguiInt("GUI.UPGRADE.TUTORIAL.SLOT")) {
+
+            ItemStack tutorial = new ItemStack(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.TUTORIAL.MATERIAL"))), getguiInt("GUI.UPGRADE.TUTORIAL.AMOUNT"));
+            ItemMeta tutorialmeta = tutorial.getItemMeta();
+            Objects.requireNonNull(tutorialmeta).setDisplayName(getguiString("GUI.UPGRADE.TUTORIAL.DISPLAY"));
+            List<String> tutoriallore = getguiStringList("GUI.UPGRADE.TUTORIAL.LORE");
+            tutorialmeta.setLore(tutoriallore);
+            tutorial.setItemMeta(tutorialmeta);
+
+            ItemStack button = new ItemStack(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.BUTTON.MATERIAL"))), getguiInt("GUI.UPGRADE.BUTTON.AMOUNT"));
+            ItemMeta meta = button.getItemMeta();
+            Objects.requireNonNull(meta).setDisplayName(getguiString("GUI.UPGRADE.BUTTON.DISPLAY"));
+            List<String> lore = getguiStringList("GUI.UPGRADE.BUTTON.LORE");
+            meta.setLore(lore);
+            button.setItemMeta(meta);
+            if (e.getSlot() == getguiInt("GUI.UPGRADE.TUTORIAL.SLOT") && e.getCurrentItem().isSimilar(tutorial)) {
                 e.setCancelled(true);
             }
-            if (e.getSlot() == getguiInt("GUI.UPGRADE.BUTTON.SLOT")) {
+            if (e.getSlot() == getguiInt("GUI.UPGRADE.BUTTON.SLOT") && e.getCurrentItem().isSimilar(button)) {
                 e.setCancelled(true);
                 if (e.getClick() == ClickType.LEFT) {
                     ItemStack weapon = e.getInventory().getItem(22);

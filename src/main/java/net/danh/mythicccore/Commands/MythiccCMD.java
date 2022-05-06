@@ -15,9 +15,11 @@ public class MythiccCMD extends CMDBase {
     @Override
     public void execute(Player p, String[] args) {
         if (args.length == 1) {
-            if (args[0].equalsIgnoreCase("reload")) {
-                Resources.reloadfiles();
-                sendPlayerMessage(p, "&aĐã tải lại files");
+            if (p.hasPermission("MythiccCore.admin")) {
+                if (args[0].equalsIgnoreCase("reload")) {
+                    Resources.reloadfiles();
+                    sendPlayerMessage(p, "&aĐã tải lại files");
+                }
             }
         }
     }
