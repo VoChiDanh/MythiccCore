@@ -84,6 +84,7 @@ public class Resources {
     public static List<String> getconfigStringList(String path) {
         return Lore(getconfigfile().getStringList(path));
     }
+
     public static List<String> getupgradeStringList(String path) {
         return Lore(getupgradefile().getStringList(path));
     }
@@ -99,6 +100,7 @@ public class Resources {
     public static int getconfigInt(String path) {
         return getconfigfile().getInt(path);
     }
+
     public static int getupgradeInt(String path) {
         return getupgradefile().getInt(path);
     }
@@ -146,6 +148,7 @@ public class Resources {
         } catch (IOException ignored) {
         }
     }
+
     public static void saveupgrade() {
         try {
             upgrade.save(upgradeFile);
