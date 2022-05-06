@@ -1,6 +1,7 @@
 package net.danh.mythicccore.Commands;
 
 import net.danh.mythicccore.MythiccCore;
+import net.danh.mythicccore.Utils.Chat;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -26,6 +27,8 @@ public abstract class CMDBase implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player) {
             execute((Player) sender, args);
+        } else {
+            sender.sendMessage(Chat.colorize("&cLệnh chỉ có thể được dùng bởi người chơi!"));
         }
         return true;
     }

@@ -10,3 +10,5 @@ commands:
     description: openregeneratorgui
   MythiccCore:
     description: MythiccCore
+  upgradegui:
+    description: upgradegui

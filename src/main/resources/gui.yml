@@ -1,13 +1,77 @@
 GUI:
   REGENERATE:
-    TITLE: '&0Mở Khóa Vũ Khí'
+    TITLE: '&0Mở Khóa Vật Phẩm'
     BUTTON:
       MATERIAL: EMERALD_BLOCK
       AMOUNT: 1
-      DISPLAY: '&aNhấn để mở khóa vũ khí'
+      DISPLAY: '&aNhấn để mở khóa rương'
       LORE:
         - '&7&o'
         - '&7&oBạn có rương đang bị khóa?'
         - '&7&oHãy mở khóa nó bằng cách nhấn'
         - '&7&ovào đây để mở khóa rương đó để'
         - '&7&ocó thể nhận vật phẩm ngẫu nhiên'
+  UPGRADE:
+    TITLE: "&0Cường Hóa Vật Phẩm"
+    BUTTON:
+      MATERIAL: EMERALD
+      AMOUNT: 1
+      SLOT: 25
+      DISPLAY: "&aNhấn để cường hóa vật phẩm"
+      LORE:
+        - "&7&o"
+        - "&7&oCường hóa vật phẩm giúp"
+        - "&7&ovũ khí bạn trở nên mạnh"
+        - "&7&omẽ hơn"
+    TUTORIAL:
+      MATERIAL: PAPER
+      AMOUNT: 1
+      SLOT: 19
+      DISPLAY: "&aHướng dẫn"
+      LORE:
+        - "&7&o"
+        - "&7&oBạn hãy đặt vật phẩm"
+        - "&7&ocần cường hóa ở giữa"
+        - "&7&o"
+        - "&7&oXung quanh bạn hãy đặt"
+        - "&7&onhững ngọc cường hóa cùng"
+        - "&7&ocấp độ và 1 ô 1 ngọc"
+    DECORATE:
+      MATERIAL: BLACK_STAINED_GLASS_PANE
+      AMOUNT: 1
+      DISPLAY: "&7"
+      SLOT:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
+        - 11
+        - 15
+        - 16
+        - 17
+        - 18
+        - 20
+        - 24
+        - 26
+        - 27
+        - 28
+        - 29
+        - 33
+        - 34
+        - 35
+        - 36
+        - 37
+        - 38
+        - 39
+        - 40
+        - 41
+        - 42
+        - 43
+        - 44
