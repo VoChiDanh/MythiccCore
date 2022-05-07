@@ -15,7 +15,7 @@ jobs:
         if: ${{ contains(github.event.commits[0].message, '-') }}
         uses: tsickert/discord-webhook@v4.0.0
         with:
-          webhook-url: ${{ secrets.WEBHOOK_URL }}
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
           username: "D-x-Z"
           embed-title: "${{ github.actor }} pushed an update for ${{ steps.split.outputs._1 }}"
           avatar-url: "https://github.com/D-x-Z.png"
@@ -32,7 +32,7 @@ jobs:
       - name: Build waiting
         uses: tsickert/discord-webhook@v4.0.0
         with:
-          webhook-url: ${{ secrets.WEBHOOK_URL }}
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
           username: "D-x-Z"
           embed-title: "${{ github.actor }} pushed an update for ${{ steps.split.outputs._1 }}"
           avatar-url: "https://github.com/D-x-Z.png"
