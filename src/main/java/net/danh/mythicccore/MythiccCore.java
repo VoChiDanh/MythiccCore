@@ -17,6 +17,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
 
+import static net.danh.mythicccore.Data.Storage.savePlayerData;
+
 public final class MythiccCore extends JavaPlugin {
 
     private static MythiccCore instance;
@@ -64,6 +66,7 @@ public final class MythiccCore extends JavaPlugin {
     public void onDisable() {
         for (Player p : getServer().getOnlinePlayers()) {
             p.closeInventory();
+            savePlayerData(p);
         }
         Resources.saveconfig();
         Resources.savelanguage();

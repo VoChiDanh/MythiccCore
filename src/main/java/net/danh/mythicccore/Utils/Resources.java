@@ -187,6 +187,7 @@ public class Resources {
         } catch (IOException ignored) {
         }
     }
+
     public static void savesetting() {
         try {
             setting.save(settingFile);
