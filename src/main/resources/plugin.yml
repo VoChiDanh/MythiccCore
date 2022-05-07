@@ -4,6 +4,7 @@ main: net.danh.mythicccore.MythiccCore
 api-version: 1.14
 authors: [ VoChiDanh ]
 depend: [MythicLib, MMOItems]
+softdepend: [PlaceholderAPI]
 description: MythiccCore For RPGMythicc Project
 commands:
   openregeneratorgui:
@@ -12,3 +13,5 @@ commands:
     description: MythiccCore
   upgradegui:
     description: upgradegui
+  soul:
+    description: soul

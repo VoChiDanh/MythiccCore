@@ -119,10 +119,10 @@ public class Inventory implements Listener {
             List<String> lore = getguiStringList("GUI.UPGRADE.BUTTON.LORE");
             meta.setLore(lore);
             button.setItemMeta(meta);
-            if (e.getSlot() == getguiInt("GUI.UPGRADE.TUTORIAL.SLOT") && e.getCurrentItem().isSimilar(tutorial)) {
+            if (e.getCurrentItem() != null && e.getSlot() == getguiInt("GUI.UPGRADE.TUTORIAL.SLOT") && e.getCurrentItem().isSimilar(tutorial)) {
                 e.setCancelled(true);
             }
-            if (e.getSlot() == getguiInt("GUI.UPGRADE.BUTTON.SLOT") && e.getCurrentItem().isSimilar(button)) {
+            if (e.getCurrentItem() != null && e.getSlot() == getguiInt("GUI.UPGRADE.BUTTON.SLOT") && e.getCurrentItem().isSimilar(button)) {
                 e.setCancelled(true);
                 if (e.getClick() == ClickType.LEFT) {
                     ItemStack weapon = e.getInventory().getItem(22);

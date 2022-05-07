@@ -3,7 +3,12 @@ package net.danh.mythicccore;
 import net.danh.mythicccore.Commands.MythiccCMD;
 import net.danh.mythicccore.Commands.OpenRegeneratorGui;
 import net.danh.mythicccore.Commands.OpenUpgradeGui;
+import net.danh.mythicccore.Commands.SoulPoints;
+import net.danh.mythicccore.Compatible.Placeholder;
+import net.danh.mythicccore.Events.Death;
 import net.danh.mythicccore.Events.Inventory;
+import net.danh.mythicccore.Events.Join;
+import net.danh.mythicccore.Events.Quit;
 import net.danh.mythicccore.Manager.AdvancementManager;
 import net.danh.mythicccore.Utils.Resources;
 import net.danh.mythicccore.Utils.VersionChecker;
@@ -35,15 +40,22 @@ public final class MythiccCore extends JavaPlugin {
             return;
         }
         getServer().getPluginManager().registerEvents(new Inventory(), this);
+        getServer().getPluginManager().registerEvents(new Join(), this);
+        getServer().getPluginManager().registerEvents(new Quit(), this);
+        getServer().getPluginManager().registerEvents(new Death(), this);
         new OpenRegeneratorGui(this);
         new MythiccCMD(this);
         new OpenUpgradeGui(this);
-        getLogger().log(Level.INFO, "Server version: " + VersionChecker.getServerVersion());
+        new SoulPoints(this);
         if (getServer().getPluginManager().getPlugin("MMOItems") != null) {
             getLogger().log(Level.INFO, "Hooking into MMOItems");
         }
         if (getServer().getPluginManager().getPlugin("MythicLib") != null) {
             getLogger().log(Level.INFO, "Hooking into MythicLib");
+        }
+        if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            new Placeholder().register();
+            getLogger().log(Level.INFO, "Hooking into PlaceholderAPI");
         }
         Resources.createfiles();
     }
@@ -57,6 +69,8 @@ public final class MythiccCore extends JavaPlugin {
         Resources.savelanguage();
         Resources.savegui();
         Resources.saveupgrade();
+        Resources.savesetting();
+        Resources.savedata();
     }
 
     private boolean initialSetupSuccessful() {

@@ -1,11 +1,7 @@
 package net.danh.mythicccore.Commands;
 
 import net.danh.mythicccore.MythiccCore;
-import net.danh.mythicccore.Utils.Chat;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.PluginCommand;
+import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -21,14 +17,17 @@ public abstract class CMDBase implements CommandExecutor {
         Objects.requireNonNull(pluginCommand).setExecutor(this);
     }
 
-    public abstract void execute(Player p, String[] args);
+    public abstract void playerexecute(Player p, String[] args);
+
+    public abstract void consoleexecute(ConsoleCommandSender c, String[] args);
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player) {
-            execute((Player) sender, args);
-        } else {
-            sender.sendMessage(Chat.colorize("&cLệnh chỉ có thể được dùng bởi người chơi!"));
+            playerexecute((Player) sender, args);
+        }
+        if (sender instanceof ConsoleCommandSender) {
+            consoleexecute((ConsoleCommandSender) sender, args);
         }
         return true;
     }

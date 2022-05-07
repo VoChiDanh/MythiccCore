@@ -13,29 +13,44 @@ import static net.danh.mythicccore.Utils.Chat.Lore;
 
 public class Resources {
 
-    private static File configFile, languageFile, guiFile, upgradeFile;
-    private static FileConfiguration config, language, gui, upgrade;
+    private static File configFile, languageFile, guiFile, upgradeFile, dataFile, settingFile;
+    private static FileConfiguration config, language, gui, upgrade, data, setting;
 
     public static void createfiles() {
         configFile = new File(get().getDataFolder(), "config.yml");
         languageFile = new File(get().getDataFolder(), "language.yml");
         guiFile = new File(get().getDataFolder(), "gui.yml");
         upgradeFile = new File(get().getDataFolder(), "upgrade.yml");
+        dataFile = new File(get().getDataFolder(), "data.yml");
+        settingFile = new File(get().getDataFolder(), "setting.yml");
 
         if (!configFile.exists()) get().saveResource("config.yml", false);
         if (!languageFile.exists()) get().saveResource("language.yml", false);
         if (!guiFile.exists()) get().saveResource("gui.yml", false);
         if (!upgradeFile.exists()) get().saveResource("upgrade.yml", false);
+        if (!settingFile.exists()) get().saveResource("setting.yml", false);
+        if (!dataFile.exists()) {
+            dataFile.getParentFile().mkdirs();
+            try {
+                dataFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         config = new YamlConfiguration();
         language = new YamlConfiguration();
         gui = new YamlConfiguration();
         upgrade = new YamlConfiguration();
+        data = new YamlConfiguration();
+        setting = new YamlConfiguration();
 
         try {
             config.load(configFile);
             language.load(languageFile);
             gui.load(guiFile);
             upgrade.load(upgradeFile);
+            data.load(dataFile);
+            setting.load(settingFile);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
@@ -55,6 +70,15 @@ public class Resources {
 
     public static FileConfiguration getupgradefile() {
         return upgrade;
+    }
+
+
+    public static FileConfiguration getdatafile() {
+        return data;
+    }
+
+    public static FileConfiguration getsettingfile() {
+        return setting;
     }
 
     public static String getguiString(String path) {
@@ -126,6 +150,7 @@ public class Resources {
         language = YamlConfiguration.loadConfiguration(languageFile);
         gui = YamlConfiguration.loadConfiguration(guiFile);
         upgrade = YamlConfiguration.loadConfiguration(upgradeFile);
+        setting = YamlConfiguration.loadConfiguration(settingFile);
     }
 
     public static void saveconfig() {
@@ -152,6 +177,19 @@ public class Resources {
     public static void saveupgrade() {
         try {
             upgrade.save(upgradeFile);
+        } catch (IOException ignored) {
+        }
+    }
+
+    public static void savedata() {
+        try {
+            data.save(dataFile);
+        } catch (IOException ignored) {
+        }
+    }
+    public static void savesetting() {
+        try {
+            setting.save(settingFile);
         } catch (IOException ignored) {
         }
     }
