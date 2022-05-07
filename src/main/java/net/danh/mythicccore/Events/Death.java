@@ -8,7 +8,6 @@ import org.bukkit.inventory.PlayerInventory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import static net.danh.mythicccore.Data.SoulPoints.getSoulPoints;
 import static net.danh.mythicccore.Data.SoulPoints.removeSoulPoints;
@@ -34,9 +33,13 @@ public class Death implements Listener {
                 return;
             }
             int slot = getRandomInt(0, fullSlots.size());
-            String item = Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(slot)).getItemMeta()).getDisplayName();
-            playerInventory.setItem(slot, null);
-            sendPlayerMessage(p, "&cBạn đã bị mất vật phẩm: " + item);
+            if (playerInventory.getItem(slot) != null) {
+                if (playerInventory.getItem(slot).getItemMeta() != null) {
+                    String item = playerInventory.getItem(slot).getItemMeta().getDisplayName();
+                    playerInventory.setItem(slot, null);
+                    sendPlayerMessage(p, "&cBạn đã bị mất vật phẩm: " + item);
+                }
+            }
         }
     }
 }

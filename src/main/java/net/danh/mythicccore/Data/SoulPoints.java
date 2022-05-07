@@ -28,7 +28,7 @@ public class SoulPoints {
     }
 
     public static void setSoulPoints(Player p, Integer amount) {
-        sp.put(p.getName() + "_sp", Math.max(amount, 0));
+        sp.put(p.getName() + "_sp", Math.max(amount, getsettingfile().getInt("SETTINGS.DEFAULT_SOUL_POINTS")));
     }
 
     public static void setMaxSoulPoints(Player p, Integer amount) {
@@ -53,7 +53,7 @@ public class SoulPoints {
 
     public static void removeSoulPoints(Player p, Integer amount) {
         if (amount > 0) {
-            if (getSoulPoints(p) + amount > 0) {
+            if (getSoulPoints(p) - amount > 0) {
                 sp.replace(p.getName() + "_sp", getSoulPoints(p) - amount);
             } else {
                 sp.put(p.getName() + "_sp", 0);
