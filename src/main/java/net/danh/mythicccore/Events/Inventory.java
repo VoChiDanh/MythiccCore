@@ -237,7 +237,6 @@ public class Inventory implements Listener {
                                         e.getInventory().setItem(30, null);
                                         e.getInventory().setItem(31, null);
                                         e.getInventory().setItem(32, null);
-                                        MythiccCore.get().getAdvancementManager().sendToast(new ItemStack(Material.EXPERIENCE_BOTTLE), p.getUniqueId(), Chat.colorize(getlangString("UPGRADE_SUCCESSFUL")), "Custom");
                                     } else {
                                         sendPlayerMessage(p, getlangString("CAN_NOT_UPGRADE_WITH_THIS_STONE"));
                                     }

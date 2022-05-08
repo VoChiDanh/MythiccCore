@@ -9,9 +9,7 @@ import net.danh.mythicccore.Events.Death;
 import net.danh.mythicccore.Events.Inventory;
 import net.danh.mythicccore.Events.Join;
 import net.danh.mythicccore.Events.Quit;
-import net.danh.mythicccore.Manager.AdvancementManager;
 import net.danh.mythicccore.Utils.Resources;
-import net.danh.mythicccore.Utils.VersionChecker;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -22,7 +20,6 @@ import static net.danh.mythicccore.Data.Storage.savePlayerData;
 public final class MythiccCore extends JavaPlugin {
 
     private static MythiccCore instance;
-    private AdvancementManager advancementManager;
 
 
     public static MythiccCore get() {
@@ -32,15 +29,10 @@ public final class MythiccCore extends JavaPlugin {
     @Override
     public void onLoad() {
         instance = this;
-        VersionChecker.checkServerVersion();
     }
 
     @Override
     public void onEnable() {
-        if (!initialSetupSuccessful()) {
-            getServer().getPluginManager().disablePlugin(this);
-            return;
-        }
         getServer().getPluginManager().registerEvents(new Inventory(), this);
         getServer().getPluginManager().registerEvents(new Join(), this);
         getServer().getPluginManager().registerEvents(new Quit(), this);
@@ -76,20 +68,4 @@ public final class MythiccCore extends JavaPlugin {
         Resources.savedata();
     }
 
-    private boolean initialSetupSuccessful() {
-        if (!VersionChecker.isSupportedVersion()) {
-            return false;
-        }
-
-        VersionChecker.registerClasses();
-        return true;
-    }
-
-    public AdvancementManager getAdvancementManager() {
-        return advancementManager;
-    }
-
-    public void setAdvancementManager(AdvancementManager advancementManager) {
-        this.advancementManager = advancementManager;
-    }
 }

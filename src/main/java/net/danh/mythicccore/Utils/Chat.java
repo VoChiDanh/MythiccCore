@@ -1,5 +1,6 @@
 package net.danh.mythicccore.Utils;
 
+import net.danh.mythicccore.NMS.NMSAssistant;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -14,7 +15,8 @@ public class Chat {
     public static String colorize(String input) {
 
         input = ChatColor.translateAlternateColorCodes('&', input);
-        if (VersionChecker.isSupportedVersion()) {
+        NMSAssistant nmsAssistant = new NMSAssistant();
+        if (nmsAssistant.isVersionGreaterThan(15)) {
             input = translateHexColorCodes("\\&#", "", input);
         }
 
