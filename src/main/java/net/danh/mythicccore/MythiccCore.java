@@ -37,6 +37,11 @@ public final class MythiccCore extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        if (getServer().getOnlinePlayers().size() > 0) {
+            for (Player p : getServer().getOnlinePlayers()) {
+                p.kickPlayer("Rejoin in few second");
+            }
+        }
         NMSAssistant nmsAssistant = new NMSAssistant();
         getLogger().log(Level.INFO, Chat.colorize("&6Server version:&3 " + nmsAssistant.getNMSVersion()));
         getLogger().log(Level.INFO, "--------------------------------------------");
