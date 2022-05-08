@@ -37,9 +37,10 @@ public final class MythiccCore extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        NMSAssistant nmsAssistant = new NMSAssistant();
+        getLogger().log(Level.INFO, Chat.colorize("&6Server version:&3 " + nmsAssistant.getNMSVersion()));
+        getLogger().log(Level.INFO, "--------------------------------------------");
         if (getServer().getPluginManager().getPlugin("MMOItems") != null) {
-            NMSAssistant nmsAssistant = new NMSAssistant();
-            getLogger().log(Level.INFO, Chat.colorize("&6Server version:&3 " + nmsAssistant.getNMSVersion()));
             getServer().getPluginManager().registerEvents(new Inventory(), this);
             new OpenRegeneratorGui(this);
             new OpenUpgradeGui(this);
