@@ -88,6 +88,7 @@ public final class MythiccCore extends JavaPlugin {
                 }
             }
         }).runTaskTimer(this, 3600 * 20L, 3600 * 20L);
+
     }
 
     @Override
