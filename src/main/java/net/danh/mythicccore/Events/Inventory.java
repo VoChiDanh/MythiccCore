@@ -16,6 +16,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Objects;
@@ -27,7 +28,7 @@ import static net.danh.mythicccore.Utils.Utils.getRandomInt;
 public class Inventory implements Listener {
 
     @EventHandler
-    public void onCloseInventory(InventoryCloseEvent e) {
+    public void onCloseInventory(@NotNull InventoryCloseEvent e) {
         Player p = (Player) e.getPlayer();
         if (e.getView().getTitle().equals(getguiString("GUI.REGENERATE.TITLE"))) {
             if (e.getInventory().getItem(0) != null) {
@@ -97,7 +98,7 @@ public class Inventory implements Listener {
     }
 
     @EventHandler
-    public void OnInventoryClick(InventoryClickEvent e) {
+    public void OnInventoryClick(@NotNull InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
         if (e.getView().getTitle().equals(getguiString("GUI.UPGRADE.TITLE"))) {
             if (e.getCurrentItem() != null && Objects.equals(Objects.requireNonNull(e.getCurrentItem()).getType().toString(), getguiString("GUI.UPGRADE.DECORATE.MATERIAL"))) {

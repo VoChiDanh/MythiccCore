@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +15,7 @@ import static net.danh.mythicccore.Utils.Resources.*;
 
 public class ReGenerate {
 
+    @NotNull
     public static Inventory RegenerateInventory(Player p) {
         Inventory regeninv = Bukkit.createInventory(p, 9, getguiString("GUI.REGENERATE.TITLE"));
         ItemStack button = new ItemStack(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.REGENERATE.BUTTON.MATERIAL"))), getguiInt("GUI.REGENERATE.BUTTON.AMOUNT"));

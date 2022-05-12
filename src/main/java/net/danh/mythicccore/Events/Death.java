@@ -5,6 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.PlayerInventory;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ import static net.danh.mythicccore.Utils.Utils.getRandomInt;
 public class Death implements Listener {
 
     @EventHandler
-    public void onDeath(PlayerDeathEvent e) {
+    public void onDeath(@NotNull PlayerDeathEvent e) {
         Player p = e.getEntity();
         removeSoulPoints(p, 1);
         sendPlayerMessage(p, "&6Bạn đã chết và còn lại " + getSoulPoints(p) + " SoulPoints");

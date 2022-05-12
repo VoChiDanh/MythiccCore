@@ -6,6 +6,7 @@ import net.danh.mythicccore.Utils.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import static net.danh.mythicccore.Utils.Chat.sendPlayerMessage;
 
@@ -16,7 +17,7 @@ public class OpenRegeneratorGui extends CMDBase {
     }
 
     @Override
-    public void playerexecute(Player p, String[] args) {
+    public void playerexecute(Player p, @NotNull String[] args) {
         if (args.length == 0) {
             if (p.hasPermission("openregeneratorgui")) {
                 p.openInventory(ReGenerate.RegenerateInventory(p));
@@ -27,7 +28,7 @@ public class OpenRegeneratorGui extends CMDBase {
     }
 
     @Override
-    public void consoleexecute(ConsoleCommandSender c, String[] args) {
+    public void consoleexecute(ConsoleCommandSender c, @NotNull String[] args) {
         if (args.length == 1) {
             Player p = Bukkit.getPlayer(args[0]);
             if (p == null) {

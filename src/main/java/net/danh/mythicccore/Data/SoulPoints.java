@@ -1,6 +1,7 @@
 package net.danh.mythicccore.Data;
 
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 
@@ -11,27 +12,27 @@ public class SoulPoints {
 
     private static final HashMap<String, Integer> sp = new HashMap<>();
 
-    public static int getSPData(Player p) {
+    public static int getSPData(@NotNull Player p) {
         return getdatafile().getInt("PLAYERS." + p.getName() + ".SOUL_POINTS.HAVE");
     }
 
-    public static int getMaxSPData(Player p) {
+    public static int getMaxSPData(@NotNull Player p) {
         return getdatafile().getInt("PLAYERS." + p.getName() + ".SOUL_POINTS.MAXIMUM");
     }
 
-    public static int getSoulPoints(Player p) {
+    public static int getSoulPoints(@NotNull Player p) {
         return sp.get(p.getName() + "_sp");
     }
 
-    public static int getMaxSoulPoints(Player p) {
+    public static int getMaxSoulPoints(@NotNull Player p) {
         return sp.get(p.getName() + "_max_sp");
     }
 
-    public static void setSoulPoints(Player p, Integer amount) {
+    public static void setSoulPoints(@NotNull Player p, Integer amount) {
         sp.put(p.getName() + "_sp", Math.max(amount, getsettingfile().getInt("SETTINGS.DEFAULT_SOUL_POINTS")));
     }
 
-    public static void setMaxSoulPoints(Player p, Integer amount) {
+    public static void setMaxSoulPoints(@NotNull Player p, Integer amount) {
         sp.put(p.getName() + "_max_sp", Math.max(amount, getsettingfile().getInt("SETTINGS.DEFAULT_MAX_SOUL_POINTS")));
     }
 

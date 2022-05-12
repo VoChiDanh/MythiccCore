@@ -3,6 +3,7 @@ package net.danh.mythicccore.Utils;
 import net.danh.mythicccore.NMS.NMSAssistant;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class Chat {
         return input;
     }
 
+    @NotNull
     public static String translateHexColorCodes(String startTag, String endTag, String message) {
 
         final Pattern hexPattern = Pattern.compile(startTag + "([A-Fa-f0-9]{6})" + endTag);
@@ -40,7 +42,8 @@ public class Chat {
         return matcher.appendTail(buffer).toString();
     }
 
-    public static List<String> Lore(List<String> input) {
+    @NotNull
+    public static List<String> Lore(@NotNull List<String> input) {
         List<String> output = new ArrayList<>();
         for (String string : input) {
             output.add(ChatColor.translateAlternateColorCodes('&', string));
@@ -48,7 +51,7 @@ public class Chat {
         return output;
     }
 
-    public static void sendPlayerMessage(Player p, String... msg) {
+    public static void sendPlayerMessage(Player p, @NotNull String... msg) {
         for (String string : msg) {
             p.sendMessage(colorize(string));
         }

@@ -4,6 +4,7 @@ import net.danh.mythicccore.MythiccCore;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import static net.danh.mythicccore.Data.SoulPoints.*;
 import static net.danh.mythicccore.Utils.Chat.colorize;
@@ -17,7 +18,7 @@ public class SoulPoints extends CMDBase {
     }
 
     @Override
-    public void playerexecute(Player p, String[] args) {
+    public void playerexecute(Player p, @NotNull String[] args) {
         if (args.length == 0) {
             sendPlayerMessage(p, getlangString("CHECK_SOUL_POINTS").replace("%soul%", String.valueOf(getSoulPoints(p))));
         }
@@ -54,7 +55,7 @@ public class SoulPoints extends CMDBase {
     }
 
     @Override
-    public void consoleexecute(ConsoleCommandSender c, String[] args) {
+    public void consoleexecute(ConsoleCommandSender c, @NotNull String[] args) {
         if (args.length == 1) {
             Player target = Bukkit.getPlayer(args[0]);
             if (target == null) {

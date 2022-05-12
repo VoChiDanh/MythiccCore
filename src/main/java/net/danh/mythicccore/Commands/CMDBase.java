@@ -11,7 +11,7 @@ public abstract class CMDBase implements CommandExecutor {
 
     protected MythiccCore core;
 
-    public CMDBase(MythiccCore core, String name) {
+    public CMDBase(@NotNull MythiccCore core, String name) {
         this.core = core;
         PluginCommand pluginCommand = core.getCommand(name);
         Objects.requireNonNull(pluginCommand).setExecutor(this);
