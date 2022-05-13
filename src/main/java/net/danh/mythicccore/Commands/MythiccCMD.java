@@ -1,7 +1,7 @@
 package net.danh.mythicccore.Commands;
 
+import net.danh.dcore.Commands.CMDBase;
 import net.danh.mythicccore.MythiccCore;
-import net.danh.mythicccore.Utils.Chat;
 import net.danh.mythicccore.Utils.Resources;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
@@ -20,7 +20,9 @@ import java.util.StringJoiner;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
-import static net.danh.mythicccore.Utils.Chat.sendPlayerMessage;
+import static net.danh.dcore.Utils.Chat.colorize;
+import static net.danh.dcore.Utils.Player.sendPlayerMessage;
+
 
 public class MythiccCMD extends CMDBase {
 
@@ -67,7 +69,7 @@ public class MythiccCMD extends CMDBase {
                         os.write(out);
                         InputStream is = http.getInputStream();
                         String text = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8)).lines().collect(Collectors.joining("\n"));
-                        MythiccCore.get().getLogger().log(Level.INFO, Chat.colorize("&aYour pastebin link: " + text));
+                        MythiccCore.get().getLogger().log(Level.INFO, colorize("&aYour pastebin link: " + text));
                     } catch (IOException urlException) {
                         urlException.printStackTrace();
                     }
@@ -81,7 +83,7 @@ public class MythiccCMD extends CMDBase {
         if (args.length == 1) {
             if (args[0].equalsIgnoreCase("reload")) {
                 Resources.reloadfiles();
-                c.sendMessage(Chat.colorize("&aĐả tải lại files"));
+                c.sendMessage(colorize("&aĐả tải lại files"));
             }
             if (args[0].equalsIgnoreCase("logs")) {
                 try {
@@ -114,7 +116,7 @@ public class MythiccCMD extends CMDBase {
                     os.write(out);
                     InputStream is = http.getInputStream();
                     String text = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8)).lines().collect(Collectors.joining("\n"));
-                    MythiccCore.get().getLogger().log(Level.INFO, Chat.colorize("&aYour pastebin link: " + text));
+                    MythiccCore.get().getLogger().log(Level.INFO, colorize("&aYour pastebin link: " + text));
                 } catch (IOException urlException) {
                     urlException.printStackTrace();
                 }

@@ -1,5 +1,7 @@
 package net.danh.mythicccore;
 
+import net.danh.dcore.NMS.NMSAssistant;
+import net.danh.dcore.Utils.Chat;
 import net.danh.mythicccore.Commands.MythiccCMD;
 import net.danh.mythicccore.Commands.OpenRegeneratorGui;
 import net.danh.mythicccore.Commands.OpenUpgradeGui;
@@ -10,8 +12,6 @@ import net.danh.mythicccore.Events.Death;
 import net.danh.mythicccore.Events.Inventory;
 import net.danh.mythicccore.Events.Join;
 import net.danh.mythicccore.Events.Quit;
-import net.danh.mythicccore.NMS.NMSAssistant;
-import net.danh.mythicccore.Utils.Chat;
 import net.danh.mythicccore.Utils.Resources;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,6 +19,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.logging.Level;
 
+import static net.danh.dcore.DCore.dCoreLog;
+import static net.danh.dcore.DCore.getDCoreVersion;
 import static net.danh.mythicccore.Data.Storage.savePlayerData;
 
 public final class MythiccCore extends JavaPlugin {
@@ -73,6 +75,8 @@ public final class MythiccCore extends JavaPlugin {
         new MythiccCMD(this);
         new SoulPoints(this);
         getLogger().log(Level.INFO, Chat.colorize("&a✓&f SoulPoints features"));
+        getLogger().log(Level.INFO, "--------------------------------------------");
+        dCoreLog("&3" + getDescription().getName() + " is using DCore " + getDCoreVersion());
         Resources.createfiles();
         (new BukkitRunnable() {
             public void run() {

@@ -1,14 +1,15 @@
 package net.danh.mythicccore.Commands;
 
+import net.danh.dcore.Commands.CMDBase;
 import net.danh.mythicccore.MythiccCore;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import static net.danh.dcore.Utils.Chat.colorize;
+import static net.danh.dcore.Utils.Player.sendPlayerMessage;
 import static net.danh.mythicccore.Data.SoulPoints.*;
-import static net.danh.mythicccore.Utils.Chat.colorize;
-import static net.danh.mythicccore.Utils.Chat.sendPlayerMessage;
 import static net.danh.mythicccore.Utils.Resources.getlangString;
 
 public class SoulPoints extends CMDBase {

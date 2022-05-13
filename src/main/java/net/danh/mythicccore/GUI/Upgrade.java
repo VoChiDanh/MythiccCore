@@ -5,12 +5,12 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Objects;
 
+import static net.danh.dcore.Utils.Items.makeItem;
 import static net.danh.mythicccore.Utils.Resources.*;
 
 public class Upgrade {
@@ -19,24 +19,11 @@ public class Upgrade {
     public static Inventory UpgradeGui(Player p) {
         Inventory upgrade = Bukkit.createInventory(p, 45, getguiString("GUI.UPGRADE.TITLE"));
 
-        ItemStack decorate = new ItemStack(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.DECORATE.MATERIAL"))), getguiInt("GUI.UPGRADE.DECORATE.AMOUNT"));
-        ItemMeta decoratemeta = decorate.getItemMeta();
-        Objects.requireNonNull(decoratemeta).setDisplayName(getguiString("GUI.UPGRADE.DECORATE.DISPLAY"));
-        decorate.setItemMeta(decoratemeta);
+        ItemStack decorate = makeItem(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.DECORATE.MATERIAL"))), getguiInt("GUI.UPGRADE.DECORATE.AMOUNT"), false, true, getguiString("GUI.UPGRADE.DECORATE.DISPLAY"), null);
 
-        ItemStack tutorial = new ItemStack(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.TUTORIAL.MATERIAL"))), getguiInt("GUI.UPGRADE.TUTORIAL.AMOUNT"));
-        ItemMeta tutorialmeta = tutorial.getItemMeta();
-        Objects.requireNonNull(tutorialmeta).setDisplayName(getguiString("GUI.UPGRADE.TUTORIAL.DISPLAY"));
-        List<String> tutoriallore = getguiStringList("GUI.UPGRADE.TUTORIAL.LORE");
-        tutorialmeta.setLore(tutoriallore);
-        tutorial.setItemMeta(tutorialmeta);
+        ItemStack tutorial = makeItem(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.TUTORIAL.MATERIAL"))), getguiInt("GUI.UPGRADE.TUTORIAL.AMOUNT"), true, true, getguiString("GUI.UPGRADE.TUTORIAL.DISPLAY"), getguiStringList("GUI.UPGRADE.TUTORIAL.LORE"));
 
-        ItemStack button = new ItemStack(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.BUTTON.MATERIAL"))), getguiInt("GUI.UPGRADE.BUTTON.AMOUNT"));
-        ItemMeta meta = button.getItemMeta();
-        Objects.requireNonNull(meta).setDisplayName(getguiString("GUI.UPGRADE.BUTTON.DISPLAY"));
-        List<String> lore = getguiStringList("GUI.UPGRADE.BUTTON.LORE");
-        meta.setLore(lore);
-        button.setItemMeta(meta);
+        ItemStack button = makeItem(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.BUTTON.MATERIAL"))), getguiInt("GUI.UPGRADE.BUTTON.AMOUNT"), true, true, getguiString("GUI.UPGRADE.BUTTON.DISPLAY"), getguiStringList("GUI.UPGRADE.BUTTON.LORE"));
 
         upgrade.setItem(getguiInt("GUI.UPGRADE.BUTTON.SLOT"), button);
         upgrade.setItem(getguiInt("GUI.UPGRADE.TUTORIAL.SLOT"), tutorial);

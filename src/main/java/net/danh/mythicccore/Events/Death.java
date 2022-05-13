@@ -10,11 +10,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import static net.danh.dcore.Random.Number.getRandomInt;
+import static net.danh.dcore.Utils.Player.sendPlayerMessage;
 import static net.danh.mythicccore.Data.SoulPoints.getSoulPoints;
 import static net.danh.mythicccore.Data.SoulPoints.removeSoulPoints;
-import static net.danh.mythicccore.Utils.Chat.sendPlayerMessage;
 import static net.danh.mythicccore.Utils.Resources.getsettingfile;
-import static net.danh.mythicccore.Utils.Utils.getRandomInt;
 
 public class Death implements Listener {
 

@@ -1,5 +1,6 @@
 package net.danh.mythicccore.Utils;
 
+import net.danh.dcore.Utils.Chat;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -8,8 +9,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import static net.danh.dcore.Utils.Items.Lore;
 import static net.danh.mythicccore.MythiccCore.get;
-import static net.danh.mythicccore.Utils.Chat.Lore;
 
 public class Resources {
 

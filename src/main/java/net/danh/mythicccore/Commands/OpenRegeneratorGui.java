@@ -1,14 +1,15 @@
 package net.danh.mythicccore.Commands;
 
+import net.danh.dcore.Commands.CMDBase;
 import net.danh.mythicccore.GUI.ReGenerate;
 import net.danh.mythicccore.MythiccCore;
-import net.danh.mythicccore.Utils.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import static net.danh.mythicccore.Utils.Chat.sendPlayerMessage;
+import static net.danh.dcore.Utils.Chat.colorize;
+import static net.danh.dcore.Utils.Player.sendPlayerMessage;
 
 public class OpenRegeneratorGui extends CMDBase {
 
@@ -32,7 +33,7 @@ public class OpenRegeneratorGui extends CMDBase {
         if (args.length == 1) {
             Player p = Bukkit.getPlayer(args[0]);
             if (p == null) {
-                c.sendMessage(Chat.colorize("&cNgười chơi không tồn tại!"));
+                c.sendMessage(colorize("&cNgười chơi không tồn tại!"));
                 return;
             }
             p.openInventory(ReGenerate.RegenerateInventory(p));
