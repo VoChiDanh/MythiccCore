@@ -103,9 +103,9 @@ public class Inventory implements Listener {
             if (e.getCurrentItem() != null && Objects.equals(Objects.requireNonNull(e.getCurrentItem()).getType().toString(), getguiString("GUI.UPGRADE.DECORATE.MATERIAL"))) {
                 e.setCancelled(true);
             }
-            ItemStack tutorial = makeItem(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.TUTORIAL.MATERIAL"))), getguiInt("GUI.UPGRADE.TUTORIAL.AMOUNT"), true, true, getguiString("GUI.UPGRADE.TUTORIAL.DISPLAY"), getguiStringList("GUI.UPGRADE.TUTORIAL.LORE"));
+            ItemStack tutorial = makeItem(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.TUTORIAL.MATERIAL"))), getguiInt("GUI.UPGRADE.TUTORIAL.AMOUNT"), true, true, true, getguiString("GUI.UPGRADE.TUTORIAL.DISPLAY"), getguiStringList("GUI.UPGRADE.TUTORIAL.LORE"));
 
-            ItemStack button = makeItem(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.BUTTON.MATERIAL"))), getguiInt("GUI.UPGRADE.BUTTON.AMOUNT"), true, true, getguiString("GUI.UPGRADE.BUTTON.DISPLAY"), getguiStringList("GUI.UPGRADE.BUTTON.LORE"));
+            ItemStack button = makeItem(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.BUTTON.MATERIAL"))), getguiInt("GUI.UPGRADE.BUTTON.AMOUNT"), true, true, true, getguiString("GUI.UPGRADE.BUTTON.DISPLAY"), getguiStringList("GUI.UPGRADE.BUTTON.LORE"));
 
             if (e.getCurrentItem() != null && e.getSlot() == getguiInt("GUI.UPGRADE.TUTORIAL.SLOT") && e.getCurrentItem().isSimilar(tutorial)) {
                 e.setCancelled(true);

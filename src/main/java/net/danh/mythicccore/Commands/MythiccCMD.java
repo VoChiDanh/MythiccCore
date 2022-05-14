@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 import static net.danh.dcore.Utils.Chat.colorize;
+import static net.danh.dcore.Utils.Player.sendConsoleMessage;
 import static net.danh.dcore.Utils.Player.sendPlayerMessage;
 
 
@@ -83,7 +84,7 @@ public class MythiccCMD extends CMDBase {
         if (args.length == 1) {
             if (args[0].equalsIgnoreCase("reload")) {
                 Resources.reloadfiles();
-                c.sendMessage(colorize("&aĐả tải lại files"));
+                sendConsoleMessage(c, "&aĐả tải lại files");
             }
             if (args[0].equalsIgnoreCase("logs")) {
                 try {
@@ -116,7 +117,7 @@ public class MythiccCMD extends CMDBase {
                     os.write(out);
                     InputStream is = http.getInputStream();
                     String text = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8)).lines().collect(Collectors.joining("\n"));
-                    MythiccCore.get().getLogger().log(Level.INFO, colorize("&aYour pastebin link: " + text));
+                    sendConsoleMessage(c, "&aYour pastebin link: " + text);
                 } catch (IOException urlException) {
                     urlException.printStackTrace();
                 }

@@ -7,7 +7,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import static net.danh.dcore.Utils.Chat.colorize;
+import static net.danh.dcore.Utils.Player.sendConsoleMessage;
 import static net.danh.dcore.Utils.Player.sendPlayerMessage;
 import static net.danh.mythicccore.Data.SoulPoints.*;
 import static net.danh.mythicccore.Utils.Resources.getlangString;
@@ -60,20 +60,20 @@ public class SoulPoints extends CMDBase {
         if (args.length == 1) {
             Player target = Bukkit.getPlayer(args[0]);
             if (target == null) {
-                c.sendMessage(colorize("&cNgười chơi không tồn tại"));
+                sendConsoleMessage(c, "&cNgười chơi không tồn tại");
                 return;
             }
-            c.sendMessage(colorize(getlangString("CHECK_SOUL_POINTS").replace("%soul%", String.valueOf(getSoulPoints(target)))));
+            sendConsoleMessage(c, getlangString("CHECK_SOUL_POINTS").replace("%soul%", String.valueOf(getSoulPoints(target))));
         }
         if (args.length == 3) {
             Player target = Bukkit.getPlayer(args[1]);
             int soul = Integer.parseInt(args[2]);
             if (target == null) {
-                c.sendMessage(colorize("&cNgười chơi không tồn tại"));
+                sendConsoleMessage(c, "&cNgười chơi không tồn tại");
                 return;
             }
             if (soul < 0) {
-                c.sendMessage(colorize("&cCon số phải lớn hơn 0"));
+                sendConsoleMessage(c, "&cCon số phải lớn hơn 0");
                 return;
             }
             if (args[0].equalsIgnoreCase("add")) {

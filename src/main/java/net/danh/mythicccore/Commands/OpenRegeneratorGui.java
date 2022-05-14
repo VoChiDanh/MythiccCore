@@ -8,7 +8,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import static net.danh.dcore.Utils.Chat.colorize;
+import static net.danh.dcore.Utils.Player.sendConsoleMessage;
 import static net.danh.dcore.Utils.Player.sendPlayerMessage;
 
 public class OpenRegeneratorGui extends CMDBase {
@@ -33,7 +33,7 @@ public class OpenRegeneratorGui extends CMDBase {
         if (args.length == 1) {
             Player p = Bukkit.getPlayer(args[0]);
             if (p == null) {
-                c.sendMessage(colorize("&cNgười chơi không tồn tại!"));
+                sendConsoleMessage(c, "&cNgười chơi không tồn tại!");
                 return;
             }
             p.openInventory(ReGenerate.RegenerateInventory(p));

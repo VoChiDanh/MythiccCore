@@ -19,11 +19,11 @@ public class Upgrade {
     public static Inventory UpgradeGui(Player p) {
         Inventory upgrade = Bukkit.createInventory(p, 45, getguiString("GUI.UPGRADE.TITLE"));
 
-        ItemStack decorate = makeItem(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.DECORATE.MATERIAL"))), getguiInt("GUI.UPGRADE.DECORATE.AMOUNT"), false, true, getguiString("GUI.UPGRADE.DECORATE.DISPLAY"), null);
+        ItemStack decorate = makeItem(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.DECORATE.MATERIAL"))), getguiInt("GUI.UPGRADE.DECORATE.AMOUNT"), false, true, true, getguiString("GUI.UPGRADE.DECORATE.DISPLAY"), null);
 
-        ItemStack tutorial = makeItem(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.TUTORIAL.MATERIAL"))), getguiInt("GUI.UPGRADE.TUTORIAL.AMOUNT"), true, true, getguiString("GUI.UPGRADE.TUTORIAL.DISPLAY"), getguiStringList("GUI.UPGRADE.TUTORIAL.LORE"));
+        ItemStack tutorial = makeItem(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.TUTORIAL.MATERIAL"))), getguiInt("GUI.UPGRADE.TUTORIAL.AMOUNT"), true, true, true, getguiString("GUI.UPGRADE.TUTORIAL.DISPLAY"), getguiStringList("GUI.UPGRADE.TUTORIAL.LORE"));
 
-        ItemStack button = makeItem(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.BUTTON.MATERIAL"))), getguiInt("GUI.UPGRADE.BUTTON.AMOUNT"), true, true, getguiString("GUI.UPGRADE.BUTTON.DISPLAY"), getguiStringList("GUI.UPGRADE.BUTTON.LORE"));
+        ItemStack button = makeItem(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.UPGRADE.BUTTON.MATERIAL"))), getguiInt("GUI.UPGRADE.BUTTON.AMOUNT"), true, true, true, getguiString("GUI.UPGRADE.BUTTON.DISPLAY"), getguiStringList("GUI.UPGRADE.BUTTON.LORE"));
 
         upgrade.setItem(getguiInt("GUI.UPGRADE.BUTTON.SLOT"), button);
         upgrade.setItem(getguiInt("GUI.UPGRADE.TUTORIAL.SLOT"), tutorial);
