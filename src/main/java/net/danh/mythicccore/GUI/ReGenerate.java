@@ -17,7 +17,7 @@ public class ReGenerate {
     @NotNull
     public static Inventory RegenerateInventory(Player p) {
         Inventory regeninv = Bukkit.createInventory(p, 9, getguiString("GUI.REGENERATE.TITLE"));
-        ItemStack button = makeItem(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.REGENERATE.BUTTON.MATERIAL"))), getguiInt("GUI.REGENERATE.BUTTON.AMOUNT"), true, true, true, getguiString("GUI.REGENERATE.BUTTON.DISPLAY"), getguiStringList("GUI.REGENERATE.BUTTON.LORE"));
+        ItemStack button = makeItem(Objects.requireNonNull(Material.getMaterial(getguiString("GUI.REGENERATE.BUTTON.MATERIAL"))), null, getguiInt("GUI.REGENERATE.BUTTON.AMOUNT"), true, true, true, getguiString("GUI.REGENERATE.BUTTON.DISPLAY"), getguiStringList("GUI.REGENERATE.BUTTON.LORE"));
         regeninv.setItem(8, button);
         return regeninv;
     }
