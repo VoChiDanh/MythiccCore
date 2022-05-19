@@ -19,8 +19,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.logging.Level;
 
-import static net.danh.dcore.DCore.dCoreLog;
-import static net.danh.dcore.DCore.getDCoreVersion;
+import static net.danh.dcore.DCore.*;
 import static net.danh.mythicccore.Data.Storage.savePlayerData;
 
 public final class MythiccCore extends JavaPlugin {
@@ -76,7 +75,7 @@ public final class MythiccCore extends JavaPlugin {
         new SoulPoints(this);
         getLogger().log(Level.INFO, Chat.colorize("&a✓&f SoulPoints features"));
         getLogger().log(Level.INFO, "--------------------------------------------");
-        dCoreLog("&3" + getDescription().getName() + " is using DCore " + getDCoreVersion());
+        RegisterDCore(this);
         Resources.createfiles();
         (new BukkitRunnable() {
             public void run() {
