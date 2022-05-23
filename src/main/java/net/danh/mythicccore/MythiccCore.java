@@ -16,7 +16,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.logging.Level;
 
-import static net.danh.dcore.DCore.*;
+import static net.danh.dcore.DCore.RegisterDCore;
 import static net.danh.mythicccore.Data.Storage.savePlayerData;
 
 public final class MythiccCore extends JavaPlugin {
