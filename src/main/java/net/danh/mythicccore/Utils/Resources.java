@@ -8,14 +8,15 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 import static net.danh.dcore.Utils.Items.Lore;
 import static net.danh.mythicccore.MythiccCore.get;
 
 public class Resources {
 
-    private static File configFile, languageFile, guiFile, upgradeFile, dataFile, settingFile;
-    private static FileConfiguration config, language, gui, upgrade, data, setting;
+    private static File configFile, languageFile, guiFile, upgradeFile, dataFile, settingFile, itemFile;
+    private static FileConfiguration config, language, gui, upgrade, data, setting, item;
 
     public static void createfiles() {
         configFile = new File(get().getDataFolder(), "config.yml");
@@ -24,12 +25,14 @@ public class Resources {
         upgradeFile = new File(get().getDataFolder(), "upgrade.yml");
         dataFile = new File(get().getDataFolder(), "data.yml");
         settingFile = new File(get().getDataFolder(), "setting.yml");
+        itemFile = new File(get().getDataFolder(), "items.yml");
 
         if (!configFile.exists()) get().saveResource("config.yml", false);
         if (!languageFile.exists()) get().saveResource("language.yml", false);
         if (!guiFile.exists()) get().saveResource("gui.yml", false);
         if (!upgradeFile.exists()) get().saveResource("upgrade.yml", false);
         if (!settingFile.exists()) get().saveResource("setting.yml", false);
+        if (!itemFile.exists()) get().saveResource("items.yml", false);
         if (!dataFile.exists()) {
             dataFile.getParentFile().mkdirs();
             try {
@@ -44,6 +47,7 @@ public class Resources {
         upgrade = new YamlConfiguration();
         data = new YamlConfiguration();
         setting = new YamlConfiguration();
+        item = new YamlConfiguration();
 
         try {
             config.load(configFile);
@@ -52,6 +56,7 @@ public class Resources {
             upgrade.load(upgradeFile);
             data.load(dataFile);
             setting.load(settingFile);
+            item.load(itemFile);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
@@ -73,7 +78,6 @@ public class Resources {
         return upgrade;
     }
 
-
     public static FileConfiguration getdatafile() {
         return data;
     }
@@ -82,20 +86,24 @@ public class Resources {
         return setting;
     }
 
+    public static FileConfiguration getitemfile() {
+        return item;
+    }
+
     public static String getguiString(String path) {
-        return Chat.colorize(getguifile().getString(path));
+        return Chat.colorize(Objects.requireNonNull(getguifile().getString(path)));
     }
 
     public static String getlangString(String path) {
-        return Chat.colorize(getlanguagefile().getString(path));
+        return Chat.colorize(Objects.requireNonNull(getlanguagefile().getString(path)));
     }
 
     public static String getconfigString(String path) {
-        return Chat.colorize(getconfigfile().getString(path));
+        return Chat.colorize(Objects.requireNonNull(getconfigfile().getString(path)));
     }
 
     public static String getupgradeString(String path) {
-        return Chat.colorize(getupgradefile().getString(path));
+        return Chat.colorize(Objects.requireNonNull(getupgradefile().getString(path)));
     }
 
     public static List<String> getguiStringList(String path) {
@@ -152,6 +160,7 @@ public class Resources {
         gui = YamlConfiguration.loadConfiguration(guiFile);
         upgrade = YamlConfiguration.loadConfiguration(upgradeFile);
         setting = YamlConfiguration.loadConfiguration(settingFile);
+        item = YamlConfiguration.loadConfiguration(itemFile);
     }
 
     public static void saveconfig() {
@@ -192,6 +201,12 @@ public class Resources {
     public static void savesetting() {
         try {
             setting.save(settingFile);
+        } catch (IOException ignored) {
+        }
+    }
+    public static void saveitem() {
+        try {
+            item.save(itemFile);
         } catch (IOException ignored) {
         }
     }

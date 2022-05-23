@@ -15,3 +15,5 @@ commands:
     description: upgradegui
   soul:
     description: soul
+  MythiccItems:
+    description: MythiccItems

@@ -1,0 +1,13 @@
+POWER:
+  DASUCMANH1: 5
+ITEMS:
+  DASUCMANH1:
+    TYPE: DASUCMANH
+    MATERIAL: EMERALD
+    AMOUNT: 1
+    GLOW: true
+    HIDEFLAGS: true
+    UNBREAK: true
+    NAME: "&aĐá Sức Mạnh &f|&7 I"
+    LORE:
+      - "&a+5 Sát Thương"

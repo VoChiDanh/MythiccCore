@@ -2,10 +2,7 @@ package net.danh.mythicccore;
 
 import net.danh.dcore.NMS.NMSAssistant;
 import net.danh.dcore.Utils.Chat;
-import net.danh.mythicccore.Commands.MythiccCMD;
-import net.danh.mythicccore.Commands.OpenRegeneratorGui;
-import net.danh.mythicccore.Commands.OpenUpgradeGui;
-import net.danh.mythicccore.Commands.SoulPoints;
+import net.danh.mythicccore.Commands.*;
 import net.danh.mythicccore.Compatible.Placeholder;
 import net.danh.mythicccore.Data.Storage;
 import net.danh.mythicccore.Events.Death;
@@ -73,6 +70,7 @@ public final class MythiccCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Death(), this);
         new MythiccCMD(this);
         new SoulPoints(this);
+        new MythiccItems(this);
         getLogger().log(Level.INFO, Chat.colorize("&a✓&f SoulPoints features"));
         getLogger().log(Level.INFO, "--------------------------------------------");
         RegisterDCore(this);
@@ -105,6 +103,7 @@ public final class MythiccCore extends JavaPlugin {
         Resources.savegui();
         Resources.saveupgrade();
         Resources.savesetting();
+        Resources.saveitem();
         Resources.savedata();
     }
 
