@@ -5,6 +5,7 @@ api-version: 1.14
 authors: [ VoChiDanh ]
 softdepend: [ PlaceholderAPI, MMOItems, MythicLib ]
 loadbefore: [ MMOItems, MythicLib ]
+depend: [ MythicMobs ]
 description: MythiccCore For RPGMythicc Project
 commands:
   openregeneratorgui:
