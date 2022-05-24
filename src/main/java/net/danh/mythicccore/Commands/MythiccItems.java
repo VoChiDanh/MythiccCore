@@ -12,6 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.Objects;
 
 import static net.danh.dcore.Enchant.Lore.addEnchant;
+import static net.danh.dcore.Enchant.Lore.getEnchantLevel;
 import static net.danh.dcore.Utils.Items.makeItem;
 import static net.danh.dcore.Utils.Player.sendConsoleMessage;
 import static net.danh.dcore.Utils.Player.sendPlayerMessage;
@@ -27,72 +28,76 @@ public class MythiccItems extends CMDBase {
     @Override
     public void playerexecute(Player p, String[] args) {
         if (p.hasPermission("Mythicc.Admin")) {
-            if (args.length == 2) {
-                String items = args[0].toUpperCase();
-                Player target = Bukkit.getPlayer(args[1]);
-                if (getitemfile().getString("ITEMS." + items) == null) {
-                    sendPlayerMessage(p, "&cVật phẩm không tồn tại");
-                    return;
-                }
-                if (target == null) {
-                    sendPlayerMessage(p, "&cNgười chơi không tồn tại");
-                    return;
-                }
-                ItemStack itemStack = makeItem(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ITEMS." + items + ".TYPE")), PersistentDataType.INTEGER, getitemfile().getInt("POWER." + items), valueOf(getitemfile().getString("ITEMS." + items + ".MATERIAL")), getitemfile().getInt("ITEMS." + items + ".AMOUNT"), true, true, true, getitemfile().getString("ITEMS." + items + ".NAME"), getitemfile().getStringList("ITEMS." + items + ".LORE"));
-                target.getInventory().addItem(itemStack);
-            }
             if (args.length == 3) {
-                String name = args[1].toUpperCase();
-                String lore = getitemfile().getString("ENCHANTS." + name + ".NAME");
-                String key = getitemfile().getString("ENCHANTS." + name + ".KEY");
-                if (key == null || lore == null) {
-                    sendPlayerMessage(p, "&cName hoặc key của enchant không tồn tại!");
-                    return;
+                if (args[0].equalsIgnoreCase("enchant")) {
+                    String name = args[2].toUpperCase();
+                    String lore = getitemfile().getString("ENCHANTS." + name + ".NAME");
+                    String key = getitemfile().getString("ENCHANTS." + name + ".KEY");
+                    if (key == null || lore == null) {
+                        sendPlayerMessage(p, "&cName hoặc key của enchant không tồn tại!");
+                        return;
+                    }
+                    Player target = Bukkit.getPlayer(args[1]);
+                    if (target == null) {
+                        sendPlayerMessage(p, "&cNgười chơi không tồn tại");
+                        return;
+                    }
+                    ItemStack item = target.getInventory().getItemInMainHand();
+                    Integer level = getEnchantLevel(MythiccCore.get(), key, item);
+                    addEnchant(MythiccCore.get(), key, target, item, lore, level);
                 }
-                Player target = Bukkit.getPlayer(args[0]);
-                if (target == null) {
-                    sendPlayerMessage(p, "&cNgười chơi không tồn tại");
-                    return;
+                if (args[0].equalsIgnoreCase("item")) {
+                    String items = args[2].toUpperCase();
+                    Player target = Bukkit.getPlayer(args[1]);
+                    if (getitemfile().getString("ITEMS." + items) == null) {
+                        sendPlayerMessage(p, "&cVật phẩm không tồn tại");
+                        return;
+                    }
+                    if (target == null) {
+                        sendPlayerMessage(p, "&cNgười chơi không tồn tại");
+                        return;
+                    }
+                    ItemStack itemStack = makeItem(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ITEMS." + items + ".TYPE")), PersistentDataType.INTEGER, getitemfile().getInt("POWER." + items), valueOf(getitemfile().getString("ITEMS." + items + ".MATERIAL")), getitemfile().getInt("ITEMS." + items + ".AMOUNT"), true, true, true, getitemfile().getString("ITEMS." + items + ".NAME"), getitemfile().getStringList("ITEMS." + items + ".LORE"));
+                    target.getInventory().addItem(itemStack);
                 }
-                Integer level = Integer.parseInt(args[2]);
-                ItemStack item = target.getInventory().getItemInMainHand();
-                addEnchant(MythiccCore.get(), key, target, item, lore, level);
             }
         }
     }
 
     @Override
     public void consoleexecute(ConsoleCommandSender c, String[] args) {
-        if (args.length == 2) {
-            String items = args[0].toUpperCase();
-            Player target = Bukkit.getPlayer(args[1]);
-            if (getitemfile().getString("ITEMS." + items) == null) {
-                sendConsoleMessage(c, "&cVật phẩm không tồn tại");
-                return;
-            }
-            if (target == null) {
-                sendConsoleMessage(c, "&cNgười chơi không tồn tại");
-                return;
-            }
-            ItemStack itemStack = makeItem(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ITEMS." + items + ".TYPE")), PersistentDataType.INTEGER, getitemfile().getInt("POWER." + items), valueOf(getitemfile().getString("ITEMS." + items + ".MATERIAL")), getitemfile().getInt("ITEMS." + items + ".AMOUNT"), true, true, true, getitemfile().getString("ITEMS." + items + ".NAME"), getitemfile().getStringList("ITEMS." + items + ".LORE"));
-            target.getInventory().addItem(itemStack);
-        }
         if (args.length == 3) {
-            String name = args[1].toUpperCase();
-            String lore = getitemfile().getString("ENCHANTS." + name + ".NAME");
-            String key = getitemfile().getString("ENCHANTS." + name + ".KEY");
-            if (key == null || lore == null) {
-                sendConsoleMessage(c, "&cName hoặc key của enchant không tồn tại!");
-                return;
+            if (args[0].equalsIgnoreCase("enchant")) {
+                String name = args[2].toUpperCase();
+                String lore = getitemfile().getString("ENCHANTS." + name + ".NAME");
+                String key = getitemfile().getString("ENCHANTS." + name + ".KEY");
+                if (key == null || lore == null) {
+                    sendConsoleMessage(c, "&cName hoặc key của enchant không tồn tại!");
+                    return;
+                }
+                Player target = Bukkit.getPlayer(args[1]);
+                if (target == null) {
+                    sendConsoleMessage(c, "&cNgười chơi không tồn tại");
+                    return;
+                }
+                ItemStack item = target.getInventory().getItemInMainHand();
+                Integer level = getEnchantLevel(MythiccCore.get(), key, item);
+                addEnchant(MythiccCore.get(), key, target, item, lore, level);
             }
-            Player target = Bukkit.getPlayer(args[0]);
-            if (target == null) {
-                sendConsoleMessage(c, "&cNgười chơi không tồn tại");
-                return;
+            if (args[0].equalsIgnoreCase("item")) {
+                String items = args[2].toUpperCase();
+                Player target = Bukkit.getPlayer(args[1]);
+                if (getitemfile().getString("ITEMS." + items) == null) {
+                    sendConsoleMessage(c, "&cVật phẩm không tồn tại");
+                    return;
+                }
+                if (target == null) {
+                    sendConsoleMessage(c, "&cNgười chơi không tồn tại");
+                    return;
+                }
+                ItemStack itemStack = makeItem(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ITEMS." + items + ".TYPE")), PersistentDataType.INTEGER, getitemfile().getInt("POWER." + items), valueOf(getitemfile().getString("ITEMS." + items + ".MATERIAL")), getitemfile().getInt("ITEMS." + items + ".AMOUNT"), true, true, true, getitemfile().getString("ITEMS." + items + ".NAME"), getitemfile().getStringList("ITEMS." + items + ".LORE"));
+                target.getInventory().addItem(itemStack);
             }
-            Integer level = Integer.parseInt(args[2]);
-            ItemStack item = target.getInventory().getItemInMainHand();
-            addEnchant(MythiccCore.get(), key, target, item, lore, level);
         }
     }
 }
