@@ -43,7 +43,7 @@ public class MythiccItems extends CMDBase {
                         return;
                     }
                     ItemStack item = target.getInventory().getItemInMainHand();
-                    Integer level = getEnchantLevel(MythiccCore.get(), key, item);
+                    Integer level = getEnchantLevel(MythiccCore.get(), key, item) + 1;
                     addEnchant(MythiccCore.get(), key, target, item, lore, level);
                 }
                 if (args[0].equalsIgnoreCase("item")) {
@@ -81,7 +81,7 @@ public class MythiccItems extends CMDBase {
                     return;
                 }
                 ItemStack item = target.getInventory().getItemInMainHand();
-                Integer level = getEnchantLevel(MythiccCore.get(), key, item);
+                Integer level = getEnchantLevel(MythiccCore.get(), key, item) + 1;
                 addEnchant(MythiccCore.get(), key, target, item, lore, level);
             }
             if (args[0].equalsIgnoreCase("item")) {

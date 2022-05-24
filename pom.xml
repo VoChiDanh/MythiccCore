@@ -130,7 +130,7 @@
         <dependency>
             <groupId>com.github.D-x-Z</groupId>
             <artifactId>DCore</artifactId>
-            <version>d1803e17e5</version>
+            <version>7cbae31aab</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
