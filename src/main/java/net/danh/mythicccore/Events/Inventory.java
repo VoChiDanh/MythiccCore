@@ -109,8 +109,7 @@ public class Inventory implements Listener {
             if (enchant == null) {
                 return;
             }
-            if (target.hasItemMeta()) {
-
+            if (enchant.hasItemMeta()) {
             }
         }
         if (e.getView().getTitle().equals(getguiString("GUI.UPGRADE.TITLE"))) {

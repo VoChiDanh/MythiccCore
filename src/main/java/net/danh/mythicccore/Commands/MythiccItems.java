@@ -4,9 +4,11 @@ import net.danh.dcore.Commands.CMDBase;
 import net.danh.mythicccore.MythiccCore;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -68,10 +70,14 @@ public class MythiccItems extends CMDBase {
                     Material material = valueOf(getitemfile().getString("ITEMS." + items + ".MATERIAL"));
                     Integer level = Integer.parseInt(args[3]);
                     String key = getitemfile().getString("ITEMS." + items + ".TYPE");
-                    if (key == null) {
+                    String key2 = getitemfile().getString("ENCHANTS." + items + ".KEY");
+                    if (key2 == null || key == null) {
                         return;
                     }
-                    ItemStack itemStack = makeItem(MythiccCore.get(), key, PersistentDataType.INTEGER, level, material, amount, true, true, true, name, lore);
+                    ItemStack itemStack = makeItem(MythiccCore.get(), key2, PersistentDataType.INTEGER, level, material, amount, true, true, true, name, lore);
+                    ItemMeta itemMeta = itemStack.getItemMeta();
+                    Objects.requireNonNull(itemMeta).getPersistentDataContainer().set(new NamespacedKey(MythiccCore.get(), key), PersistentDataType.STRING, items);
+                    itemStack.setItemMeta(itemMeta);
                     target.getInventory().addItem(itemStack);
                 }
             }
@@ -119,10 +125,14 @@ public class MythiccItems extends CMDBase {
                 Material material = valueOf(getitemfile().getString("ITEMS." + items + ".MATERIAL"));
                 Integer level = Integer.parseInt(args[3]);
                 String key = getitemfile().getString("ITEMS." + items + ".TYPE");
-                if (key == null) {
+                String key2 = getitemfile().getString("ENCHANTS." + items + ".KEY");
+                if (key2 == null || key == null) {
                     return;
                 }
-                ItemStack itemStack = makeItem(MythiccCore.get(), key, PersistentDataType.INTEGER, level, material, amount, true, true, true, name, lore);
+                ItemStack itemStack = makeItem(MythiccCore.get(), key2, PersistentDataType.INTEGER, level, material, amount, true, true, true, name, lore);
+                ItemMeta itemMeta = itemStack.getItemMeta();
+                Objects.requireNonNull(itemMeta).getPersistentDataContainer().set(new NamespacedKey(MythiccCore.get(), key), PersistentDataType.STRING, items);
+                itemStack.setItemMeta(itemMeta);
                 target.getInventory().addItem(itemStack);
             }
         }
