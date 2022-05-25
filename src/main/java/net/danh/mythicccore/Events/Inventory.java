@@ -6,7 +6,9 @@ import net.Indyuce.mmoitems.MMOItems;
 import net.Indyuce.mmoitems.api.item.mmoitem.LiveMMOItem;
 import net.Indyuce.mmoitems.api.item.mmoitem.MMOItem;
 import net.Indyuce.mmoitems.stat.data.DoubleData;
+import net.danh.mythicccore.MythiccCore;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,10 +18,14 @@ import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
+import static net.danh.dcore.Enchant.Lore.addEnchant;
+import static net.danh.dcore.Enchant.Lore.getEnchantLevel;
 import static net.danh.dcore.Random.Number.getRandomInt;
 import static net.danh.dcore.Utils.Items.makeItem;
 import static net.danh.dcore.Utils.Player.sendPlayerMessage;
@@ -109,7 +115,34 @@ public class Inventory implements Listener {
             if (enchant == null) {
                 return;
             }
-            if (enchant.hasItemMeta()) {
+            ItemMeta targetmeta = target.getItemMeta();
+            ItemMeta enchantmeta = enchant.getItemMeta();
+            if (targetmeta == null) {
+                return;
+            }
+            if (enchantmeta == null) {
+                return;
+            }
+            if (enchant.hasItemMeta() && enchantmeta.getPersistentDataContainer().has(new NamespacedKey(MythiccCore.get(), "ENCHANTMENT_BOOK"), PersistentDataType.STRING)) {
+                if (targetmeta.hasLore() && target.hasItemMeta()) {
+                    String name = enchantmeta.getPersistentDataContainer().get(new NamespacedKey(MythiccCore.get(), "ENCHANTMENT_BOOK"), PersistentDataType.STRING);
+                    String lore = getitemfile().getString("ENCHANTS." + name + ".NAME");
+                    String key = getitemfile().getString("ENCHANTS." + name + ".KEY");
+                    String defaultlore = getitemfile().getString("ENCHANTS.DEFAULT.LORE");
+                    if (key == null) {
+                        e.setCancelled(true);
+                        return;
+                    }
+                    if (enchantmeta.getPersistentDataContainer().getOrDefault(new NamespacedKey(MythiccCore.get(), key), PersistentDataType.INTEGER, 1) > getEnchantLevel(MythiccCore.get(), key, target)) {
+                        Integer level = enchantmeta.getPersistentDataContainer().getOrDefault(new NamespacedKey(MythiccCore.get(), key), PersistentDataType.INTEGER, 1);
+                        addEnchant(MythiccCore.get(), key, p, target, lore, level, defaultlore);
+                        p.setItemOnCursor(null);
+                    } else {
+                        e.setCancelled(true);
+                        sendPlayerMessage(p, "&cBạn không thể enchant cấp thấp hơn cấp độ phù phép đang có");
+                        return;
+                    }
+                }
             }
         }
         if (e.getView().getTitle().equals(getguiString("GUI.UPGRADE.TITLE"))) {
