@@ -44,7 +44,8 @@ public class MythiccItems extends CMDBase {
                     }
                     ItemStack item = target.getInventory().getItemInMainHand();
                     Integer level = getEnchantLevel(MythiccCore.get(), key, item) + 1;
-                    addEnchant(MythiccCore.get(), key, target, item, lore, level);
+                    String defaultlore = getitemfile().getString("ENCHANTS.DEFAULT.LORE");
+                    addEnchant(MythiccCore.get(), key, target, item, lore, level, defaultlore);
                 }
                 if (args[0].equalsIgnoreCase("item")) {
                     String items = args[2].toUpperCase();
@@ -82,7 +83,8 @@ public class MythiccItems extends CMDBase {
                 }
                 ItemStack item = target.getInventory().getItemInMainHand();
                 Integer level = getEnchantLevel(MythiccCore.get(), key, item) + 1;
-                addEnchant(MythiccCore.get(), key, target, item, lore, level);
+                String defaultlore = getitemfile().getString("ENCHANTS.DEFAULT.LORE");
+                addEnchant(MythiccCore.get(), key, target, item, lore, level, defaultlore);
             }
             if (args[0].equalsIgnoreCase("item")) {
                 String items = args[2].toUpperCase();

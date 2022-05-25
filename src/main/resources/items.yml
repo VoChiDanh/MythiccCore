@@ -1,6 +1,8 @@
 POWER:
   DASUCMANH1: 5
 ENCHANTS:
+  DEFAULT:
+    LORE: "<Enchant Trống>"
   MONEY:
     NAME: "Money"
     KEY: "MONEY"
