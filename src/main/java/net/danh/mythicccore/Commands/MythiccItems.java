@@ -3,16 +3,18 @@ package net.danh.mythicccore.Commands;
 import net.danh.dcore.Commands.CMDBase;
 import net.danh.mythicccore.MythiccCore;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
-import static net.danh.dcore.Enchant.Lore.addEnchant;
-import static net.danh.dcore.Enchant.Lore.getEnchantLevel;
+import static net.danh.dcore.Enchant.Lore.*;
 import static net.danh.dcore.Utils.Items.makeItem;
 import static net.danh.dcore.Utils.Player.sendConsoleMessage;
 import static net.danh.dcore.Utils.Player.sendPlayerMessage;
@@ -47,6 +49,8 @@ public class MythiccItems extends CMDBase {
                     String defaultlore = getitemfile().getString("ENCHANTS.DEFAULT.LORE");
                     addEnchant(MythiccCore.get(), key, target, item, lore, level, defaultlore);
                 }
+            }
+            if (args.length == 5) {
                 if (args[0].equalsIgnoreCase("item")) {
                     String items = args[2].toUpperCase();
                     Player target = Bukkit.getPlayer(args[1]);
@@ -58,7 +62,16 @@ public class MythiccItems extends CMDBase {
                         sendPlayerMessage(p, "&cNgười chơi không tồn tại");
                         return;
                     }
-                    ItemStack itemStack = makeItem(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ITEMS." + items + ".TYPE")), PersistentDataType.INTEGER, getitemfile().getInt("POWER." + items), valueOf(getitemfile().getString("ITEMS." + items + ".MATERIAL")), getitemfile().getInt("ITEMS." + items + ".AMOUNT"), true, true, true, getitemfile().getString("ITEMS." + items + ".NAME"), getitemfile().getStringList("ITEMS." + items + ".LORE"));
+                    List<String> lore = getitemfile().getStringList("ITEMS." + items + ".LORE").stream().map(a -> a.replaceAll("%level%", args[3])).collect(Collectors.toList());
+                    String name = Objects.requireNonNull(getitemfile().getString("ITEMS." + items + ".NAME")).replace("%level%", formatLevel(Integer.parseInt(args[3])));
+                    Integer amount = Integer.parseInt(args[4]);
+                    Material material = valueOf(getitemfile().getString("ITEMS." + items + ".MATERIAL"));
+                    Integer level = Integer.parseInt(args[3]);
+                    String key = getitemfile().getString("ITEMS." + items + ".TYPE");
+                    if (key == null) {
+                        return;
+                    }
+                    ItemStack itemStack = makeItem(MythiccCore.get(), key, PersistentDataType.INTEGER, level, material, amount, true, true, true, name, lore);
                     target.getInventory().addItem(itemStack);
                 }
             }
@@ -86,6 +99,9 @@ public class MythiccItems extends CMDBase {
                 String defaultlore = getitemfile().getString("ENCHANTS.DEFAULT.LORE");
                 addEnchant(MythiccCore.get(), key, target, item, lore, level, defaultlore);
             }
+        }
+
+        if (args.length == 5) {
             if (args[0].equalsIgnoreCase("item")) {
                 String items = args[2].toUpperCase();
                 Player target = Bukkit.getPlayer(args[1]);
@@ -97,7 +113,16 @@ public class MythiccItems extends CMDBase {
                     sendConsoleMessage(c, "&cNgười chơi không tồn tại");
                     return;
                 }
-                ItemStack itemStack = makeItem(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ITEMS." + items + ".TYPE")), PersistentDataType.INTEGER, getitemfile().getInt("POWER." + items), valueOf(getitemfile().getString("ITEMS." + items + ".MATERIAL")), getitemfile().getInt("ITEMS." + items + ".AMOUNT"), true, true, true, getitemfile().getString("ITEMS." + items + ".NAME"), getitemfile().getStringList("ITEMS." + items + ".LORE"));
+                List<String> lore = getitemfile().getStringList("ITEMS." + items + ".LORE").stream().map(a -> a.replaceAll("%level%", args[3])).collect(Collectors.toList());
+                String name = Objects.requireNonNull(getitemfile().getString("ITEMS." + items + ".NAME")).replace("%level%", formatLevel(Integer.parseInt(args[3])));
+                Integer amount = Integer.parseInt(args[4]);
+                Material material = valueOf(getitemfile().getString("ITEMS." + items + ".MATERIAL"));
+                Integer level = Integer.parseInt(args[3]);
+                String key = getitemfile().getString("ITEMS." + items + ".TYPE");
+                if (key == null) {
+                    return;
+                }
+                ItemStack itemStack = makeItem(MythiccCore.get(), key, PersistentDataType.INTEGER, level, material, amount, true, true, true, name, lore);
                 target.getInventory().addItem(itemStack);
             }
         }

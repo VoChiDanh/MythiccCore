@@ -1,5 +1,3 @@
-POWER:
-  DASUCMANH1: 5
 ENCHANTS:
   DEFAULT:
     LORE: "<Enchant Trống>"
@@ -7,13 +5,16 @@ ENCHANTS:
     NAME: "Money"
     KEY: "MONEY"
 ITEMS:
-  DASUCMANH1:
-    TYPE: DASUCMANH
-    MATERIAL: EMERALD
+  MONEY:
+    TYPE: ENCHANTMONEY
+    MATERIAL: ENCHANTED_BOOK
     AMOUNT: 1
     GLOW: true
     HIDEFLAGS: true
     UNBREAK: true
-    NAME: "&aĐá Sức Mạnh &f|&7 I"
+    NAME: "&6Money %level%"
     LORE:
-      - "&a+5 Sát Thương"
+      - "&7Khi bạn tiêu diệt quái"
+      - "&7bạn sẽ nhận được %level%$"
+      - "&7"
+      - "&bKéo thả lên vật phẩm để enchant"

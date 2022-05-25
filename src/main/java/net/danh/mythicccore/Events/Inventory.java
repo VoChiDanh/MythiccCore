@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
+import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
@@ -99,6 +100,19 @@ public class Inventory implements Listener {
     @EventHandler
     public void OnInventoryClick(@NotNull InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
+        if (e.getAction() == InventoryAction.SWAP_WITH_CURSOR) {
+            ItemStack target = e.getCurrentItem();
+            ItemStack enchant = e.getCursor();
+            if (target == null) {
+                return;
+            }
+            if (enchant == null) {
+                return;
+            }
+            if (target.hasItemMeta()) {
+
+            }
+        }
         if (e.getView().getTitle().equals(getguiString("GUI.UPGRADE.TITLE"))) {
             if (e.getCurrentItem() != null && Objects.equals(Objects.requireNonNull(e.getCurrentItem()).getType().toString(), getguiString("GUI.UPGRADE.DECORATE.MATERIAL"))) {
                 e.setCancelled(true);
