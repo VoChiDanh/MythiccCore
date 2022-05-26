@@ -3,6 +3,7 @@ package net.danh.mythicccore.Events;
 import io.lumine.mythic.bukkit.events.MythicMobDeathEvent;
 import net.danh.mythicccore.MythiccCore;
 import net.milkbowl.vault.economy.EconomyResponse;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -38,6 +39,7 @@ public class Death implements Listener {
     @EventHandler
     public void onDeath(@NotNull PlayerDeathEvent e) {
         Player p = e.getEntity();
+        Bukkit.getScheduler().scheduleSyncDelayedTask(MythiccCore.get(), () -> p.spigot().respawn(), 2);
         ItemStack items = p.getInventory().getItemInMainHand();
         removeSoulPoints(p, 1);
         sendPlayerMessage(p, "&6Bạn đã chết và còn lại " + getSoulPoints(p) + " SoulPoints");
