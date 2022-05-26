@@ -129,18 +129,23 @@ public class Inventory implements Listener {
                     String lore = getitemfile().getString("ENCHANTS." + name + ".NAME");
                     String key = getitemfile().getString("ENCHANTS." + name + ".KEY");
                     String defaultlore = getitemfile().getString("ENCHANTS.DEFAULT.LORE");
+                    int limited = getitemfile().getInt("ITEMS." + name + "LIMITED");
                     if (key == null) {
                         e.setCancelled(true);
                         return;
                     }
-                    if (enchantmeta.getPersistentDataContainer().getOrDefault(new NamespacedKey(MythiccCore.get(), key), PersistentDataType.INTEGER, 1) > getEnchantLevel(MythiccCore.get(), key, target)) {
-                        Integer level = enchantmeta.getPersistentDataContainer().getOrDefault(new NamespacedKey(MythiccCore.get(), key), PersistentDataType.INTEGER, 1);
-                        addEnchant(MythiccCore.get(), key, p, target, lore, level, defaultlore);
-                        p.setItemOnCursor(null);
+                    Integer level = enchantmeta.getPersistentDataContainer().getOrDefault(new NamespacedKey(MythiccCore.get(), key), PersistentDataType.INTEGER, 1);
+                    if (getEnchantLevel(MythiccCore.get(), key, target) <= limited && level <= limited) {
+                        if (enchantmeta.getPersistentDataContainer().getOrDefault(new NamespacedKey(MythiccCore.get(), key), PersistentDataType.INTEGER, 1) > getEnchantLevel(MythiccCore.get(), key, target)) {
+                            addEnchant(MythiccCore.get(), key, p, target, lore, level, defaultlore);
+                            p.setItemOnCursor(null);
+                        } else {
+                            e.setCancelled(true);
+                            sendPlayerMessage(p, "&cBạn không thể enchant cấp thấp hơn cấp độ phù phép đang có");
+                            return;
+                        }
                     } else {
-                        e.setCancelled(true);
-                        sendPlayerMessage(p, "&cBạn không thể enchant cấp thấp hơn cấp độ phù phép đang có");
-                        return;
+                        sendPlayerMessage(p, "&aBạn đã đạt đến giới hạn của enchant &3" + name);
                     }
                 }
             }

@@ -4,11 +4,15 @@ ENCHANTS:
   MONEY:
     NAME: "Money"
     KEY: "MONEY"
+  PURSE:
+    NAME: "Purse"
+    KEY: "PURSE"
 ITEMS:
   MONEY:
     TYPE: ENCHANTMENT_BOOK
     MATERIAL: ENCHANTED_BOOK
     AMOUNT: 1
+    LIMITED: 10000
     GLOW: true
     HIDEFLAGS: true
     UNBREAK: true
@@ -16,5 +20,19 @@ ITEMS:
     LORE:
       - "&7Khi bạn tiêu diệt quái"
       - "&7bạn sẽ nhận được %level%$"
+      - "&7"
+      - "&bKéo thả lên vật phẩm để enchant"
+  PURSE:
+    TYPE: ENCHANTMENT_BOOK
+    MATERIAL: ENCHANTED_BOOK
+    AMOUNT: 1
+    LIMITED: 6
+    GLOW: true
+    HIDEFLAGS: true
+    UNBREAK: true
+    NAME: "&6Purse %level%"
+    LORE:
+      - "&7Khi bạn chết bạn sẽ mất"
+      - "&7ít tiền hơn"
       - "&7"
       - "&bKéo thả lên vật phẩm để enchant"
