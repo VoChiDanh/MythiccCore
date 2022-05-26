@@ -20,6 +20,7 @@ import java.util.logging.Level;
 import static net.danh.dcore.DCore.RegisterDCore;
 import static net.danh.dcore.Enchant.Lore.getEnchantLevel;
 import static net.danh.dcore.Enchant.Lore.hasEnchant;
+import static net.danh.mythicccore.Data.Storage.loadPlayerData;
 import static net.danh.mythicccore.Data.Storage.savePlayerData;
 import static net.danh.mythicccore.Utils.Resources.getitemfile;
 
@@ -53,11 +54,6 @@ public final class MythiccCore extends JavaPlugin {
             getLogger().severe(String.format("[%s] - Disabled due to no Vault dependency found!", getDescription().getName()));
             getServer().getPluginManager().disablePlugin(this);
             return;
-        }
-        if (getServer().getOnlinePlayers().size() > 0) {
-            for (Player p : getServer().getOnlinePlayers()) {
-                p.kickPlayer("Rejoin in few second");
-            }
         }
         NMSAssistant nmsAssistant = new NMSAssistant();
         getLogger().log(Level.INFO, Chat.colorize("&6Server version:&3 " + nmsAssistant.getNMSVersion()));
@@ -104,6 +100,14 @@ public final class MythiccCore extends JavaPlugin {
         getLogger().log(Level.INFO, "--------------------------------------------");
         RegisterDCore(this);
         Resources.createfiles();
+        if (getServer().getOnlinePlayers().size() > 0) {
+            for (Player p : getServer().getOnlinePlayers()) {
+                loadPlayerData(p);
+                for (int i = 0; i < MythiccCore.getInvisible_list().size(); i++) {
+                    p.hidePlayer(MythiccCore.get(), MythiccCore.getInvisible_list().get(i));
+                }
+            }
+        }
         (new BukkitRunnable() {
             public void run() {
                 for (Player p : getServer().getOnlinePlayers()) {

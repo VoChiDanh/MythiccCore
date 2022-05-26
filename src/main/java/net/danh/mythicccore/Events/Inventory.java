@@ -129,7 +129,7 @@ public class Inventory implements Listener {
                     String lore = getitemfile().getString("ENCHANTS." + name + ".NAME");
                     String key = getitemfile().getString("ENCHANTS." + name + ".KEY");
                     String defaultlore = getitemfile().getString("ENCHANTS.DEFAULT.LORE");
-                    int limited = getitemfile().getInt("ITEMS." + name + "LIMITED");
+                    int limited = getitemfile().getInt("ITEMS." + name + ".LIMITED");
                     if (key == null) {
                         e.setCancelled(true);
                         return;
