@@ -24,8 +24,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-import static net.danh.dcore.Enchant.Lore.addEnchant;
-import static net.danh.dcore.Enchant.Lore.getEnchantLevel;
+import static net.danh.dcore.Enchant.Lore.*;
 import static net.danh.dcore.Random.Number.getRandomInt;
 import static net.danh.dcore.Utils.Items.makeItem;
 import static net.danh.dcore.Utils.Player.sendPlayerMessage;
@@ -138,7 +137,13 @@ public class Inventory implements Listener {
                     if (getEnchantLevel(MythiccCore.get(), key, target) <= limited && level <= limited) {
                         if (enchantmeta.getPersistentDataContainer().getOrDefault(new NamespacedKey(MythiccCore.get(), key), PersistentDataType.INTEGER, 1) > getEnchantLevel(MythiccCore.get(), key, target)) {
                             addEnchant(MythiccCore.get(), key, p, target, lore, level, defaultlore);
-                            p.setItemOnCursor(null);
+                            if (!isFull()) {
+                                p.setItemOnCursor(null);
+                            } else {
+                                e.setCancelled(true);
+                                sendPlayerMessage(p, "&cVật phẩm hiện tại đã không thể thêm phù phép nào nữa!");
+                                return;
+                            }
                         } else {
                             e.setCancelled(true);
                             sendPlayerMessage(p, "&cBạn không thể enchant cấp thấp hơn cấp độ phù phép đang có");
