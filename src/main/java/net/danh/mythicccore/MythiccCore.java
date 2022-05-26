@@ -16,6 +16,7 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 
 import static net.danh.dcore.DCore.RegisterDCore;
@@ -34,6 +35,13 @@ public final class MythiccCore extends JavaPlugin {
     public static MythiccCore get() {
         return instance;
     }
+
+    private static final ArrayList<Player> invisible_list = new ArrayList<>();
+
+    public static ArrayList<Player> getInvisible_list() {
+        return invisible_list;
+    }
+
 
     @Override
     public void onLoad() {
