@@ -5,13 +5,11 @@ import net.danh.dcore.Utils.Chat;
 import net.danh.mythicccore.Commands.*;
 import net.danh.mythicccore.Compatible.Placeholder;
 import net.danh.mythicccore.Data.Storage;
-import net.danh.mythicccore.Events.Death;
-import net.danh.mythicccore.Events.Inventory;
-import net.danh.mythicccore.Events.Join;
-import net.danh.mythicccore.Events.Quit;
+import net.danh.mythicccore.Events.*;
 import net.danh.mythicccore.Utils.Resources;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -20,12 +18,15 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 
 import static net.danh.dcore.DCore.RegisterDCore;
+import static net.danh.dcore.Enchant.Lore.getEnchantLevel;
+import static net.danh.dcore.Enchant.Lore.hasEnchant;
 import static net.danh.mythicccore.Data.Storage.savePlayerData;
+import static net.danh.mythicccore.Utils.Resources.getitemfile;
 
 public final class MythiccCore extends JavaPlugin {
 
+    private static final ArrayList<Player> invisible_list = new ArrayList<>();
     private static MythiccCore instance;
-
     private static Economy econ;
 
     public static Economy getEconomy() {
@@ -35,8 +36,6 @@ public final class MythiccCore extends JavaPlugin {
     public static MythiccCore get() {
         return instance;
     }
-
-    private static final ArrayList<Player> invisible_list = new ArrayList<>();
 
     public static ArrayList<Player> getInvisible_list() {
         return invisible_list;
@@ -76,6 +75,15 @@ public final class MythiccCore extends JavaPlugin {
             getLogger().log(Level.INFO, Chat.colorize("&c✘&f Identify items features"));
         }
         getLogger().log(Level.INFO, "--------------------------------------------");
+        if (getServer().getPluginManager().getPlugin("MMOCore") != null) {
+            getServer().getPluginManager().registerEvents(new EXP(), this);
+            getLogger().log(Level.INFO, "Hooking into MMOCore");
+            getLogger().log(Level.INFO, Chat.colorize("&a✓&f Experience Enchantments"));
+        } else {
+            getLogger().log(Level.INFO, "Can not found MMOCore");
+            getLogger().log(Level.INFO, Chat.colorize("&a✓&f Experience Enchantments"));
+        }
+        getLogger().log(Level.INFO, "--------------------------------------------");
         if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
             getLogger().log(Level.INFO, "Hooking into PlaceholderAPI");
             getLogger().log(Level.INFO, Chat.colorize("&a✓&f Placeholder features"));
@@ -98,7 +106,12 @@ public final class MythiccCore extends JavaPlugin {
         (new BukkitRunnable() {
             public void run() {
                 for (Player p : getServer().getOnlinePlayers()) {
-                    net.danh.mythicccore.Data.SoulPoints.addSoulPoints(p, 1);
+                    ItemStack i = p.getInventory().getItemInMainHand();
+                    if (!hasEnchant(MythiccCore.get(), getitemfile().getString("ENCHANTS.SOULPOINTS.KEY"), i)) {
+                        net.danh.mythicccore.Data.SoulPoints.addSoulPoints(p, 1);
+                    } else {
+                        net.danh.mythicccore.Data.SoulPoints.addSoulPoints(p, getEnchantLevel(MythiccCore.get(), getitemfile().getString("ENCHANTS.SOULPOINTS.KEY"), i));
+                    }
                 }
             }
         }).runTaskTimer(this, 1800 * 20L, 1800 * 20L);

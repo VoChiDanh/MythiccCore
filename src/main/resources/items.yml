@@ -7,6 +7,12 @@ ENCHANTS:
   PURSE:
     NAME: "Purse"
     KEY: "PURSE"
+  SOULPOINTS:
+    NAME: "SoulPoints"
+    KEY: "SOULPOINTS"
+  EXPERIENCE:
+    NAME: "Experience"
+    KEY: "EXPERIENCE"
 ITEMS:
   MONEY:
     TYPE: ENCHANTMENT_BOOK
@@ -34,5 +40,31 @@ ITEMS:
     LORE:
       - "&7Khi bạn chết bạn sẽ mất"
       - "&7ít tiền hơn"
+      - "&7"
+      - "&bKéo thả lên vật phẩm để enchant"
+  SOULPOINTS:
+    TYPE: ENCHANTMENT_BOOK
+    MATERIAL: ENCHANTED_BOOK
+    AMOUNT: 1
+    LIMITED: 10
+    GLOW: true
+    HIDEFLAGS: true
+    UNBREAK: true
+    NAME: "&6SoulPoints %level%"
+    LORE:
+      - "&7Hồi %level% SoulPoints"
+      - "&7"
+      - "&bKéo thả lên vật phẩm để enchant"
+  EXPERIENCE:
+    TYPE: ENCHANTMENT_BOOK
+    MATERIAL: ENCHANTED_BOOK
+    AMOUNT: 1
+    LIMITED: 10
+    GLOW: true
+    HIDEFLAGS: true
+    UNBREAK: true
+    NAME: "&6Experience %level%"
+    LORE:
+      - "&7x%level% XP khi giết quái"
       - "&7"
       - "&bKéo thả lên vật phẩm để enchant"
