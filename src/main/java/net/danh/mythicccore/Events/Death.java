@@ -1,6 +1,8 @@
 package net.danh.mythicccore.Events;
 
 import io.lumine.mythic.bukkit.events.MythicMobDeathEvent;
+import net.Indyuce.mmocore.api.player.PlayerData;
+import net.Indyuce.mmocore.experience.EXPSource;
 import net.danh.mythicccore.MythiccCore;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.Bukkit;
@@ -22,8 +24,7 @@ import static net.danh.dcore.Random.Number.getRandomInt;
 import static net.danh.dcore.Utils.Player.sendPlayerMessage;
 import static net.danh.mythicccore.Data.SoulPoints.getSoulPoints;
 import static net.danh.mythicccore.Data.SoulPoints.removeSoulPoints;
-import static net.danh.mythicccore.Utils.Resources.getitemfile;
-import static net.danh.mythicccore.Utils.Resources.getsettingfile;
+import static net.danh.mythicccore.Utils.Resources.*;
 
 public class Death implements Listener {
 
@@ -37,6 +38,10 @@ public class Death implements Listener {
         if (hasEnchant(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ENCHANTS.MONEY.KEY")).toUpperCase(), item)) {
             MythiccCore.getEconomy().depositPlayer(p, getEnchantLevel(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ENCHANTS.MONEY.KEY")).toUpperCase(), item));
         }
+        double mobLevel = e.getMobLevel();
+        int intmoblevel = (int) mobLevel;
+        int mobxp = getxpfile().getInt("XP." + e.getMobType().getInternalName());
+        PlayerData.get(p).giveExperience(intmoblevel * mobxp, EXPSource.OTHER);
     }
 
     @EventHandler

@@ -139,6 +139,7 @@ public final class MythiccCore extends JavaPlugin {
         Resources.saveconfig();
         Resources.savelanguage();
         Resources.savegui();
+        Resources.savexp();
         Resources.saveupgrade();
         Resources.savesetting();
         Resources.saveitem();

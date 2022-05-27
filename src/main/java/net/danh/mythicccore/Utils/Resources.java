@@ -15,8 +15,8 @@ import static net.danh.mythicccore.MythiccCore.get;
 
 public class Resources {
 
-    private static File configFile, languageFile, guiFile, upgradeFile, dataFile, settingFile, itemFile;
-    private static FileConfiguration config, language, gui, upgrade, data, setting, item;
+    private static File configFile, languageFile, guiFile, upgradeFile, dataFile, settingFile, itemFile, xpFile;
+    private static FileConfiguration config, language, gui, upgrade, data, setting, item, xp;
 
     public static void createfiles() {
         configFile = new File(get().getDataFolder(), "config.yml");
@@ -26,6 +26,7 @@ public class Resources {
         dataFile = new File(get().getDataFolder(), "data.yml");
         settingFile = new File(get().getDataFolder(), "setting.yml");
         itemFile = new File(get().getDataFolder(), "items.yml");
+        xpFile = new File(get().getDataFolder(), "xp.yml");
 
         if (!configFile.exists()) get().saveResource("config.yml", false);
         if (!languageFile.exists()) get().saveResource("language.yml", false);
@@ -33,6 +34,7 @@ public class Resources {
         if (!upgradeFile.exists()) get().saveResource("upgrade.yml", false);
         if (!settingFile.exists()) get().saveResource("setting.yml", false);
         if (!itemFile.exists()) get().saveResource("items.yml", false);
+        if (!xpFile.exists()) get().saveResource("xp.yml", false);
         if (!dataFile.exists()) {
             dataFile.getParentFile().mkdirs();
             try {
@@ -48,6 +50,7 @@ public class Resources {
         data = new YamlConfiguration();
         setting = new YamlConfiguration();
         item = new YamlConfiguration();
+        xp = new YamlConfiguration();
 
         try {
             config.load(configFile);
@@ -57,6 +60,7 @@ public class Resources {
             data.load(dataFile);
             setting.load(settingFile);
             item.load(itemFile);
+            xp.load(xpFile);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
@@ -88,6 +92,10 @@ public class Resources {
 
     public static FileConfiguration getitemfile() {
         return item;
+    }
+
+    public static FileConfiguration getxpfile() {
+        return xp;
     }
 
     public static String getguiString(String path) {
@@ -161,6 +169,7 @@ public class Resources {
         upgrade = YamlConfiguration.loadConfiguration(upgradeFile);
         setting = YamlConfiguration.loadConfiguration(settingFile);
         item = YamlConfiguration.loadConfiguration(itemFile);
+        xp = YamlConfiguration.loadConfiguration(xpFile);
     }
 
     public static void saveconfig() {
@@ -208,6 +217,13 @@ public class Resources {
     public static void saveitem() {
         try {
             item.save(itemFile);
+        } catch (IOException ignored) {
+        }
+    }
+
+    public static void savexp() {
+        try {
+            xp.save(xpFile);
         } catch (IOException ignored) {
         }
     }
