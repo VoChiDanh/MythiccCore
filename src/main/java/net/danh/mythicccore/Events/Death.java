@@ -30,6 +30,9 @@ public class Death implements Listener {
     @EventHandler
     public void onMythicMobDeath(MythicMobDeathEvent e) {
         Player p = (Player) e.getKiller();
+        if (p == null) {
+            return;
+        }
         ItemStack item = p.getInventory().getItemInMainHand();
         if (hasEnchant(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ENCHANTS.MONEY.KEY")).toUpperCase(), item)) {
             MythiccCore.getEconomy().depositPlayer(p, getEnchantLevel(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ENCHANTS.MONEY.KEY")).toUpperCase(), item));
