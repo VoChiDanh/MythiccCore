@@ -1,0 +1,26 @@
+MOBS:
+  CUU:
+    XP: 1
+    LEVEL:
+      MIN: 1
+      MAX: 5
+  DANLANG:
+    XP: 2
+    LEVEL:
+      MIN: 1
+      MAX: 6
+  QUAIVATXUONG:
+    XP: 3
+    LEVEL:
+      MIN: 4
+      MAX: 7
+  CHIENBINHXUONG:
+    XP: 4
+    LEVEL:
+      MIN: 5
+      MAX: 8
+  XUONGCUNGTHU:
+    XP: 5
+    LEVEL:
+      MIN: 6
+      MAX: 9

@@ -40,7 +40,7 @@ public class Death implements Listener {
         }
         double mobLevel = e.getMobLevel();
         int intmoblevel = (int) mobLevel;
-        int mobxp = getxpfile().getInt("XP." + e.getMobType().getInternalName());
+        int mobxp = getmobfile().getInt("MOBS." + e.getMobType().getInternalName().toUpperCase() + ".XP");
         PlayerData.get(p).giveExperience(intmoblevel * mobxp, EXPSource.OTHER);
     }
 

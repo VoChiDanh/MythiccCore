@@ -84,9 +84,12 @@ public final class MythiccCore extends JavaPlugin {
             getServer().getPluginManager().registerEvents(new EXP(), this);
             getLogger().log(Level.INFO, "Hooking into MythicMobs");
             getLogger().log(Level.INFO, Chat.colorize("&a✓&f XP System"));
+            getServer().getPluginManager().registerEvents(new Damage(), this);
+            getLogger().log(Level.INFO, Chat.colorize("&a✓&f Damage System"));
         } else {
             getLogger().log(Level.INFO, "Can not found MythicMobs");
-            getLogger().log(Level.INFO, Chat.colorize("&a✓&f XP System"));
+            getLogger().log(Level.INFO, Chat.colorize("&c✘&f XP System"));
+            getLogger().log(Level.INFO, Chat.colorize("&c✘&f Damage System"));
         }
         getLogger().log(Level.INFO, "--------------------------------------------");
         if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
@@ -148,7 +151,7 @@ public final class MythiccCore extends JavaPlugin {
         Resources.saveconfig();
         Resources.savelanguage();
         Resources.savegui();
-        Resources.savexp();
+        Resources.savemob();
         Resources.saveupgrade();
         Resources.savesetting();
         Resources.saveitem();

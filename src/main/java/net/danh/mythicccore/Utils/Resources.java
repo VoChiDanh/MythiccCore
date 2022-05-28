@@ -15,8 +15,8 @@ import static net.danh.mythicccore.MythiccCore.get;
 
 public class Resources {
 
-    private static File configFile, languageFile, guiFile, upgradeFile, dataFile, settingFile, itemFile, xpFile;
-    private static FileConfiguration config, language, gui, upgrade, data, setting, item, xp;
+    private static File configFile, languageFile, guiFile, upgradeFile, dataFile, settingFile, itemFile, mobFile;
+    private static FileConfiguration config, language, gui, upgrade, data, setting, item, mob;
 
     public static void createfiles() {
         configFile = new File(get().getDataFolder(), "config.yml");
@@ -26,7 +26,7 @@ public class Resources {
         dataFile = new File(get().getDataFolder(), "data.yml");
         settingFile = new File(get().getDataFolder(), "setting.yml");
         itemFile = new File(get().getDataFolder(), "items.yml");
-        xpFile = new File(get().getDataFolder(), "xp.yml");
+        mobFile = new File(get().getDataFolder(), "mobs.yml");
 
         if (!configFile.exists()) get().saveResource("config.yml", false);
         if (!languageFile.exists()) get().saveResource("language.yml", false);
@@ -34,7 +34,7 @@ public class Resources {
         if (!upgradeFile.exists()) get().saveResource("upgrade.yml", false);
         if (!settingFile.exists()) get().saveResource("setting.yml", false);
         if (!itemFile.exists()) get().saveResource("items.yml", false);
-        if (!xpFile.exists()) get().saveResource("xp.yml", false);
+        if (!mobFile.exists()) get().saveResource("mobs.yml", false);
         if (!dataFile.exists()) {
             dataFile.getParentFile().mkdirs();
             try {
@@ -50,7 +50,7 @@ public class Resources {
         data = new YamlConfiguration();
         setting = new YamlConfiguration();
         item = new YamlConfiguration();
-        xp = new YamlConfiguration();
+        mob = new YamlConfiguration();
 
         try {
             config.load(configFile);
@@ -60,7 +60,7 @@ public class Resources {
             data.load(dataFile);
             setting.load(settingFile);
             item.load(itemFile);
-            xp.load(xpFile);
+            mob.load(mobFile);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
@@ -94,8 +94,8 @@ public class Resources {
         return item;
     }
 
-    public static FileConfiguration getxpfile() {
-        return xp;
+    public static FileConfiguration getmobfile() {
+        return mob;
     }
 
     public static String getguiString(String path) {
@@ -169,7 +169,7 @@ public class Resources {
         upgrade = YamlConfiguration.loadConfiguration(upgradeFile);
         setting = YamlConfiguration.loadConfiguration(settingFile);
         item = YamlConfiguration.loadConfiguration(itemFile);
-        xp = YamlConfiguration.loadConfiguration(xpFile);
+        mob = YamlConfiguration.loadConfiguration(mobFile);
     }
 
     public static void saveconfig() {
@@ -221,9 +221,9 @@ public class Resources {
         }
     }
 
-    public static void savexp() {
+    public static void savemob() {
         try {
-            xp.save(xpFile);
+            mob.save(mobFile);
         } catch (IOException ignored) {
         }
     }
