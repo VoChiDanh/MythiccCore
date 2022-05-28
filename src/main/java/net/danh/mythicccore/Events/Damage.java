@@ -29,13 +29,13 @@ public class Damage implements Listener {
                     e.setCancelled(true);
                     e.setDamage(0);
                     mob.getEntity().setHealth(mob.getEntity().getMaxHealth());
-                    sendPlayerMessageType(p, null, "&cBạn cần dưới cấp độ &a" + mob_level_max + "&c để có thể gây sát thương lên " + mob.getDisplayName());
+                    sendPlayerMessageType(p, null, "&cBạn cần dưới cấp độ &a" + mob_level_max + "&c để có thể gây sát thương lên " + mob.getDisplayName().replace("\n", " "));
                 } else if (level < mob_level_min) {
                     mob.getEntity().setHealth(mob.getEntity().getMaxHealth());
                     e.setCancelled(true);
                     e.setDamage(0);
                     mob.getEntity().setHealth(mob.getEntity().getMaxHealth());
-                    sendPlayerMessageType(p, null, "&cBạn cần đạt cấp độ &a" + mob_level_min + "&c để có thể gây sát thương lên " + mob.getDisplayName());
+                    sendPlayerMessageType(p, null, "&cBạn cần đạt cấp độ &a" + mob_level_min + "&c để có thể gây sát thương lên " + mob.getDisplayName().replace("\n", " "));
 
                 }
             }
