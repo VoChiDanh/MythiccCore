@@ -80,6 +80,15 @@ public final class MythiccCore extends JavaPlugin {
             getLogger().log(Level.INFO, Chat.colorize("&a✓&f Experience Enchantments"));
         }
         getLogger().log(Level.INFO, "--------------------------------------------");
+        if (getServer().getPluginManager().getPlugin("MythicMobs") != null) {
+            getServer().getPluginManager().registerEvents(new EXP(), this);
+            getLogger().log(Level.INFO, "Hooking into MythicMobs");
+            getLogger().log(Level.INFO, Chat.colorize("&a✓&f XP System"));
+        } else {
+            getLogger().log(Level.INFO, "Can not found MythicMobs");
+            getLogger().log(Level.INFO, Chat.colorize("&a✓&f XP System"));
+        }
+        getLogger().log(Level.INFO, "--------------------------------------------");
         if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
             getLogger().log(Level.INFO, "Hooking into PlaceholderAPI");
             getLogger().log(Level.INFO, Chat.colorize("&a✓&f Placeholder features"));
