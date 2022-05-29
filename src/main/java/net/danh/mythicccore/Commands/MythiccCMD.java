@@ -54,7 +54,7 @@ public class MythiccCMD extends CMDBase {
                 }
                 if (args[0].equalsIgnoreCase("reload")) {
                     reloadfiles();
-                    sendPlayerMessage(p, getlangString("&aĐã tải lại files"));
+                    sendPlayerMessage(p, getlangString("RELOAD"));
                 }
                 if (args[0].equalsIgnoreCase("logs")) {
                     try {
