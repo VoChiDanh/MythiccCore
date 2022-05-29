@@ -11,6 +11,8 @@ import org.jetbrains.annotations.NotNull;
 
 import static net.danh.dcore.Utils.Player.sendConsoleMessage;
 import static net.danh.dcore.Utils.Player.sendPlayerMessage;
+import static net.danh.mythicccore.Utils.Resources.getlangString;
+import static net.danh.mythicccore.Utils.Resources.getlangStringList;
 
 public class OpenUpgradeGui extends CMDBase {
 
@@ -24,7 +26,7 @@ public class OpenUpgradeGui extends CMDBase {
             if (p.hasPermission("upgradegui")) {
                 p.openInventory(Upgrade.UpgradeGui(p));
             } else {
-                sendPlayerMessage(p, "&cBạn không có quyền mở gui này bằng lệnh, hãy đến gặp NPC để có thể mở", "&7", "&6Để có thể dùng lệnh này, bạn phải mua quyền tại shop quyền lợi");
+                sendPlayerMessage(p, getlangStringList("NO_PERMISSION_GUI"));
             }
         }
     }
@@ -34,7 +36,7 @@ public class OpenUpgradeGui extends CMDBase {
         if (args.length == 1) {
             Player p = Bukkit.getPlayer(args[0]);
             if (p == null) {
-                sendConsoleMessage(c, "&cNgười chơi không tồn tại!");
+                sendConsoleMessage(c, getlangString("UNKNOWN_PLAYER"));
                 return;
             }
             p.openInventory(ReGenerate.RegenerateInventory(p));

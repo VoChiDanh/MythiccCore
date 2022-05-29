@@ -21,6 +21,7 @@ import static net.danh.dcore.Utils.Items.makeItem;
 import static net.danh.dcore.Utils.Player.sendConsoleMessage;
 import static net.danh.dcore.Utils.Player.sendPlayerMessage;
 import static net.danh.mythicccore.Utils.Resources.getitemfile;
+import static net.danh.mythicccore.Utils.Resources.getlangString;
 import static org.bukkit.Material.valueOf;
 
 public class MythiccItems extends CMDBase {
@@ -38,12 +39,12 @@ public class MythiccItems extends CMDBase {
                     String lore = getitemfile().getString("ENCHANTS." + name + ".NAME");
                     String key = getitemfile().getString("ENCHANTS." + name + ".KEY");
                     if (key == null || lore == null) {
-                        sendPlayerMessage(p, "&cName hoặc key của enchant không tồn tại!");
+                        sendPlayerMessage(p, getlangString("UNKNOWN_KEY"));
                         return;
                     }
                     Player target = Bukkit.getPlayer(args[1]);
                     if (target == null) {
-                        sendPlayerMessage(p, "&cNgười chơi không tồn tại");
+                        sendPlayerMessage(p, getlangString("UNKNOWN_PLAYER"));
                         return;
                     }
                     ItemStack item = target.getInventory().getItemInMainHand();
@@ -57,11 +58,11 @@ public class MythiccItems extends CMDBase {
                     String items = args[2].toUpperCase();
                     Player target = Bukkit.getPlayer(args[1]);
                     if (getitemfile().getString("ITEMS." + items) == null) {
-                        sendPlayerMessage(p, "&cVật phẩm không tồn tại");
+                        sendPlayerMessage(p, getlangString("UNKNOWN_ITEM").replace("%id%", items));
                         return;
                     }
                     if (target == null) {
-                        sendPlayerMessage(p, "&cNgười chơi không tồn tại");
+                        sendPlayerMessage(p, getlangString("UNKNOWN_PLAYER"));
                         return;
                     }
                     List<String> lore = getitemfile().getStringList("ITEMS." + items + ".LORE").stream().map(a -> a.replaceAll("%level%", args[3])).collect(Collectors.toList());
@@ -92,12 +93,12 @@ public class MythiccItems extends CMDBase {
                 String lore = getitemfile().getString("ENCHANTS." + name + ".NAME");
                 String key = getitemfile().getString("ENCHANTS." + name + ".KEY");
                 if (key == null || lore == null) {
-                    sendConsoleMessage(c, "&cName hoặc key của enchant không tồn tại!");
+                    sendConsoleMessage(c, getlangString("UNKNOWN_KEY"));
                     return;
                 }
                 Player target = Bukkit.getPlayer(args[1]);
                 if (target == null) {
-                    sendConsoleMessage(c, "&cNgười chơi không tồn tại");
+                    sendConsoleMessage(c, getlangString("UNKNOWN_PLAYER"));
                     return;
                 }
                 ItemStack item = target.getInventory().getItemInMainHand();
@@ -112,11 +113,11 @@ public class MythiccItems extends CMDBase {
                 String items = args[2].toUpperCase();
                 Player target = Bukkit.getPlayer(args[1]);
                 if (getitemfile().getString("ITEMS." + items) == null) {
-                    sendConsoleMessage(c, "&cVật phẩm không tồn tại");
+                    sendConsoleMessage(c, getlangString("UNKNOWN_ITEM").replace("%id%", items));
                     return;
                 }
                 if (target == null) {
-                    sendConsoleMessage(c, "&cNgười chơi không tồn tại");
+                    sendConsoleMessage(c, getlangString("UNKNOWN_PLAYER"));
                     return;
                 }
                 List<String> lore = getitemfile().getStringList("ITEMS." + items + ".LORE").stream().map(a -> a.replaceAll("%level%", args[3])).collect(Collectors.toList());

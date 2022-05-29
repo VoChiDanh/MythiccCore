@@ -50,41 +50,41 @@ public class Death implements Listener {
         Bukkit.getScheduler().scheduleSyncDelayedTask(MythiccCore.get(), () -> p.spigot().respawn(), 2);
         ItemStack items = p.getInventory().getItemInMainHand();
         removeSoulPoints(p, 1);
-        sendPlayerMessage(p, "&6Bạn đã chết và còn lại " + getSoulPoints(p) + " SoulPoints");
+        sendPlayerMessage(p, getlangString("SOULPOINTS_DEATH").replaceAll("%soul%", String.valueOf(getSoulPoints(p))));
         if (!hasEnchant(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ENCHANTS.PURSE.KEY")).toUpperCase(), items) && !p.hasPermission("death.purse")) {
             EconomyResponse ee = MythiccCore.getEconomy().withdrawPlayer(p, MythiccCore.getEconomy().getBalance(p) / 2);
             if (ee.transactionSuccess()) {
-                sendPlayerMessage(p, "&cBạn còn lại &a" + MythiccCore.getEconomy().getBalance(p) + "$");
+                sendPlayerMessage(p, getlangString("MONEY_DEATH").replaceAll("%money%", String.valueOf(MythiccCore.getEconomy().getBalance(p))));
             }
         } else if (getEnchantLevel(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ENCHANTS.PURSE.KEY")).toUpperCase(), items) == 1 && !p.hasPermission("death.purse")) {
             EconomyResponse ee = MythiccCore.getEconomy().withdrawPlayer(p, MythiccCore.getEconomy().getBalance(p) / 4);
             if (ee.transactionSuccess()) {
-                sendPlayerMessage(p, "&cBạn còn lại &a" + MythiccCore.getEconomy().getBalance(p) + "$");
+                sendPlayerMessage(p, getlangString("MONEY_DEATH").replaceAll("%money%", String.valueOf(MythiccCore.getEconomy().getBalance(p))));
             }
         } else if (getEnchantLevel(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ENCHANTS.PURSE.KEY")).toUpperCase(), items) == 2 && !p.hasPermission("death.purse")) {
             EconomyResponse ee = MythiccCore.getEconomy().withdrawPlayer(p, MythiccCore.getEconomy().getBalance(p) / 6);
             if (ee.transactionSuccess()) {
-                sendPlayerMessage(p, "&cBạn còn lại &a" + MythiccCore.getEconomy().getBalance(p) + "$");
+                sendPlayerMessage(p, getlangString("MONEY_DEATH").replaceAll("%money%", String.valueOf(MythiccCore.getEconomy().getBalance(p))));
             }
         } else if (getEnchantLevel(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ENCHANTS.PURSE.KEY")).toUpperCase(), items) == 3 && !p.hasPermission("death.purse")) {
             EconomyResponse ee = MythiccCore.getEconomy().withdrawPlayer(p, MythiccCore.getEconomy().getBalance(p) / 8);
             if (ee.transactionSuccess()) {
-                sendPlayerMessage(p, "&cBạn còn lại &a" + MythiccCore.getEconomy().getBalance(p) + "$");
+                sendPlayerMessage(p, getlangString("MONEY_DEATH").replaceAll("%money%", String.valueOf(MythiccCore.getEconomy().getBalance(p))));
             }
         } else if (getEnchantLevel(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ENCHANTS.PURSE.KEY")).toUpperCase(), items) == 4 && !p.hasPermission("death.purse")) {
             EconomyResponse ee = MythiccCore.getEconomy().withdrawPlayer(p, MythiccCore.getEconomy().getBalance(p) / 10);
             if (ee.transactionSuccess()) {
-                sendPlayerMessage(p, "&cBạn còn lại &a" + MythiccCore.getEconomy().getBalance(p) + "$");
+                sendPlayerMessage(p, getlangString("MONEY_DEATH").replaceAll("%money%", String.valueOf(MythiccCore.getEconomy().getBalance(p))));
             }
         } else if (getEnchantLevel(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ENCHANTS.PURSE.KEY")).toUpperCase(), items) == 5 && !p.hasPermission("death.purse")) {
             EconomyResponse ee = MythiccCore.getEconomy().withdrawPlayer(p, MythiccCore.getEconomy().getBalance(p) / 20);
             if (ee.transactionSuccess()) {
-                sendPlayerMessage(p, "&cBạn còn lại &a" + MythiccCore.getEconomy().getBalance(p) + "$");
+                sendPlayerMessage(p, getlangString("MONEY_DEATH").replaceAll("%money%", String.valueOf(MythiccCore.getEconomy().getBalance(p))));
             }
         } else if (getEnchantLevel(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ENCHANTS.PURSE.KEY")).toUpperCase(), items) >= 6 && !p.hasPermission("death.purse")) {
             EconomyResponse ee = MythiccCore.getEconomy().withdrawPlayer(p, MythiccCore.getEconomy().getBalance(p) / 50);
             if (ee.transactionSuccess()) {
-                sendPlayerMessage(p, "&cBạn còn lại &a" + MythiccCore.getEconomy().getBalance(p) + "$");
+                sendPlayerMessage(p, getlangString("MONEY_DEATH").replaceAll("%money%", String.valueOf(MythiccCore.getEconomy().getBalance(p))));
             }
         }
         if (getSoulPoints(p) <= getsettingfile().getInt("SETTINGS.MINIMUM_SOUL_POINTS")) {
@@ -103,7 +103,7 @@ public class Death implements Listener {
                 if (Objects.requireNonNull(playerInventory.getItem(slot)).getItemMeta() != null) {
                     String item = Objects.requireNonNull(Objects.requireNonNull(playerInventory.getItem(slot)).getItemMeta()).getDisplayName();
                     int amount = Objects.requireNonNull(playerInventory.getItem(slot)).getAmount();
-                    sendPlayerMessage(p, "&cBạn đã bị mất vật phẩm: " + item + "&a x" + amount);
+                    sendPlayerMessage(p, getlangString("LOSE_ITEM").replaceAll("%item%", item).replaceAll("%amount%", String.valueOf(amount)));
                     playerInventory.setItem(slot, null);
                 }
             }

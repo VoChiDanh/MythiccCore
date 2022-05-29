@@ -2,7 +2,9 @@ package net.danh.mythicccore;
 
 import net.danh.dcore.NMS.NMSAssistant;
 import net.danh.dcore.Utils.Chat;
-import net.danh.mythicccore.Commands.*;
+import net.danh.mythicccore.Commands.MythiccCMD;
+import net.danh.mythicccore.Commands.MythiccItems;
+import net.danh.mythicccore.Commands.SoulPoints;
 import net.danh.mythicccore.Compatible.Placeholder;
 import net.danh.mythicccore.Data.Storage;
 import net.danh.mythicccore.Events.*;
@@ -56,60 +58,52 @@ public final class MythiccCore extends JavaPlugin {
             return;
         }
         NMSAssistant nmsAssistant = new NMSAssistant();
-        getLogger().log(Level.INFO, Chat.colorize("&6Server version:&3 " + nmsAssistant.getNMSVersion()));
-        getLogger().log(Level.INFO, "--------------------------------------------");
+        getLogger().log(Level.INFO, "Server version: " + nmsAssistant.getNMSVersion());
+        if (getServer().getPluginManager().getPlugin("ProtocolLib") != null) {
+            getLogger().log(Level.INFO, "Hooking into ProtocolLib");
+        } else {
+            getLogger().log(Level.INFO, "Can not found ProtocolLib");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
         if (getServer().getPluginManager().getPlugin("MMOItems") != null) {
-            getServer().getPluginManager().registerEvents(new Inventory(), this);
-            new OpenRegeneratorGui(this);
-            new OpenUpgradeGui(this);
             getLogger().log(Level.INFO, "Hooking into MMOItems");
-            getLogger().log(Level.INFO, Chat.colorize("&a✓&f Upgrade items features"));
-            getLogger().log(Level.INFO, Chat.colorize("&a✓&f Identify items features"));
         } else {
             getLogger().log(Level.INFO, "Can not found MMOItems");
-            getLogger().log(Level.INFO, Chat.colorize("&c✘&f Upgrade items features"));
-            getLogger().log(Level.INFO, Chat.colorize("&c✘&f Identify items features"));
+            getServer().getPluginManager().disablePlugin(this);
+            return;
         }
-        getLogger().log(Level.INFO, "--------------------------------------------");
         if (getServer().getPluginManager().getPlugin("MMOCore") != null) {
-            getServer().getPluginManager().registerEvents(new EXP(), this);
             getLogger().log(Level.INFO, "Hooking into MMOCore");
-            getLogger().log(Level.INFO, Chat.colorize("&a✓&f Experience Enchantments"));
         } else {
             getLogger().log(Level.INFO, "Can not found MMOCore");
-            getLogger().log(Level.INFO, Chat.colorize("&a✓&f Experience Enchantments"));
+            getServer().getPluginManager().disablePlugin(this);
+            return;
         }
-        getLogger().log(Level.INFO, "--------------------------------------------");
         if (getServer().getPluginManager().getPlugin("MythicMobs") != null) {
-            getServer().getPluginManager().registerEvents(new EXP(), this);
             getLogger().log(Level.INFO, "Hooking into MythicMobs");
-            getLogger().log(Level.INFO, Chat.colorize("&a✓&f XP System"));
-            getServer().getPluginManager().registerEvents(new Damage(), this);
-            getLogger().log(Level.INFO, Chat.colorize("&a✓&f Damage System"));
         } else {
             getLogger().log(Level.INFO, "Can not found MythicMobs");
-            getLogger().log(Level.INFO, Chat.colorize("&c✘&f XP System"));
-            getLogger().log(Level.INFO, Chat.colorize("&c✘&f Damage System"));
+            getServer().getPluginManager().disablePlugin(this);
+            return;
         }
-        getLogger().log(Level.INFO, "--------------------------------------------");
         if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
             getLogger().log(Level.INFO, "Hooking into PlaceholderAPI");
-            getLogger().log(Level.INFO, Chat.colorize("&a✓&f Placeholder features"));
-            new Placeholder().register();
         } else {
             getLogger().log(Level.INFO, "Can not found PlaceholderAPI");
-            getLogger().log(Level.INFO, Chat.colorize("&c✘&f Placeholder features"));
+            getServer().getPluginManager().disablePlugin(this);
+            return;
         }
-        getLogger().log(Level.INFO, "--------------------------------------------");
         getServer().getPluginManager().registerEvents(new Join(), this);
         getServer().getPluginManager().registerEvents(new Quit(), this);
         getServer().getPluginManager().registerEvents(new Death(), this);
         getServer().getPluginManager().registerEvents(new Sprint(), this);
+        getServer().getPluginManager().registerEvents(new Damage(), this);
+        getServer().getPluginManager().registerEvents(new EXP(), this);
         new MythiccCMD(this);
         new SoulPoints(this);
         new MythiccItems(this);
-        getLogger().log(Level.INFO, Chat.colorize("&a✓&f SoulPoints features"));
-        getLogger().log(Level.INFO, "--------------------------------------------");
+        new Placeholder().register();
         RegisterDCore(this);
         Resources.createfiles();
         if (getServer().getOnlinePlayers().size() > 0) {

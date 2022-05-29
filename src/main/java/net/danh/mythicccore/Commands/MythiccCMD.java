@@ -2,7 +2,6 @@ package net.danh.mythicccore.Commands;
 
 import net.danh.dcore.Commands.CMDBase;
 import net.danh.mythicccore.MythiccCore;
-import net.danh.mythicccore.Utils.Resources;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
@@ -24,6 +23,8 @@ import java.util.stream.Collectors;
 import static net.danh.dcore.Utils.Chat.colorize;
 import static net.danh.dcore.Utils.Player.sendConsoleMessage;
 import static net.danh.dcore.Utils.Player.sendPlayerMessage;
+import static net.danh.mythicccore.Utils.Resources.getlangString;
+import static net.danh.mythicccore.Utils.Resources.reloadfiles;
 
 
 public class MythiccCMD extends CMDBase {
@@ -42,18 +43,18 @@ public class MythiccCMD extends CMDBase {
                             pp.showPlayer(MythiccCore.get(), p);
                         }
                         MythiccCore.getInvisible_list().remove(p);
-                        sendPlayerMessage(p, "&aBạn đã hết tàng hình");
+                        sendPlayerMessage(p, getlangString("UN_VANISH"));
                     } else {
                         for (Player pp : Bukkit.getOnlinePlayers()) {
                             pp.hidePlayer(MythiccCore.get(), p);
                         }
                         MythiccCore.getInvisible_list().add(p);
-                        sendPlayerMessage(p, "&aBạn đã tàng hình");
+                        sendPlayerMessage(p, getlangString("VANISH"));
                     }
                 }
                 if (args[0].equalsIgnoreCase("reload")) {
-                    Resources.reloadfiles();
-                    sendPlayerMessage(p, "&aĐã tải lại files");
+                    reloadfiles();
+                    sendPlayerMessage(p, getlangString("&aĐã tải lại files"));
                 }
                 if (args[0].equalsIgnoreCase("logs")) {
                     try {
@@ -108,20 +109,20 @@ public class MythiccCMD extends CMDBase {
                         pp.showPlayer(MythiccCore.get(), p);
                     }
                     MythiccCore.getInvisible_list().remove(p);
-                    sendPlayerMessage(p, "&aBạn đã hết tàng hình");
+                    sendPlayerMessage(p, getlangString("UN_VANISH"));
                 } else {
                     for (Player pp : Bukkit.getOnlinePlayers()) {
                         pp.hidePlayer(MythiccCore.get(), p);
                     }
                     MythiccCore.getInvisible_list().add(p);
-                    sendPlayerMessage(p, "&aBạn đã tàng hình");
+                    sendPlayerMessage(p, getlangString("VANISH"));
                 }
             }
         }
         if (args.length == 1) {
             if (args[0].equalsIgnoreCase("reload")) {
-                Resources.reloadfiles();
-                sendConsoleMessage(c, "&aĐả tải lại files");
+                reloadfiles();
+                sendConsoleMessage(c, getlangString("RELOAD"));
             }
             if (args[0].equalsIgnoreCase("logs")) {
                 try {

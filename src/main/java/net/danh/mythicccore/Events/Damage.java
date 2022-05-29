@@ -10,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 import static net.danh.dcore.Utils.Player.sendPlayerMessageType;
+import static net.danh.mythicccore.Utils.Resources.getlangString;
 import static net.danh.mythicccore.Utils.Resources.getmobfile;
 
 public class Damage implements Listener {
@@ -29,14 +30,17 @@ public class Damage implements Listener {
                     e.setCancelled(true);
                     e.setDamage(0);
                     mob.getEntity().setHealth(mob.getEntity().getMaxHealth());
-                    sendPlayerMessageType(p, null, "&cBạn cần dưới cấp độ &a" + mob_level_max + "&c để có thể gây sát thương lên " + mob.getDisplayName().replace("\n", " "));
+                    sendPlayerMessageType(p, null, getlangString("LEVEL_SO_HIGH")
+                            .replaceAll("%level%", String.valueOf(mob_level_max))
+                            .replaceAll("%mob%", mob.getDisplayName().replace("\n", " ")));
                 } else if (level < mob_level_min) {
                     mob.getEntity().setHealth(mob.getEntity().getMaxHealth());
                     e.setCancelled(true);
                     e.setDamage(0);
                     mob.getEntity().setHealth(mob.getEntity().getMaxHealth());
-                    sendPlayerMessageType(p, null, "&cBạn cần đạt cấp độ &a" + mob_level_min + "&c để có thể gây sát thương lên " + mob.getDisplayName().replace("\n", " "));
-
+                    sendPlayerMessageType(p, null, getlangString("LEVEL_SO_LOW")
+                            .replaceAll("%level%", String.valueOf(mob_level_min))
+                            .replaceAll("%mob%", mob.getDisplayName().replace("\n", " ")));
                 }
             }
         }

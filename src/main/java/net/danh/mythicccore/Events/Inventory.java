@@ -141,16 +141,16 @@ public class Inventory implements Listener {
                                 p.setItemOnCursor(null);
                             } else {
                                 e.setCancelled(true);
-                                sendPlayerMessage(p, "&cVật phẩm hiện tại đã không thể thêm phù phép nào nữa!");
+                                sendPlayerMessage(p, getlangString("FULL_SLOT"));
                                 return;
                             }
                         } else {
                             e.setCancelled(true);
-                            sendPlayerMessage(p, "&cBạn không thể enchant cấp thấp hơn cấp độ phù phép đang có");
+                            sendPlayerMessage(p, getlangString("LOWER_ENCHANT"));
                             return;
                         }
                     } else {
-                        sendPlayerMessage(p, "&aBạn đã đạt đến giới hạn của enchant &3" + name);
+                        sendPlayerMessage(p, getlangString("LIMITED_ENCHANT").replaceAll("%enchant%", key));
                     }
                 }
             }

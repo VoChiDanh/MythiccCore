@@ -27,11 +27,11 @@ public class SoulPoints extends CMDBase {
             Player target = Bukkit.getPlayer(args[1]);
             int soul = Integer.parseInt(args[2]);
             if (target == null) {
-                sendPlayerMessage(p, "&cNgười chơi không tồn tại");
+                sendPlayerMessage(p, getlangString("UNKNOWN_PLAYER"));
                 return;
             }
             if (soul < 0) {
-                sendPlayerMessage(p, "&cCon số phải lớn hơn 0");
+                sendPlayerMessage(p, getlangString("NUMBER_SO_LOW"));
                 return;
             }
             if (args[0].equalsIgnoreCase("add")) {
@@ -60,7 +60,7 @@ public class SoulPoints extends CMDBase {
         if (args.length == 1) {
             Player target = Bukkit.getPlayer(args[0]);
             if (target == null) {
-                sendConsoleMessage(c, "&cNgười chơi không tồn tại");
+                sendConsoleMessage(c, getlangString("UNKNOWN_PLAYER"));
                 return;
             }
             sendConsoleMessage(c, getlangString("CHECK_SOUL_POINTS").replace("%soul%", String.valueOf(getSoulPoints(target))));
@@ -69,11 +69,11 @@ public class SoulPoints extends CMDBase {
             Player target = Bukkit.getPlayer(args[1]);
             int soul = Integer.parseInt(args[2]);
             if (target == null) {
-                sendConsoleMessage(c, "&cNgười chơi không tồn tại");
+                sendConsoleMessage(c, getlangString("UNKNOWN_PLAYER"));
                 return;
             }
             if (soul < 0) {
-                sendConsoleMessage(c, "&cCon số phải lớn hơn 0");
+                sendConsoleMessage(c, getlangString("NUMBER_SO_LOW"));
                 return;
             }
             if (args[0].equalsIgnoreCase("add")) {
