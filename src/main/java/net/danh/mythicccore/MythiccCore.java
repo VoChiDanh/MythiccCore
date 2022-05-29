@@ -1,7 +1,6 @@
 package net.danh.mythicccore;
 
 import net.danh.dcore.NMS.NMSAssistant;
-import net.danh.dcore.Utils.Chat;
 import net.danh.mythicccore.Commands.MythiccCMD;
 import net.danh.mythicccore.Commands.MythiccItems;
 import net.danh.mythicccore.Commands.SoulPoints;
@@ -58,37 +57,37 @@ public final class MythiccCore extends JavaPlugin {
             return;
         }
         NMSAssistant nmsAssistant = new NMSAssistant();
-        getLogger().log(Level.INFO, "Server version: " + nmsAssistant.getNMSVersion());
+        getLogger().log(Level.INFO, "Detected server version: " + nmsAssistant.getNMSVersion());
         if (getServer().getPluginManager().getPlugin("ProtocolLib") != null) {
-            getLogger().log(Level.INFO, "Hooking into ProtocolLib");
+            getLogger().log(Level.INFO, "Hooked onto ProtocolLib");
         } else {
             getLogger().log(Level.INFO, "Can not found ProtocolLib");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
         if (getServer().getPluginManager().getPlugin("MMOItems") != null) {
-            getLogger().log(Level.INFO, "Hooking into MMOItems");
+            getLogger().log(Level.INFO, "Hooked onto MMOItems");
         } else {
             getLogger().log(Level.INFO, "Can not found MMOItems");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
         if (getServer().getPluginManager().getPlugin("MMOCore") != null) {
-            getLogger().log(Level.INFO, "Hooking into MMOCore");
+            getLogger().log(Level.INFO, "Hooked onto MMOCore");
         } else {
             getLogger().log(Level.INFO, "Can not found MMOCore");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
         if (getServer().getPluginManager().getPlugin("MythicMobs") != null) {
-            getLogger().log(Level.INFO, "Hooking into MythicMobs");
+            getLogger().log(Level.INFO, "Hooked onto MythicMobs");
         } else {
             getLogger().log(Level.INFO, "Can not found MythicMobs");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
         if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            getLogger().log(Level.INFO, "Hooking into PlaceholderAPI");
+            getLogger().log(Level.INFO, "Hooked onto PlaceholderAPI");
         } else {
             getLogger().log(Level.INFO, "Can not found PlaceholderAPI");
             getServer().getPluginManager().disablePlugin(this);
