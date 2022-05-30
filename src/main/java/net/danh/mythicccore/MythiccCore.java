@@ -109,6 +109,7 @@ public final class MythiccCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Damage(), this);
         getServer().getPluginManager().registerEvents(new EXP(), this);
         getServer().getPluginManager().registerEvents(new Season(), this);
+        getServer().getPluginManager().registerEvents(new Inventory(), this);
         new MythiccCMD(this);
         new SoulPoints(this);
         new MythiccItems(this);
