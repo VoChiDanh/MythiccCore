@@ -1,6 +1,7 @@
 package net.danh.mythicccore;
 
 import net.danh.dcore.NMS.NMSAssistant;
+import net.danh.mythicccore.Commands.Born;
 import net.danh.mythicccore.Commands.MythiccCMD;
 import net.danh.mythicccore.Commands.MythiccItems;
 import net.danh.mythicccore.Commands.SoulPoints;
@@ -16,6 +17,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.logging.Level;
 
 import static net.danh.dcore.DCore.RegisterDCore;
@@ -59,35 +61,42 @@ public final class MythiccCore extends JavaPlugin {
         NMSAssistant nmsAssistant = new NMSAssistant();
         getLogger().log(Level.INFO, "Detected server version: " + nmsAssistant.getNMSVersion());
         if (getServer().getPluginManager().getPlugin("ProtocolLib") != null) {
-            getLogger().log(Level.INFO, "Hooked onto ProtocolLib");
+            getLogger().log(Level.INFO, "Hooked onto ProtocolLib v" + Objects.requireNonNull(getServer().getPluginManager().getPlugin("ProtocolLib")).getDescription().getVersion());
         } else {
             getLogger().log(Level.INFO, "Can not found ProtocolLib");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
+        if (getServer().getPluginManager().getPlugin("RealisticSeasons") != null) {
+            getLogger().log(Level.INFO, "Hooked onto RealisticSeasons v" + Objects.requireNonNull(getServer().getPluginManager().getPlugin("RealisticSeasons")).getDescription().getVersion());
+        } else {
+            getLogger().log(Level.INFO, "Can not found RealisticSeasons");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
         if (getServer().getPluginManager().getPlugin("MMOItems") != null) {
-            getLogger().log(Level.INFO, "Hooked onto MMOItems");
+            getLogger().log(Level.INFO, "Hooked onto MMOItems v" + Objects.requireNonNull(getServer().getPluginManager().getPlugin("MMOItems")).getDescription().getVersion());
         } else {
             getLogger().log(Level.INFO, "Can not found MMOItems");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
         if (getServer().getPluginManager().getPlugin("MMOCore") != null) {
-            getLogger().log(Level.INFO, "Hooked onto MMOCore");
+            getLogger().log(Level.INFO, "Hooked onto MMOCore v" + Objects.requireNonNull(getServer().getPluginManager().getPlugin("MMOCore")).getDescription().getVersion());
         } else {
             getLogger().log(Level.INFO, "Can not found MMOCore");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
         if (getServer().getPluginManager().getPlugin("MythicMobs") != null) {
-            getLogger().log(Level.INFO, "Hooked onto MythicMobs");
+            getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + Objects.requireNonNull(getServer().getPluginManager().getPlugin("MythicMobs")).getDescription().getVersion());
         } else {
             getLogger().log(Level.INFO, "Can not found MythicMobs");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
         if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            getLogger().log(Level.INFO, "Hooked onto PlaceholderAPI");
+            getLogger().log(Level.INFO, "Hooked onto PlaceholderAPI v" + Objects.requireNonNull(getServer().getPluginManager().getPlugin("PlaceholderAPI")).getDescription().getVersion());
         } else {
             getLogger().log(Level.INFO, "Can not found PlaceholderAPI");
             getServer().getPluginManager().disablePlugin(this);
@@ -99,9 +108,11 @@ public final class MythiccCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Sprint(), this);
         getServer().getPluginManager().registerEvents(new Damage(), this);
         getServer().getPluginManager().registerEvents(new EXP(), this);
+        getServer().getPluginManager().registerEvents(new Season(), this);
         new MythiccCMD(this);
         new SoulPoints(this);
         new MythiccItems(this);
+        new Born(this);
         new Placeholder().register();
         RegisterDCore(this);
         Resources.createfiles();

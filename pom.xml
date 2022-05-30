@@ -142,9 +142,16 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>api</groupId>
+            <artifactId>RealisticSeasons</artifactId>
+            <version>8.1.4</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/RealisticSeasons-8.1.4.jar</systemPath>
+        </dependency>
+        <dependency>
             <groupId>com.github.D-x-Z</groupId>
             <artifactId>DCore</artifactId>
-            <version>6240cb1290</version>
+            <version>274ed7944b</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

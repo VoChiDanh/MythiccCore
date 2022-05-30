@@ -1,6 +1,7 @@
 package net.danh.mythicccore.Compatible;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import net.danh.mythicccore.Data.Born;
 import net.danh.mythicccore.MythiccCore;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -36,6 +37,12 @@ public class Placeholder extends PlaceholderExpansion {
     public String onPlaceholderRequest(Player p, @NotNull String identifier) {
         if (p == null) {
             return "0";
+        }
+        if (identifier.equalsIgnoreCase("year")) {
+            return String.valueOf(Born.getYear(p));
+        }
+        if (identifier.equalsIgnoreCase("age")) {
+            return String.valueOf(Born.getAge(p));
         }
         if (identifier.startsWith("stats_")) {
             String stats = identifier.substring(6).toUpperCase();
