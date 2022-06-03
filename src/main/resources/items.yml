@@ -1,19 +1,47 @@
 ENCHANTS:
   DEFAULT:
-    LORE: "<Enchant Trống>"
+    LORE: <Enchant Trống>
   MONEY:
-    NAME: "Money"
-    KEY: "MONEY"
+    NAME: Money
+    KEY: MONEY
   PURSE:
-    NAME: "Purse"
-    KEY: "PURSE"
+    NAME: Purse
+    KEY: PURSE
   SOULPOINTS:
-    NAME: "SoulPoints"
-    KEY: "SOULPOINTS"
+    NAME: SoulPoints
+    KEY: SOULPOINTS
   EXPERIENCE:
-    NAME: "Experience"
-    KEY: "EXPERIENCE"
+    NAME: Experience
+    KEY: EXPERIENCE
+  CUPKIMCUONG:
+    NAME: CUPKIMCUONG
+    KEY: POWER
+  CUPDA:
+    NAME: CUPDA
+    KEY: POWER
 ITEMS:
+  CUPKIMCUONG:
+    TYPE: TOOLS
+    MATERIAL: DIAMOND_PICKAXE
+    AMOUNT: 1
+    LIMITED: 10000
+    GLOW: true
+    HIDEFLAGS: true
+    UNBREAK: true
+    NAME: '&bCúp Kim Cương'
+    LORE:
+      - '&fNăng lượng &a%level%'
+  CUPDA:
+    TYPE: TOOLS
+    MATERIAL: STONE_PICKAXE
+    AMOUNT: 1
+    LIMITED: 10000
+    GLOW: true
+    HIDEFLAGS: true
+    UNBREAK: true
+    NAME: '&7Cúp Đá'
+    LORE:
+      - '&fNăng lượng &a%level%'
   MONEY:
     TYPE: ENCHANTMENT_BOOK
     MATERIAL: ENCHANTED_BOOK
@@ -22,12 +50,12 @@ ITEMS:
     GLOW: true
     HIDEFLAGS: true
     UNBREAK: true
-    NAME: "&6Money %level%"
+    NAME: '&6Money %level%'
     LORE:
-      - "&7Khi bạn tiêu diệt quái"
-      - "&7bạn sẽ nhận được %level%$"
-      - "&7"
-      - "&bKéo thả lên vật phẩm để enchant"
+      - '&7Khi bạn tiêu diệt quái'
+      - '&7bạn sẽ nhận được %level%$'
+      - '&7'
+      - '&bKéo thả lên vật phẩm để enchant'
   PURSE:
     TYPE: ENCHANTMENT_BOOK
     MATERIAL: ENCHANTED_BOOK
@@ -36,12 +64,12 @@ ITEMS:
     GLOW: true
     HIDEFLAGS: true
     UNBREAK: true
-    NAME: "&6Purse %level%"
+    NAME: '&6Purse %level%'
     LORE:
-      - "&7Khi bạn chết bạn sẽ mất"
-      - "&7ít tiền hơn"
-      - "&7"
-      - "&bKéo thả lên vật phẩm để enchant"
+      - '&7Khi bạn chết bạn sẽ mất'
+      - '&7ít tiền hơn'
+      - '&7'
+      - '&bKéo thả lên vật phẩm để enchant'
   SOULPOINTS:
     TYPE: ENCHANTMENT_BOOK
     MATERIAL: ENCHANTED_BOOK
@@ -50,11 +78,11 @@ ITEMS:
     GLOW: true
     HIDEFLAGS: true
     UNBREAK: true
-    NAME: "&6SoulPoints %level%"
+    NAME: '&6SoulPoints %level%'
     LORE:
-      - "&7Hồi %level% SoulPoints"
-      - "&7"
-      - "&bKéo thả lên vật phẩm để enchant"
+      - '&7Hồi %level% SoulPoints'
+      - '&7'
+      - '&bKéo thả lên vật phẩm để enchant'
   EXPERIENCE:
     TYPE: ENCHANTMENT_BOOK
     MATERIAL: ENCHANTED_BOOK
@@ -63,8 +91,8 @@ ITEMS:
     GLOW: true
     HIDEFLAGS: true
     UNBREAK: true
-    NAME: "&6Experience %level%"
+    NAME: '&6Experience %level%'
     LORE:
-      - "&7x%level% XP khi giết quái"
-      - "&7"
-      - "&bKéo thả lên vật phẩm để enchant"
+      - '&7x%level% XP khi giết quái'
+      - '&7'
+      - '&bKéo thả lên vật phẩm để enchant'

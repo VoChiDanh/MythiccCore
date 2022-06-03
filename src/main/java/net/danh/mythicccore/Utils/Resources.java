@@ -227,5 +227,4 @@ public class Resources {
         } catch (IOException ignored) {
         }
     }
-
 }

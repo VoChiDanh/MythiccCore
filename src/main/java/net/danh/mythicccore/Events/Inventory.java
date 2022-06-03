@@ -125,6 +125,10 @@ public class Inventory implements Listener {
             if (enchant.hasItemMeta() && enchantmeta.getPersistentDataContainer().has(new NamespacedKey(MythiccCore.get(), "ENCHANTMENT_BOOK"), PersistentDataType.STRING)) {
                 if (targetmeta.hasLore() && target.hasItemMeta()) {
                     String name = enchantmeta.getPersistentDataContainer().get(new NamespacedKey(MythiccCore.get(), "ENCHANTMENT_BOOK"), PersistentDataType.STRING);
+                    if (name == null) {
+                        e.setCancelled(true);
+                        return;
+                    }
                     String lore = getitemfile().getString("ENCHANTS." + name + ".NAME");
                     String key = getitemfile().getString("ENCHANTS." + name + ".KEY");
                     String defaultlore = getitemfile().getString("ENCHANTS.DEFAULT.LORE");

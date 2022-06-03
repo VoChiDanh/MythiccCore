@@ -1,6 +1,7 @@
 package net.danh.mythicccore;
 
 import net.danh.dcore.NMS.NMSAssistant;
+import net.danh.dcore.Utils.File;
 import net.danh.mythicccore.Commands.Born;
 import net.danh.mythicccore.Commands.MythiccCMD;
 import net.danh.mythicccore.Commands.MythiccItems;
@@ -25,7 +26,7 @@ import static net.danh.dcore.Enchant.Lore.getEnchantLevel;
 import static net.danh.dcore.Enchant.Lore.hasEnchant;
 import static net.danh.mythicccore.Data.Storage.loadPlayerData;
 import static net.danh.mythicccore.Data.Storage.savePlayerData;
-import static net.danh.mythicccore.Utils.Resources.getitemfile;
+import static net.danh.mythicccore.Utils.Resources.*;
 
 public final class MythiccCore extends JavaPlugin {
 
@@ -110,6 +111,7 @@ public final class MythiccCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new EXP(), this);
         getServer().getPluginManager().registerEvents(new Season(), this);
         getServer().getPluginManager().registerEvents(new Inventory(), this);
+        getServer().getPluginManager().registerEvents(new BreakBlock(), this);
         new MythiccCMD(this);
         new SoulPoints(this);
         new MythiccItems(this);
@@ -117,6 +119,13 @@ public final class MythiccCore extends JavaPlugin {
         new Placeholder().register();
         RegisterDCore(this);
         Resources.createfiles();
+        File.updateFile(MythiccCore.get(), getconfigfile(), "config.yml");
+        File.updateFile(MythiccCore.get(), getguifile(), "gui.yml");
+        File.updateFile(MythiccCore.get(), getitemfile(), "items.yml");
+        File.updateFile(MythiccCore.get(), getlanguagefile(), "language.yml");
+        File.updateFile(MythiccCore.get(), getmobfile(), "mobs.yml");
+        File.updateFile(MythiccCore.get(), getsettingfile(), "setting.yml");
+        File.updateFile(MythiccCore.get(), getupgradefile(), "upgrade.yml");
         if (getServer().getOnlinePlayers().size() > 0) {
             for (Player p : getServer().getOnlinePlayers()) {
                 loadPlayerData(p);

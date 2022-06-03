@@ -28,6 +28,8 @@ IS_NOT_NUMBER: "&cCần phải là số dương"
 ALREADY_HAVE_YEAR: "&cBạn đã nhập năm sinh trước đó rồi, việc này không thể chỉnh sửa"
 DO_NOT_HAVE_YEAR: "&eBạn hãy gõ&c /namsinh <năm sinh của bạn>&e để có thể nhận những đặc quyền về năm sinh nhé"
 CHOOSE_YEAR: "&aBạn sinh ra ở năm %year% và bây giờ bạn đã %age% tuổi"
+UNKNOWN_TOOLS: "&cBạn không thể phá vỡ khối này bằng công cụ này"
+LOW_POWER: "&cSố năng lượng còn lại của công cụ không đủ để phá khối này!"
 NO_PERMISSION_GUI:
   - "&cBạn không có quyền mở gui này bằng lệnh, hãy đến gặp NPC để có thể mở"
   - "&6Để có thể dùng lệnh này, bạn phải mua quyền tại shop quyền lợi"

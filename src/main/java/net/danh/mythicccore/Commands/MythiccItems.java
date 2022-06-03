@@ -65,7 +65,7 @@ public class MythiccItems extends CMDBase {
                         sendPlayerMessage(p, getlangString("UNKNOWN_PLAYER"));
                         return;
                     }
-                    List<String> lore = getitemfile().getStringList("ITEMS." + items + ".LORE").stream().map(a -> a.replaceAll("%level%", args[3])).collect(Collectors.toList());
+                    List<String> lore = getitemfile().getStringList("ITEMS." + items + ".LORE").stream().map(a -> a.replaceAll("%level%", String.format("%,d", Integer.parseInt(args[3])))).collect(Collectors.toList());
                     String name = Objects.requireNonNull(getitemfile().getString("ITEMS." + items + ".NAME")).replace("%level%", formatLevel(Integer.parseInt(args[3])));
                     Integer amount = Integer.parseInt(args[4]);
                     Material material = valueOf(getitemfile().getString("ITEMS." + items + ".MATERIAL"));
@@ -120,7 +120,7 @@ public class MythiccItems extends CMDBase {
                     sendConsoleMessage(c, getlangString("UNKNOWN_PLAYER"));
                     return;
                 }
-                List<String> lore = getitemfile().getStringList("ITEMS." + items + ".LORE").stream().map(a -> a.replaceAll("%level%", args[3])).collect(Collectors.toList());
+                List<String> lore = getitemfile().getStringList("ITEMS." + items + ".LORE").stream().map(a -> a.replaceAll("%level%", String.format("%,d", Integer.parseInt(args[3])))).collect(Collectors.toList());
                 String name = Objects.requireNonNull(getitemfile().getString("ITEMS." + items + ".NAME")).replace("%level%", formatLevel(Integer.parseInt(args[3])));
                 Integer amount = Integer.parseInt(args[4]);
                 Material material = valueOf(getitemfile().getString("ITEMS." + items + ".MATERIAL"));
