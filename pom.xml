@@ -6,7 +6,7 @@
 
     <groupId>net.danh</groupId>
     <artifactId>MythiccCore</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2</version>
     <packaging>jar</packaging>
 
     <name>MythiccCore</name>
@@ -151,7 +151,7 @@
         <dependency>
             <groupId>com.github.D-x-Z</groupId>
             <artifactId>DCore</artifactId>
-            <version>bcea4de3ce</version>
+            <version>00eb0360c3</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

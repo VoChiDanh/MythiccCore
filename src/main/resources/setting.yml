@@ -13,14 +13,20 @@ POWER:
   DIAMOND_BLOCK: 50
   EMERALD_ORE: 50
   EMERALD_BLOCK: 60
+MINE:
+  OAK_LOG:
+    POWER: 10
+    DROP:
+      ID: MATERIAL
+      TYPE:
+        - GO1
+        - GO2
+        - GO3
+        - GO4
+        - GO5
+        - GO6
+        - GO7
+        - GO8
+        - GO9
 BLOCKS:
-  - COAL_ORE
-  - COAL_BLOCK
-  - IRON_ORE
-  - IRON_BLOCK
-  - GOLD_ORE
-  - GOLD_BLOCK
-  - DIAMOND_ORE
-  - DIAMOND_BLOCK
-  - EMERALD_ORE
-  - EMERALD_BLOCK
+  - OAK_LOG
