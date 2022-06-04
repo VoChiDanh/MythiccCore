@@ -25,6 +25,9 @@ public class Damage implements Listener {
                 int level = PlayerData.get(p).getLevel();
                 int mob_level_max = getmobfile().getInt("MOBS." + mob.getType().getInternalName().toUpperCase() + ".LEVEL.MAX");
                 int mob_level_min = getmobfile().getInt("MOBS." + mob.getType().getInternalName().toUpperCase() + ".LEVEL.MIN");
+                if (mob_level_max == 0 && mob_level_min == 0) {
+                    return;
+                }
                 if (level >= mob_level_max) {
                     mob.getEntity().setHealth(mob.getEntity().getMaxHealth());
                     e.setCancelled(true);
