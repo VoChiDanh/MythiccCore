@@ -151,7 +151,7 @@
         <dependency>
             <groupId>com.github.D-x-Z</groupId>
             <artifactId>DCore</artifactId>
-            <version>00eb0360c3</version>
+            <version>11def6e09c</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

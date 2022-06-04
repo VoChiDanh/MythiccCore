@@ -17,6 +17,7 @@ GUI:
       MATERIAL: EMERALD
       AMOUNT: 1
       SLOT: 25
+      COST: 10000
       DISPLAY: "&aNhấn để cường hóa vật phẩm"
       LORE:
         - "&7&o"

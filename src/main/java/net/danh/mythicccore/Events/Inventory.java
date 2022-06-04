@@ -120,7 +120,7 @@ public class Inventory implements Listener {
                     ItemStack upgradestone6 = e.getInventory().getItem(30);
                     ItemStack upgradestone7 = e.getInventory().getItem(31);
                     ItemStack upgradestone8 = e.getInventory().getItem(32);
-                    upgradeItem(p, e.getInventory(), weapon, upgradestone1, upgradestone2, upgradestone3, upgradestone4, upgradestone5, upgradestone6, upgradestone7, upgradestone8);
+                    upgradeItem(p, e.getInventory(), weapon, upgradestone1, upgradestone2, upgradestone3, upgradestone4, upgradestone5, upgradestone6, upgradestone7, upgradestone8, getguiInt("GUI.UPGRADE.BUTTON.COST"));
                 }
             }
         }
