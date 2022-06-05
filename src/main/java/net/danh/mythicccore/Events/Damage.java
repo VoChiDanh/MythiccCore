@@ -26,24 +26,24 @@ public class Damage implements Listener {
                 int mob_level_max = getmobfile().getInt("MOBS." + mob.getType().getInternalName().toUpperCase() + ".LEVEL.MAX");
                 int mob_level_min = getmobfile().getInt("MOBS." + mob.getType().getInternalName().toUpperCase() + ".LEVEL.MIN");
                 if (mob_level_max == 0 && mob_level_min == 0) {
+                    e.setDamage(0);
+                    mob.getEntity().setHealth(mob.getEntity().getMaxHealth());
+                    e.setCancelled(true);
+                    mob.getEntity().setHealth(mob.getEntity().getMaxHealth());
                     return;
                 }
                 if (level >= mob_level_max) {
-                    mob.getEntity().setHealth(mob.getEntity().getMaxHealth());
-                    e.setCancelled(true);
                     e.setDamage(0);
                     mob.getEntity().setHealth(mob.getEntity().getMaxHealth());
-                    sendPlayerMessageType(p, null, getlangString("LEVEL_SO_HIGH")
-                            .replaceAll("%level%", String.valueOf(mob_level_max))
-                            .replaceAll("%mob%", mob.getDisplayName().replace("\n", " ")));
+                    e.setCancelled(true);
+                    mob.getEntity().setHealth(mob.getEntity().getMaxHealth());
+                    sendPlayerMessageType(p, null, getlangString("LEVEL_SO_HIGH").replaceAll("%level%", String.valueOf(mob_level_max)).replaceAll("%mob%", mob.getDisplayName()));
                 } else if (level < mob_level_min) {
-                    mob.getEntity().setHealth(mob.getEntity().getMaxHealth());
-                    e.setCancelled(true);
                     e.setDamage(0);
                     mob.getEntity().setHealth(mob.getEntity().getMaxHealth());
-                    sendPlayerMessageType(p, null, getlangString("LEVEL_SO_LOW")
-                            .replaceAll("%level%", String.valueOf(mob_level_min))
-                            .replaceAll("%mob%", mob.getDisplayName().replace("\n", " ")));
+                    e.setCancelled(true);
+                    mob.getEntity().setHealth(mob.getEntity().getMaxHealth());
+                    sendPlayerMessageType(p, null, getlangString("LEVEL_SO_LOW").replaceAll("%level%", String.valueOf(mob_level_min)).replaceAll("%mob%", mob.getDisplayName()));
                 }
             }
         }

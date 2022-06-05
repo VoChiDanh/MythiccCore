@@ -3,24 +3,159 @@ MOBS:
     XP: 1
     LEVEL:
       MIN: 1
-      MAX: 5
+      MAX: 3
   DANLANG:
     XP: 2
     LEVEL:
       MIN: 1
-      MAX: 6
+      MAX: 4
   QUAIVATXUONG:
     XP: 3
     LEVEL:
-      MIN: 4
-      MAX: 7
+      MIN: 2
+      MAX: 5
   CHIENBINHXUONG:
     XP: 4
     LEVEL:
-      MIN: 5
-      MAX: 8
+      MIN: 2
+      MAX: 6
   XUONGCUNGTHU:
     XP: 5
     LEVEL:
-      MIN: 6
+      MIN: 3
+      MAX: 7
+  ZOMBIEMATNAO:
+    XP: 6
+    LEVEL:
+      MIN: 3
+      MAX: 8
+  ZOMBIECANXE:
+    XP: 7
+    LEVEL:
+      MIN: 4
       MAX: 9
+  ZOMBIEKISINH:
+    XP: 8
+    LEVEL:
+      MIN: 4
+      MAX: 10
+  KISINHTRUNG:
+    XP: 9
+    LEVEL:
+      MIN: 5
+      MAX: 11
+  ZOMBIEKHONGLO:
+    XP: 10
+    LEVEL:
+      MIN: 5
+      MAX: 12
+  ZOMBIEMU:
+    XP: 11
+    LEVEL:
+      MIN: 6
+      MAX: 13
+  BOSSXUONGCODAI:
+    XP: 20
+    LEVEL:
+      MIN: 10
+      MAX: 100
+  BOSSXUONGCODAI2:
+    XP: 20
+    LEVEL:
+      MIN: 10
+      MAX: 100
+  BOSSHOAZOMBIE:
+    XP: 20
+    LEVEL:
+      MIN: 10
+      MAX: 100
+  GUARDIANMAZE1:
+    XP: 10
+    LEVEL:
+      MIN: 10
+      MAX: 100
+  NHENDOC:
+    XP: 12
+    LEVEL:
+      MIN: 6
+      MAX: 14
+  NHENME:
+    XP: 13
+    LEVEL:
+      MIN: 7
+      MAX: 15
+  NHENBANTO:
+    XP: 14
+    LEVEL:
+      XP: 7
+      MAX: 16
+  NHENBANTOCAP2:
+    XP: 15
+    LEVEL:
+      MIN: 8
+      MAX: 17
+  NHENKICHDOC:
+    XP: 16
+    LEVEL:
+      MIN: 8
+      MAX: 18
+  NHENDOTBIEN:
+    XP: 17
+    LEVEL:
+      MIN: 9
+      MAX: 19
+  NHENKISI:
+    XP: 18
+    LEVEL:
+      MIN: 9
+      MAX: 20
+  NHENANTHIT:
+    XP: 19
+    LEVEL:
+      MIN: 10
+      MAX: 21
+  NHENPHUNDOC:
+    XP: 20
+    LEVEL:
+      MIN: 10
+      MAX: 22
+  NHENSIEUDOC:
+    XP: 21
+    LEVEL:
+      MIN: 11
+      MAX: 23
+  NHENCHUA:
+    XP: 22
+    LEVEL:
+      MIN: 11
+      MAX: 24
+  NHENCHUA2:
+    XP: 23
+    LEVEL:
+      MIN: 12
+      MAX: 25
+  THODAN:
+    XP: 24
+    LEVEL:
+      MIN: 12
+      MAX: 26
+  HEODIEN:
+    XP: 25
+    LEVEL:
+      MIN: 13
+      MAX: 27
+  QUAIVATBO:
+    XP: 26
+    LEVEL:
+      MIN: 13
+      MAX: 28
+  CHOSOIDOTBIEN:
+    XP: 27
+    LEVEL:
+      MIN: 14
+      MAX: 29
+  CUUDOTBIEN:
+    XP: 28
+    LEVEL:
+      MIN: 15
+      MAX: 30

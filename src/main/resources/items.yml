@@ -13,13 +13,58 @@ ENCHANTS:
   EXPERIENCE:
     NAME: Experience
     KEY: EXPERIENCE
+  RIUKIMCUONG:
+    NAME: RIUKIMCUONG
+    KEY: POWER
+  RIUSAT:
+    NAME: RIUSAT
+    KEY: POWER
+  RIUDA:
+    NAME: RIUDA
+    KEY: POWER
   CUPKIMCUONG:
     NAME: CUPKIMCUONG
+    KEY: POWER
+  CUPSAT:
+    NAME: CUPSAT
     KEY: POWER
   CUPDA:
     NAME: CUPDA
     KEY: POWER
 ITEMS:
+  RIUKIMCUONG:
+    TYPE: TOOLS
+    MATERIAL: DIAMOND_AXE
+    AMOUNT: 1
+    LIMITED: 10000
+    GLOW: true
+    HIDEFLAGS: true
+    UNBREAK: true
+    NAME: '&bRìu Kim Cương'
+    LORE:
+      - '&fNăng lượng &a%level%'
+  RIUSAT:
+    TYPE: TOOLS
+    MATERIAL: IRON_AXE
+    AMOUNT: 1
+    LIMITED: 10000
+    GLOW: true
+    HIDEFLAGS: true
+    UNBREAK: true
+    NAME: '&7Rìu Sắt'
+    LORE:
+      - '&fNăng lượng &a%level%'
+  RIUDA:
+    TYPE: TOOLS
+    MATERIAL: STONE_AXE
+    AMOUNT: 1
+    LIMITED: 10000
+    GLOW: true
+    HIDEFLAGS: true
+    UNBREAK: true
+    NAME: '&8Rìu Đá'
+    LORE:
+      - '&fNăng lượng &a%level%'
   CUPKIMCUONG:
     TYPE: TOOLS
     MATERIAL: DIAMOND_PICKAXE
@@ -31,6 +76,17 @@ ITEMS:
     NAME: '&bCúp Kim Cương'
     LORE:
       - '&fNăng lượng &a%level%'
+  CUPSAT:
+    TYPE: TOOLS
+    MATERIAL: IRON_PICKAXE
+    AMOUNT: 1
+    LIMITED: 10000
+    GLOW: true
+    HIDEFLAGS: true
+    UNBREAK: true
+    NAME: '&7Cúp Sắt'
+    LORE:
+      - '&fNăng lượng &a%level%'
   CUPDA:
     TYPE: TOOLS
     MATERIAL: STONE_PICKAXE
@@ -39,7 +95,7 @@ ITEMS:
     GLOW: true
     HIDEFLAGS: true
     UNBREAK: true
-    NAME: '&7Cúp Đá'
+    NAME: '&8Cúp Đá'
     LORE:
       - '&fNăng lượng &a%level%'
   MONEY:

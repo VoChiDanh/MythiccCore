@@ -94,63 +94,59 @@ public class Item {
                 NBTItem nbtupgradestone7 = NBTItem.get(upgradestone7);
                 NBTItem nbtupgradestone8 = NBTItem.get(upgradestone8);
                 if (nbtweapon.hasType() && Objects.equals(nbtweapon.getType(), getupgradeString(nbtweapon.getString("MMOITEMS_ITEM_ID") + ".WEAPON_MATERIAL"))) {
-                    if (Objects.equals(nbtupgradestone1.getString("MMOITEMS_ITEM_ID"), nbtupgradestone2.getString("MMOITEMS_ITEM_ID")) && Objects.equals(nbtupgradestone1.getString("MMOITEMS_ITEM_ID"), nbtupgradestone3.getString("MMOITEMS_ITEM_ID")) && Objects.equals(nbtupgradestone1.getString("MMOITEMS_ITEM_ID"), nbtupgradestone4.getString("MMOITEMS_ITEM_ID")) && Objects.equals(nbtupgradestone1.getString("MMOITEMS_ITEM_ID"), nbtupgradestone5.getString("MMOITEMS_ITEM_ID")) && Objects.equals(nbtupgradestone1.getString("MMOITEMS_ITEM_ID"), nbtupgradestone6.getString("MMOITEMS_ITEM_ID")) && Objects.equals(nbtupgradestone1.getString("MMOITEMS_ITEM_ID"), nbtupgradestone7.getString("MMOITEMS_ITEM_ID")) && Objects.equals(nbtupgradestone1.getString("MMOITEMS_ITEM_ID"), nbtupgradestone8.getString("MMOITEMS_ITEM_ID"))) {
-                        if (Objects.equals(nbtupgradestone1.getType(), getupgradeString(nbtweapon.getString("MMOITEMS_ITEM_ID") + ".UPGRADE_STONE_MATERIAL")) && Objects.equals(nbtupgradestone2.getType(), nbtupgradestone1.getType()) && Objects.equals(nbtupgradestone3.getType(), nbtupgradestone1.getType()) && Objects.equals(nbtupgradestone4.getType(), nbtupgradestone1.getType()) && Objects.equals(nbtupgradestone5.getType(), nbtupgradestone1.getType()) && Objects.equals(nbtupgradestone6.getType(), nbtupgradestone1.getType()) && Objects.equals(nbtupgradestone7.getType(), nbtupgradestone1.getType()) && Objects.equals(nbtupgradestone8.getType(), nbtupgradestone1.getType())) {
-                            if (Contain.inList(getupgradefile().getStringList(nbtweapon.getString("MMOITEMS_ITEM_ID") + ".UPGRADE_STONE"), nbtupgradestone1.getString("MMOITEMS_ITEM_ID"))) {
-                                MMOItem mmoitem = new LiveMMOItem(nbtweapon);
-                                if (Objects.equals(nbtweapon.getType(), "WAND")) {
-                                    if (mmoitem.hasData(ItemStats.ATTACK_DAMAGE)) {
-                                        mmoitem.setData(ItemStats.ATTACK_DAMAGE, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.ATTACK_DAMAGE).toString()) + 0.5));
-                                    }
-                                    if (mmoitem.hasData(ItemStats.PVP_DAMAGE)) {
-                                        mmoitem.setData(ItemStats.PVP_DAMAGE, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.PVE_DAMAGE).toString()) + 0.3));
-                                    }
-                                    if (mmoitem.hasData(ItemStats.PVE_DAMAGE)) {
-                                        mmoitem.setData(ItemStats.PVE_DAMAGE, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.PVE_DAMAGE).toString()) + 0.2));
-                                    }
-                                    if (mmoitem.hasData(ItemStats.MANA_COST)) {
-                                        mmoitem.setData(ItemStats.MANA_COST, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.MANA_COST).toString()) + 0.1));
-                                    }
-                                    if (mmoitem.hasData(ItemStats.MAX_DURABILITY)) {
-                                        mmoitem.setData(ItemStats.MAX_DURABILITY, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.CUSTOM_DURABILITY).toString()) + 100));
-                                    }
+                    if (Objects.equals(nbtupgradestone1.getType(), getupgradeString(nbtweapon.getString("MMOITEMS_ITEM_ID") + ".UPGRADE_STONE_MATERIAL")) && Objects.equals(nbtupgradestone2.getType(), nbtupgradestone1.getType()) && Objects.equals(nbtupgradestone3.getType(), nbtupgradestone1.getType()) && Objects.equals(nbtupgradestone4.getType(), nbtupgradestone1.getType()) && Objects.equals(nbtupgradestone5.getType(), nbtupgradestone1.getType()) && Objects.equals(nbtupgradestone6.getType(), nbtupgradestone1.getType()) && Objects.equals(nbtupgradestone7.getType(), nbtupgradestone1.getType()) && Objects.equals(nbtupgradestone8.getType(), nbtupgradestone1.getType())) {
+                        if (Contain.inList(getupgradefile().getStringList(nbtweapon.getString("MMOITEMS_ITEM_ID") + ".UPGRADE_STONE"), nbtupgradestone1.getString("MMOITEMS_ITEM_ID")) && Contain.inList(getupgradefile().getStringList(nbtweapon.getString("MMOITEMS_ITEM_ID") + ".UPGRADE_STONE"), nbtupgradestone2.getString("MMOITEMS_ITEM_ID")) && Contain.inList(getupgradefile().getStringList(nbtweapon.getString("MMOITEMS_ITEM_ID") + ".UPGRADE_STONE"), nbtupgradestone3.getString("MMOITEMS_ITEM_ID")) && Contain.inList(getupgradefile().getStringList(nbtweapon.getString("MMOITEMS_ITEM_ID") + ".UPGRADE_STONE"), nbtupgradestone4.getString("MMOITEMS_ITEM_ID")) && Contain.inList(getupgradefile().getStringList(nbtweapon.getString("MMOITEMS_ITEM_ID") + ".UPGRADE_STONE"), nbtupgradestone5.getString("MMOITEMS_ITEM_ID")) && Contain.inList(getupgradefile().getStringList(nbtweapon.getString("MMOITEMS_ITEM_ID") + ".UPGRADE_STONE"), nbtupgradestone6.getString("MMOITEMS_ITEM_ID")) && Contain.inList(getupgradefile().getStringList(nbtweapon.getString("MMOITEMS_ITEM_ID") + ".UPGRADE_STONE"), nbtupgradestone7.getString("MMOITEMS_ITEM_ID")) && Contain.inList(getupgradefile().getStringList(nbtweapon.getString("MMOITEMS_ITEM_ID") + ".UPGRADE_STONE"), nbtupgradestone8.getString("MMOITEMS_ITEM_ID"))) {
+                            MMOItem mmoitem = new LiveMMOItem(nbtweapon);
+                            if (Objects.equals(nbtweapon.getType(), "WAND")) {
+                                if (mmoitem.hasData(ItemStats.ATTACK_DAMAGE)) {
+                                    mmoitem.setData(ItemStats.ATTACK_DAMAGE, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.ATTACK_DAMAGE).toString()) + 0.5));
                                 }
-                                if (Objects.equals(nbtweapon.getType(), "ARMOR")) {
-                                    if (mmoitem.hasData(ItemStats.ARMOR)) {
-                                        mmoitem.setData(ItemStats.ARMOR, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.ARMOR).toString()) + 0.5));
-                                    }
-                                    if (mmoitem.hasData(ItemStats.MAX_HEALTH)) {
-                                        mmoitem.setData(ItemStats.MAX_HEALTH, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.MAX_HEALTH).toString()) + 0.3));
-                                    }
-                                    if (mmoitem.hasData(ItemStats.BLOCK_POWER)) {
-                                        mmoitem.setData(ItemStats.BLOCK_POWER, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.BLOCK_POWER).toString()) + 0.2));
-                                    }
-                                    if (mmoitem.hasData(ItemStats.RESTORE_HEALTH)) {
-                                        mmoitem.setData(ItemStats.RESTORE_HEALTH, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.RESTORE_HEALTH).toString()) + 0.1));
-                                    }
-                                    if (mmoitem.hasData(ItemStats.RESTORE_MANA)) {
-                                        mmoitem.setData(ItemStats.RESTORE_MANA, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.RESTORE_MANA).toString()) + 0.1));
-                                    }
-                                    if (mmoitem.hasData(ItemStats.MAX_DURABILITY)) {
-                                        mmoitem.setData(ItemStats.MAX_DURABILITY, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.CUSTOM_DURABILITY).toString()) + 100));
-                                    }
+                                if (mmoitem.hasData(ItemStats.PVP_DAMAGE)) {
+                                    mmoitem.setData(ItemStats.PVP_DAMAGE, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.PVE_DAMAGE).toString()) + 0.3));
                                 }
-                                NBTItem result = mmoitem.newBuilder().buildNBT();
-                                Objects.requireNonNull(inventory.getItem(22)).setItemMeta(result.toItem().getItemMeta());
-                                inventory.setItem(12, null);
-                                inventory.setItem(13, null);
-                                inventory.setItem(14, null);
-                                inventory.setItem(21, null);
-                                inventory.setItem(23, null);
-                                inventory.setItem(30, null);
-                                inventory.setItem(31, null);
-                                inventory.setItem(32, null);
-                                MythiccCore.getEconomy().withdrawPlayer(p, cost);
-                            } else {
-                                sendPlayerMessage(p, getlangString("CAN_NOT_UPGRADE_WITH_THIS_STONE"));
+                                if (mmoitem.hasData(ItemStats.PVE_DAMAGE)) {
+                                    mmoitem.setData(ItemStats.PVE_DAMAGE, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.PVE_DAMAGE).toString()) + 0.2));
+                                }
+                                if (mmoitem.hasData(ItemStats.MANA_COST)) {
+                                    mmoitem.setData(ItemStats.MANA_COST, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.MANA_COST).toString()) + 0.1));
+                                }
+                                if (mmoitem.hasData(ItemStats.MAX_DURABILITY)) {
+                                    mmoitem.setData(ItemStats.MAX_DURABILITY, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.CUSTOM_DURABILITY).toString()) + 100));
+                                }
                             }
+                            if (Objects.equals(nbtweapon.getType(), "ARMOR")) {
+                                if (mmoitem.hasData(ItemStats.ARMOR)) {
+                                    mmoitem.setData(ItemStats.ARMOR, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.ARMOR).toString()) + 0.5));
+                                }
+                                if (mmoitem.hasData(ItemStats.MAX_HEALTH)) {
+                                    mmoitem.setData(ItemStats.MAX_HEALTH, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.MAX_HEALTH).toString()) + 0.3));
+                                }
+                                if (mmoitem.hasData(ItemStats.BLOCK_POWER)) {
+                                    mmoitem.setData(ItemStats.BLOCK_POWER, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.BLOCK_POWER).toString()) + 0.2));
+                                }
+                                if (mmoitem.hasData(ItemStats.RESTORE_HEALTH)) {
+                                    mmoitem.setData(ItemStats.RESTORE_HEALTH, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.RESTORE_HEALTH).toString()) + 0.1));
+                                }
+                                if (mmoitem.hasData(ItemStats.RESTORE_MANA)) {
+                                    mmoitem.setData(ItemStats.RESTORE_MANA, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.RESTORE_MANA).toString()) + 0.1));
+                                }
+                                if (mmoitem.hasData(ItemStats.MAX_DURABILITY)) {
+                                    mmoitem.setData(ItemStats.MAX_DURABILITY, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.CUSTOM_DURABILITY).toString()) + 100));
+                                }
+                            }
+                            NBTItem result = mmoitem.newBuilder().buildNBT();
+                            Objects.requireNonNull(inventory.getItem(22)).setItemMeta(result.toItem().getItemMeta());
+                            inventory.setItem(12, null);
+                            inventory.setItem(13, null);
+                            inventory.setItem(14, null);
+                            inventory.setItem(21, null);
+                            inventory.setItem(23, null);
+                            inventory.setItem(30, null);
+                            inventory.setItem(31, null);
+                            inventory.setItem(32, null);
+                            MythiccCore.getEconomy().withdrawPlayer(p, cost);
                         } else {
-                            sendPlayerMessage(p, getlangString("NOT_SAME_UPGRADE_STONE"));
+                            sendPlayerMessage(p, getlangString("CAN_NOT_UPGRADE_WITH_THIS_STONE"));
                         }
                     } else {
                         sendPlayerMessage(p, getlangString("NOT_CORRECT_UPGRADE_STONE"));

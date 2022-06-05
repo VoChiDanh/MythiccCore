@@ -2,17 +2,6 @@ SETTINGS:
   DEFAULT_MAX_SOUL_POINTS: 10
   DEFAULT_SOUL_POINTS: 7
   MINIMUM_SOUL_POINTS: 3
-POWER:
-  COAL_ORE: 10
-  COAL_BLOCK: 20
-  IRON_ORE: 20
-  IRON_BLOCK: 30
-  GOLD_ORE: 30
-  GOLD_BLOCK: 40
-  DIAMOND_ORE: 40
-  DIAMOND_BLOCK: 50
-  EMERALD_ORE: 50
-  EMERALD_BLOCK: 60
 MINE:
   OAK_LOG:
     POWER: 10
@@ -22,11 +11,5 @@ MINE:
         - GO1
         - GO2
         - GO3
-        - GO4
-        - GO5
-        - GO6
-        - GO7
-        - GO8
-        - GO9
 BLOCKS:
   - OAK_LOG
