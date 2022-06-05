@@ -17,6 +17,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static net.danh.dcore.Enchant.Lore.*;
+import static net.danh.dcore.Random.Number.isInteger;
 import static net.danh.dcore.Utils.Items.makeItem;
 import static net.danh.dcore.Utils.Player.sendConsoleMessage;
 import static net.danh.dcore.Utils.Player.sendPlayerMessage;
@@ -33,24 +34,25 @@ public class MythiccItems extends CMDBase {
     @Override
     public void playerexecute(Player p, String[] args) {
         if (p.hasPermission("Mythicc.Admin")) {
-            if (args.length == 3) {
+            if (args.length == 4) {
                 if (args[0].equalsIgnoreCase("enchant")) {
-                    String name = args[2].toUpperCase();
-                    String lore = getitemfile().getString("ENCHANTS." + name + ".NAME");
-                    String key = getitemfile().getString("ENCHANTS." + name + ".KEY");
-                    if (key == null || lore == null) {
-                        sendPlayerMessage(p, getlangString("UNKNOWN_KEY"));
-                        return;
+                    if (isInteger(args[3])) {
+                        String name = args[2].toUpperCase();
+                        String lore = getitemfile().getString("ENCHANTS." + name + ".NAME");
+                        String key = getitemfile().getString("ENCHANTS." + name + ".KEY");
+                        if (key == null || lore == null) {
+                            sendPlayerMessage(p, getlangString("UNKNOWN_KEY"));
+                            return;
+                        }
+                        Player target = Bukkit.getPlayer(args[1]);
+                        if (target == null) {
+                            sendPlayerMessage(p, getlangString("UNKNOWN_PLAYER"));
+                            return;
+                        }
+                        ItemStack item = target.getInventory().getItemInMainHand();
+                        String defaultlore = getitemfile().getString("ENCHANTS.DEFAULT.LORE");
+                        addEnchant(MythiccCore.get(), key, target, item, lore, Integer.parseInt(args[3]), defaultlore);
                     }
-                    Player target = Bukkit.getPlayer(args[1]);
-                    if (target == null) {
-                        sendPlayerMessage(p, getlangString("UNKNOWN_PLAYER"));
-                        return;
-                    }
-                    ItemStack item = target.getInventory().getItemInMainHand();
-                    Integer level = getEnchantLevel(MythiccCore.get(), key, item) + 1;
-                    String defaultlore = getitemfile().getString("ENCHANTS.DEFAULT.LORE");
-                    addEnchant(MythiccCore.get(), key, target, item, lore, level, defaultlore);
                 }
             }
             if (args.length == 5) {
@@ -87,24 +89,25 @@ public class MythiccItems extends CMDBase {
 
     @Override
     public void consoleexecute(ConsoleCommandSender c, String[] args) {
-        if (args.length == 3) {
+        if (args.length == 4) {
             if (args[0].equalsIgnoreCase("enchant")) {
-                String name = args[2].toUpperCase();
-                String lore = getitemfile().getString("ENCHANTS." + name + ".NAME");
-                String key = getitemfile().getString("ENCHANTS." + name + ".KEY");
-                if (key == null || lore == null) {
-                    sendConsoleMessage(c, getlangString("UNKNOWN_KEY"));
-                    return;
+                if (isInteger(args[3])) {
+                    String name = args[2].toUpperCase();
+                    String lore = getitemfile().getString("ENCHANTS." + name + ".NAME");
+                    String key = getitemfile().getString("ENCHANTS." + name + ".KEY");
+                    if (key == null || lore == null) {
+                        sendConsoleMessage(c, getlangString("UNKNOWN_KEY"));
+                        return;
+                    }
+                    Player target = Bukkit.getPlayer(args[1]);
+                    if (target == null) {
+                        sendConsoleMessage(c, getlangString("UNKNOWN_PLAYER"));
+                        return;
+                    }
+                    ItemStack item = target.getInventory().getItemInMainHand();
+                    String defaultlore = getitemfile().getString("ENCHANTS.DEFAULT.LORE");
+                    addEnchant(MythiccCore.get(), key, target, item, lore, Integer.parseInt(args[3]), defaultlore);
                 }
-                Player target = Bukkit.getPlayer(args[1]);
-                if (target == null) {
-                    sendConsoleMessage(c, getlangString("UNKNOWN_PLAYER"));
-                    return;
-                }
-                ItemStack item = target.getInventory().getItemInMainHand();
-                Integer level = getEnchantLevel(MythiccCore.get(), key, item) + 1;
-                String defaultlore = getitemfile().getString("ENCHANTS.DEFAULT.LORE");
-                addEnchant(MythiccCore.get(), key, target, item, lore, level, defaultlore);
             }
         }
 
