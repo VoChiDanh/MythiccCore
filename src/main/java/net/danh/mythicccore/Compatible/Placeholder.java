@@ -32,6 +32,15 @@ public class Placeholder extends PlaceholderExpansion {
         return MythiccCore.get().getDescription().getVersion();
     }
 
+    @Override
+    public boolean persist() {
+        return true;
+    }
+
+    @Override
+    public boolean canRegister() {
+        return true;
+    }
 
     @Override
     public String onPlaceholderRequest(Player p, @NotNull String identifier) {

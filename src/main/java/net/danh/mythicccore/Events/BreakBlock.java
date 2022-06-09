@@ -66,8 +66,8 @@ public class BreakBlock implements Listener {
                         if (blocks.containsKey(location)) {
                             int i = blocks.get(location);
                             int o = 10 - i;
+                            e.setCancelled(true);
                             if (i <= 10 && i > 0) {
-                                e.setCancelled(true);
                                 blocks.put(location, i - 1);
                                 Objects.requireNonNull(meta).getPersistentDataContainer().set(new NamespacedKey(MythiccCore.get(), "POWER".toUpperCase()), PersistentDataType.INTEGER, count);
                                 List<String> lore = meta.getLore();
@@ -77,7 +77,6 @@ public class BreakBlock implements Listener {
                                 p.getInventory().getItemInMainHand().setItemMeta(meta);
                                 p.sendTitle(Progress.getProgressBar(o, 10, 50, '|', "&a", "&7"), Chat.colorize("&e" + Progress.getPercentages(o, 10) + "%"), 10, 10, 10);
                             } else {
-                                e.setCancelled(true);
                                 blocks.put(location, 0);
                                 p.sendTitle(Progress.getProgressBar(10, 10, 50, '|', "&a", "&7"), Chat.colorize("&e" + Progress.getPercentages(10, 10) + "%"), 10, 10, 10);
                                 e.getBlock().setType(Material.AIR);
