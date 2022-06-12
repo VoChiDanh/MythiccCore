@@ -4,25 +4,18 @@ import net.danh.dcore.NMS.NMSAssistant;
 import net.danh.dcore.Utils.File;
 import net.danh.mythicccore.Commands.*;
 import net.danh.mythicccore.Compatible.Placeholder;
-import net.danh.mythicccore.Data.Storage;
 import net.danh.mythicccore.Events.*;
 import net.danh.mythicccore.Utils.Resources;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.logging.Level;
 
 import static net.danh.dcore.DCore.RegisterDCore;
-import static net.danh.dcore.Enchant.Lore.getEnchantLevel;
-import static net.danh.dcore.Enchant.Lore.hasEnchant;
-import static net.danh.mythicccore.Data.Storage.loadPlayerData;
-import static net.danh.mythicccore.Data.Storage.savePlayerData;
 import static net.danh.mythicccore.Utils.Resources.*;
 
 public final class MythiccCore extends JavaPlugin {
@@ -58,13 +51,6 @@ public final class MythiccCore extends JavaPlugin {
         }
         NMSAssistant nmsAssistant = new NMSAssistant();
         getLogger().log(Level.INFO, "Detected server version: " + nmsAssistant.getNMSVersion());
-        if (getServer().getPluginManager().getPlugin("ProtocolLib") != null) {
-            getLogger().log(Level.INFO, "Hooked onto ProtocolLib v" + Objects.requireNonNull(getServer().getPluginManager().getPlugin("ProtocolLib")).getDescription().getVersion());
-        } else {
-            getLogger().log(Level.INFO, "Can not found ProtocolLib");
-            getServer().getPluginManager().disablePlugin(this);
-            return;
-        }
         if (getServer().getPluginManager().getPlugin("RealisticSeasons") != null) {
             getLogger().log(Level.INFO, "Hooked onto RealisticSeasons v" + Objects.requireNonNull(getServer().getPluginManager().getPlugin("RealisticSeasons")).getDescription().getVersion());
         } else {
@@ -101,15 +87,14 @@ public final class MythiccCore extends JavaPlugin {
             return;
         }
         getServer().getPluginManager().registerEvents(new Join(), this);
-        getServer().getPluginManager().registerEvents(new Quit(), this);
         getServer().getPluginManager().registerEvents(new Death(), this);
         getServer().getPluginManager().registerEvents(new Damage(), this);
         getServer().getPluginManager().registerEvents(new EXP(), this);
         getServer().getPluginManager().registerEvents(new Season(), this);
         getServer().getPluginManager().registerEvents(new Inventory(), this);
         getServer().getPluginManager().registerEvents(new BreakBlock(), this);
+        getServer().getPluginManager().registerEvents(new EnchantItem(), this);
         new MythiccCMD(this);
-        new SoulPoints(this);
         new MythiccItems(this);
         new OpenRegeneratorGui(this);
         new OpenUpgradeGui(this);
@@ -124,42 +109,10 @@ public final class MythiccCore extends JavaPlugin {
         File.updateFile(MythiccCore.get(), getmobfile(), "mobs.yml");
         File.updateFile(MythiccCore.get(), getsettingfile(), "setting.yml");
         File.updateFile(MythiccCore.get(), getupgradefile(), "upgrade.yml");
-        if (getServer().getOnlinePlayers().size() > 0) {
-            for (Player p : getServer().getOnlinePlayers()) {
-                loadPlayerData(p);
-                for (int i = 0; i < MythiccCore.getInvisible_list().size(); i++) {
-                    p.hidePlayer(MythiccCore.get(), MythiccCore.getInvisible_list().get(i));
-                }
-            }
-        }
-        (new BukkitRunnable() {
-            public void run() {
-                for (Player p : getServer().getOnlinePlayers()) {
-                    ItemStack i = p.getInventory().getItemInMainHand();
-                    if (!hasEnchant(MythiccCore.get(), getitemfile().getString("ENCHANTS.SOULPOINTS.KEY"), i)) {
-                        net.danh.mythicccore.Data.SoulPoints.addSoulPoints(p, 1);
-                    } else {
-                        net.danh.mythicccore.Data.SoulPoints.addSoulPoints(p, getEnchantLevel(MythiccCore.get(), getitemfile().getString("ENCHANTS.SOULPOINTS.KEY"), i));
-                    }
-                }
-            }
-        }).runTaskTimer(this, 1800 * 20L, 1800 * 20L);
-        (new BukkitRunnable() {
-            public void run() {
-                for (Player p : getServer().getOnlinePlayers()) {
-                    Storage.savePlayerData(p);
-                }
-            }
-        }).runTaskTimer(this, 3600 * 20L, 3600 * 20L);
-
     }
 
     @Override
     public void onDisable() {
-        for (Player p : getServer().getOnlinePlayers()) {
-            p.closeInventory();
-            savePlayerData(p);
-        }
         Resources.saveconfig();
         Resources.savelanguage();
         Resources.savegui();

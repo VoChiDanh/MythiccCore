@@ -12,8 +12,6 @@ commands:
     description: MythiccCore
   upgradegui:
     description: upgradegui
-  soul:
-    description: soul
   MythiccItems:
     description: MythiccItems
   namsinh:

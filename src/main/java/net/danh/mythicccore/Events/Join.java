@@ -11,7 +11,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.jetbrains.annotations.NotNull;
 
 import static net.danh.dcore.Utils.Player.sendPlayerMessage;
-import static net.danh.mythicccore.Data.Storage.loadPlayerData;
 import static net.danh.mythicccore.Utils.Resources.getlangString;
 import static net.danh.mythicccore.Utils.Resources.getlanguagefile;
 
@@ -21,7 +20,6 @@ public class Join implements Listener {
     public void onJoin(@NotNull PlayerJoinEvent e) {
         Player player = e.getPlayer();
         SeasonsAPI seasonsapi = SeasonsAPI.getInstance();
-        loadPlayerData(player);
         for (int i = 0; i < MythiccCore.getInvisible_list().size(); i++) {
             player.hidePlayer(MythiccCore.get(), MythiccCore.getInvisible_list().get(i));
         }

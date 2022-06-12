@@ -16,7 +16,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static net.danh.dcore.Enchant.Lore.*;
+import static net.danh.dcore.Enchant.Lore.addEnchant;
+import static net.danh.dcore.Enchant.Lore.formatLevel;
 import static net.danh.dcore.Random.Number.isInteger;
 import static net.danh.dcore.Utils.Items.makeItem;
 import static net.danh.dcore.Utils.Player.sendConsoleMessage;

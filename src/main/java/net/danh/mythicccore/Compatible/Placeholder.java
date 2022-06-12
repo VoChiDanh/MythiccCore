@@ -8,8 +8,6 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import static net.danh.dcore.Enchant.Lore.getEnchantLevel;
-import static net.danh.mythicccore.Data.SoulPoints.getMaxSoulPoints;
-import static net.danh.mythicccore.Data.SoulPoints.getSoulPoints;
 import static net.danh.mythicccore.Utils.Resources.getitemfile;
 
 public class Placeholder extends PlaceholderExpansion {
@@ -58,12 +56,6 @@ public class Placeholder extends PlaceholderExpansion {
             ItemStack item = p.getInventory().getItemInMainHand();
             String key = getitemfile().getString("ENCHANTS." + stats + ".KEY");
             return String.valueOf(getEnchantLevel(MythiccCore.get(), key, item));
-        }
-        if (identifier.equalsIgnoreCase("soulpoints")) {
-            return String.valueOf(getSoulPoints(p));
-        }
-        if (identifier.equalsIgnoreCase("max_soulpoints")) {
-            return String.valueOf(getMaxSoulPoints(p));
         }
         return null;
     }

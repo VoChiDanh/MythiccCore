@@ -31,6 +31,7 @@ CHOOSE_YEAR: "&aBạn sinh ra ở năm %year% và bây giờ bạn đã %age% tu
 UNKNOWN_TOOLS: "&cBạn không thể phá vỡ khối này bằng công cụ này"
 LOW_POWER: "&cSố năng lượng còn lại của công cụ không đủ để phá khối này!"
 NOT_ENOUGH_COST: "&cBạn không đủ %cost%$ để thực hiện việc này!"
+ENCHANT_SUCCESS: "&aPhù phép thành công %enchant% %level% lên vật phẩm %item%"
 NO_PERMISSION_GUI:
   - "&cBạn không có quyền mở gui này bằng lệnh, hãy đến gặp NPC để có thể mở"
   - "&6Để có thể dùng lệnh này, bạn phải mua quyền tại shop quyền lợi"
