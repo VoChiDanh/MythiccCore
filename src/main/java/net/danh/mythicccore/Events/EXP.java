@@ -16,10 +16,10 @@ public class EXP implements Listener {
     @EventHandler
     public void onExpGain(PlayerExperienceGainEvent e) {
         Player p = e.getPlayer();
-        int exp = e.getExperience();
+        double exp = e.getExperience();
         ItemStack i = p.getInventory().getItemInMainHand();
         if (hasEnchant(MythiccCore.get(), getitemfile().getString("ENCHANTS.EXPERIENCE.KEY"), i)) {
-            e.setExperience(exp * getEnchantLevel(MythiccCore.get(), getitemfile().getString("ENCHANTS.EXPERIENCE.KEY"), i));
+            e.setExperience((int) (exp * getEnchantLevel(MythiccCore.get(), getitemfile().getString("ENCHANTS.EXPERIENCE.KEY"), i)));
         }
     }
 }

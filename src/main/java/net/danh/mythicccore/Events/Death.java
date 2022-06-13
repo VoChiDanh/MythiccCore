@@ -24,22 +24,22 @@ public class Death implements Listener {
 
     @EventHandler
     public void onMythicMobDeath(MythicMobDeathEvent e) {
-        Player p = (Player) e.getKiller();
         SeasonsAPI seasonsapi = SeasonsAPI.getInstance();
-        if (p == null) {
-            return;
-        }
-        ItemStack item = p.getInventory().getItemInMainHand();
-        if (hasEnchant(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ENCHANTS.MONEY.KEY")).toUpperCase(), item)) {
-            MythiccCore.getEconomy().depositPlayer(p, getEnchantLevel(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ENCHANTS.MONEY.KEY")).toUpperCase(), item));
-        }
-        double mobLevel = e.getMobLevel();
-        int intmoblevel = (int) mobLevel;
-        int mobxp = getmobfile().getInt("MOBS." + e.getMobType().getInternalName().toUpperCase() + ".XP");
-        if (seasonsapi.getDate(p.getWorld()).getDay() < 30) {
-            PlayerData.get(p).giveExperience(intmoblevel * mobxp, EXPSource.OTHER);
-        } else {
-            PlayerData.get(p).giveExperience(2 * (intmoblevel * mobxp), EXPSource.OTHER);
+        if (e.getKiller() instanceof Player p) {
+            ItemStack item = p.getInventory().getItemInMainHand();
+            if (hasEnchant(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ENCHANTS.MONEY.KEY")).toUpperCase(), item)) {
+                MythiccCore.getEconomy().depositPlayer(p, getEnchantLevel(MythiccCore.get(), Objects.requireNonNull(getitemfile().getString("ENCHANTS.MONEY.KEY")).toUpperCase(), item));
+            }
+            double mobLevel = e.getMobLevel();
+            int intmoblevel = (int) mobLevel;
+            int mobxp = getmobfile().getInt("MOBS." + e.getMobType().getInternalName().toUpperCase() + ".XP");
+            if (seasonsapi.getDate(p.getWorld()).getDay() < 30) {
+                int xp_r = intmoblevel * mobxp;
+                PlayerData.get(p).giveExperience(xp_r, EXPSource.SOURCE);
+            } else {
+                int xp_r = 2 * (intmoblevel * mobxp);
+                PlayerData.get(p).giveExperience(xp_r, EXPSource.SOURCE);
+            }
         }
     }
 
