@@ -6,6 +6,7 @@ import net.Indyuce.mmoitems.MMOItems;
 import net.Indyuce.mmoitems.api.item.mmoitem.LiveMMOItem;
 import net.Indyuce.mmoitems.api.item.mmoitem.MMOItem;
 import net.Indyuce.mmoitems.stat.data.DoubleData;
+import net.Indyuce.mmoitems.stat.data.StringData;
 import net.danh.dcore.List.Contain;
 import net.danh.dcore.Random.RString;
 import net.danh.mythicccore.MythiccCore;
@@ -136,6 +137,9 @@ public class Item {
                                 }
                                 if (mmoitem.hasData(ItemStats.MAX_DURABILITY)) {
                                     mmoitem.setData(ItemStats.MAX_DURABILITY, new DoubleData(Double.parseDouble(mmoitem.getData(ItemStats.CUSTOM_DURABILITY).toString()) + 100));
+                                }
+                                if (mmoitem.hasData(ItemStats.NAME)) {
+                                    mmoitem.setData(ItemStats.NAME, new StringData("&9New name"));
                                 }
                             }
                             NBTItem result = mmoitem.newBuilder().buildNBT();
