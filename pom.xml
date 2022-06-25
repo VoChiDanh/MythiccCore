@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -144,9 +144,9 @@
         <dependency>
             <groupId>api</groupId>
             <artifactId>RealisticSeasons</artifactId>
-            <version>8.1.4</version>
+            <version>9.0.9</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/RealisticSeasons-8.1.4.jar</systemPath>
+            <systemPath>${project.basedir}/lib/RealisticSeasons-9.0.9.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.github.D-x-Z</groupId>
